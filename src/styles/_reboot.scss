@@ -192,21 +192,11 @@ body {
     max-width: 100% !important;
     padding-left: var(--x-gap) !important;
     padding-right: var(--x-gap) !important;
-
-    @include minTablet {
-        padding-left: rem(56px) !important;
-        padding-right: rem(56px) !important;
-    }
-
-    @include pcSmall {
-        padding-left: rem(104px) !important;
-        padding-right: rem(104px) !important;
-    }
 }
 
 .grid {
     display: grid;
-    grid-column-gap: var(--x-gap);
+    grid-column-gap: var(--col-gap);
     grid-template-columns: repeat(4, 1fr);
 
     @include minTablet {
