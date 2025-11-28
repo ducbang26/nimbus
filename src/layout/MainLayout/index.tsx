@@ -1,5 +1,5 @@
 'use client';
-import Container from '@Components/Container';
+import Footer from '@Layouts/Footer';
 import Header from '@Layouts/Header';
 import LenisScroller from '@Layouts/Lenis';
 import React, { PropsWithChildren } from 'react';
@@ -7,11 +7,9 @@ import React, { PropsWithChildren } from 'react';
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <LenisScroller>
-      <Container>
-        <Header />
-        {children}
-      </Container>
-      {/* {isDesktop ? <Footer /> : ''} */}
+      <Header />
+      {children}
+      <Footer />
       {/* <DebugGrid /> */}
     </LenisScroller>
   );

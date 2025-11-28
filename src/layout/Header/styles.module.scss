@@ -1,0 +1,48 @@
+.header {
+    position: relative;
+    z-index: 9999;
+    width: 100%;
+    color: var(--white);
+    mix-blend-mode: difference;
+}
+
+.header__line {
+    width: 100%;
+    height: 2.4rem;
+    background: var(--white);
+}
+
+.header__main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.header__logo {
+    font-family: var(--font-montserrat);
+    font-size: 2.4rem;
+    line-height: 1.1em;
+}
+
+.main__nav_list {
+    display: flex;
+    column-gap: 3.2rem;
+}
+
+.main__nav_item {
+    a { 
+        font-size: rem(20px);
+    }
+}
+
+.header__icons {
+    display: flex;
+    column-gap: 2rem;
+}
+
+.header__icons_item {
+    width: 2.4rem;
+    height: 2.4rem;
+}
