@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import s from './styles.module.scss';
+import { AboutDrone } from '@Components/AboutDrone';
+import { Canvas } from '@react-three/fiber';
+import { Environment } from '@react-three/drei';
 
 const About = () => {
+  
   return (
     <section className={s.home__about}>
       <div className={`${s.about__main} container grid grid-cols-12`}>
@@ -16,13 +20,20 @@ const About = () => {
         </div>
       </div>
 
-      <div id="home__about-model">
-        <canvas
-          className="about__model-canvas"
-          data-engine="three.js r169"
-          width="1365"
-          height="953"
-        ></canvas>
+      <div className={s.home__about_model}>
+        <Canvas shadows camera={{ position: [0, 5, 6], fov: 25, near: 0.1, far: 100 }}>
+          <Suspense fallback={null}>
+            <directionalLight
+              position={[-2, 2, 1]}
+              castShadow
+              shadow-mapSize-width={256}
+              intensity={2}
+              shadow-bias={-0.0001}
+            />
+            <Environment preset="warehouse" environmentIntensity={0.8} />
+            <AboutDrone />
+          </Suspense>
+        </Canvas>
       </div>
     </section>
   );
