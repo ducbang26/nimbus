@@ -1,5 +1,6 @@
 .drone_showcase {
   position: relative;
+  padding: rem(40px) 0;
 
   &__header {
     text-align: center;
@@ -21,6 +22,7 @@
     font-size: rem(100px);
     color: var(--neutral-950);
     line-height: 0.7;
+    letter-spacing: -.05em;
   }
 
   &__description {

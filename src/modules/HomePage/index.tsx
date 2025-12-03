@@ -3,6 +3,7 @@ import React from 'react';
 import Hero from './Hero';
 import Why from './Why';
 import About from './About';
+import Explore from './Explore';
 
 const HomePage = () => {
   return (
@@ -10,6 +11,7 @@ const HomePage = () => {
       <Hero />
       <About />
       <Why />
+      <Explore />
     </main>
   );
 };

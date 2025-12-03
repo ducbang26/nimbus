@@ -1,13 +1,20 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function AboutDrone(props: any) {
-  const { nodes, materials } = useGLTF('/drone.glb');
+
+export function AboutDrone({ ...props }): React.ReactElement {
+  const { nodes, materials } = useGLTF('/models/dji-fpv/drone.gltf');
   const groupRef = useRef(null);
 
   return (
-    <group ref={groupRef} {...props} dispose={null} rotation={[-0.3, 0, 0]} position={[0, -0.7, 0]} scale={0.8}>
+    <group
+      ref={groupRef}
+      {...props}
+      dispose={null}
+      rotation={[-0.3, 0, 0]}
+      position={[0, -0.7, 0]}
+      scale={0.8}
+    >
       <group position={[0, 1.017, -0.135]} rotation={[-0.475, 0, 0]} scale={3.531}>
         <group rotation={[-Math.PI / 2, 0, 0]} scale={0.283}>
           <mesh
@@ -1096,4 +1103,4 @@ export function AboutDrone(props: any) {
   );
 }
 
-useGLTF.preload('/drone.glb');
+useGLTF.preload('/models/dji-fpv/drone.gltf');
