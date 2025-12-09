@@ -1,0 +1,26 @@
+.button {
+  font-size: rem(20px);
+  padding: rem(16px) rem(24px);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.black {
+  background-color: var(--neutral-950);
+  color: var(--white);
+}
+
+.white {
+  background-color: var(--white);
+  color: var(--neutral-950);
+}
+
+.grey {
+  background-color: #f6f6f6;
+  color: var(--neutral-300);
+}
