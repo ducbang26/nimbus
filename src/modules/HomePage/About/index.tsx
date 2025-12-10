@@ -21,7 +21,7 @@ const About = () => {
       </div>
 
       <div className={s.home__about_model}>
-        <Canvas shadows camera={{ position: [0, 5, 6], fov: 25, near: 0.1, far: 100 }}>
+        {/* <Canvas shadows camera={{ position: [0, 5, 6], fov: 25, near: 0.1, far: 100 }}>
           <Suspense fallback={null}>
             <directionalLight
               position={[-2, 2, 1]}
@@ -33,7 +33,7 @@ const About = () => {
             <Environment preset="warehouse" environmentIntensity={0.8} />
             <AboutDrone />
           </Suspense>
-        </Canvas>
+        </Canvas> */}
       </div>
     </section>
   );

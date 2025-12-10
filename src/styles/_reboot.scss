@@ -219,6 +219,14 @@ object {
     }
 }
 
+.grid-1-1 {
+    display: grid;
+
+    * {
+        grid-area: 1/1/2/2;
+    }
+}
+
 figure {
     img {
         width: 100%;

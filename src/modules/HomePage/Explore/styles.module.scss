@@ -1,59 +1,93 @@
 .home_explore {
-    position: relative;
-    padding: rem(40px) 0;
-  
-    &__header {
-      text-align: center;
-      margin-bottom: rem(40px);
-      display: flex;
-      flex-direction: column;
-      row-gap: rem(24px);
-      align-items: center;
-    }
+  position: relative;
+  padding: rem(40px) 0;
 
-    .slider_title_wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: rem(20px);
-      
-      .slider__title {
-        color: var(--neutral-950);
-        font-size: rem(32px);
-        text-transform: uppercase;
-      }
-    }
-  
-    &__subtitle {
-      display: inline-block;
-      font-size: rem(20px);
-      color: var(--neutral-400);
+  &__header {
+    text-align: center;
+    margin-bottom: rem(40px);
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(24px);
+    align-items: center;
+  }
+
+  .slider_title_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: rem(20px);
+
+    .slider__title {
+      color: var(--neutral-950);
+      font-size: rem(32px);
       text-transform: uppercase;
     }
+  }
+
+  &__subtitle {
+    display: inline-block;
+    font-size: rem(20px);
+    color: var(--neutral-400);
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-size: rem(100px);
+    color: var(--neutral-950);
+    line-height: 0.7;
+    letter-spacing: -.05em;
+  }
+
+  &__description {
+    font-size: rem(20px);
+    color: var(--neutral-950);
+    max-width: rem(426px);
+    line-height: 1.1;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    color: #374151;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 14px;
+  }
+
+}
+
+.ticker_bg_wrap {
+  width: 100%;
+  height: rem(818px);
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
   
-    &__title {
-      font-size: rem(100px);
-      color: var(--neutral-950);
-      line-height: 0.7;
-      letter-spacing: -.05em;
-    }
-  
-    &__description {
-      font-size: rem(20px);
-      color: var(--neutral-950);
-      max-width: rem(426px);
-      line-height: 1.1;
-    }
-  
-    &__cta {
-      display: inline-flex;
-      align-items: center;
-      color: #374151;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      position: relative;
-      font-size: 14px;
+  .ticker_bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+
+    &__image {
+      width: 100%;
+      height: 100%;
     }
   }
-  
+
+  .ticker_title_wrap {
+    position: relative;
+    z-index: 1;
+
+    .ticker_title {
+      font-size: rem(700px);
+      font-weight: 200;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+  }
+}
