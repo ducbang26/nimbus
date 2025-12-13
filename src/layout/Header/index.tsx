@@ -1,9 +1,9 @@
 import Cart from '@Icons/Cart';
 import Search from '@Icons/Search';
 import User from '@Icons/User';
-import React from 'react';
 import s from './styles.module.scss';
 import Container from '@Components/Container';
+import Link from 'next/link';
 
 const Header = () => {
   return (
@@ -29,7 +29,7 @@ const Header = () => {
                 <a href="#">Blogs</a>
               </li>
               <li className={s.main__nav_item}>
-                <a href="/pages/contact">Contact</a>
+                <Link href="/contact">Contact</Link>
               </li>
             </ul>
           </nav>
