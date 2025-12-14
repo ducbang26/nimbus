@@ -1,20 +1,22 @@
-import UITypography from '@Components/Typography';
-import { EFontLetterSpacing, ETypography } from '@Components/Typography/constants';
+import ContactPageForm from '@Modules/ContactPage/Form';
+import ContactPageHeader from '@Modules/ContactPage/Header';
+import Image from 'next/image';
+import s from './styles.module.scss';
 
 const ContactPage = () => {
   return (
-    <main className="container grid grid-cols-12 gap-5">
-      <div className="col-span-12">
-        <UITypography typography={ETypography.TEXT_100_LIGHT}>Contact us</UITypography>
-        <UITypography typography={ETypography.TEXT_16_LIGHT} letterSpacing={EFontLetterSpacing.S}>
-          We’re here to help! Please feel free to reach out with any questions, comments, or
-          inquiries.
-        </UITypography>
+    <main>
+      <div className="container">
+        <ContactPageHeader />
+        <ContactPageForm />
       </div>
-      <div className="col-span-3">
-        <UITypography typography={ETypography.TEXT_16_MEDIUM}>Phone</UITypography>
-        <UITypography typography={ETypography.TEXT_16_LIGHT}>(+84) 774 764 910</UITypography>
-      </div>
+      <Image
+        className={s.contact_footerImage}
+        src="/images/hero-bg.webp"
+        alt=""
+        height="160"
+        width="296"
+      />
     </main>
   );
 };

@@ -12,7 +12,7 @@ const Header = () => {
       <Container>
         <div className={s.header__main}>
           <div className={`${s.header__logo} ${s.txt_med}`}>
-            <a href="#">NIMBUS AIR</a>
+            <Link href="/">NIMBUS AIR</Link>
           </div>
           <nav className={s.main_nav}>
             <ul className={s.main__nav_list}>

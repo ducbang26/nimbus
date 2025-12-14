@@ -1,0 +1,116 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  border-radius: rem(9999px);
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &.loading {
+    @keyframes loading {
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    .loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-animation: loading 1s infinite linear;
+      animation: loading 1s infinite linear;
+    }
+  }
+
+  &.stretch {
+    width: 100%;
+  }
+}
+
+.iconSize {
+  &_md {
+    width: rem(24px);
+    height: rem(24px);
+  }
+}
+
+.md {
+  padding: rem(16px) rem(24px);
+}
+
+.primary {
+  background-color: var(--neutral-950, #252525);
+  transition: transform 0.4s var(--easeOutQuart);
+
+  @include pcSmall {
+    padding: rem(10px) rem(60px);
+  }
+}
+
+.secondary {
+  background-color: var(--white, #ffffff);
+
+  transition:
+    transform 0.4s var(--easeOutQuart),
+    0.4s background-color var(--easeOutQuart);
+}
+
+.solid {
+  &.primary {
+    color: var(--white, #ffffff);
+  }
+
+  &.secondary {
+    color: var(--neutral-950, #252525);
+  }
+}
+
+.outline {
+  background: transparent !important;
+  &.primary {
+    border: rem(1px) solid var(--neutral-950, #252525);
+    color: var(--white, #ffffff);
+  }
+}
+
+.ghost {
+  background: transparent !important;
+  transition: 0.4s opacity var(--easeOutQuart);
+  &:not(:disabled):hover {
+    opacity: 0.7;
+  }
+}
+
+.text {
+  background: transparent !important;
+  padding: 0 !important;
+  border: 0;
+  transition: 0.4s opacity var(--easeOutQuart);
+
+  &:not(:disabled):hover {
+    opacity: 0.7;
+  }
+}
+
+.icon {
+  background: transparent !important;
+  padding: 0;
+  border: 0;
+  transition: 0.4s opacity var(--easeOutQuart);
+
+  &:not(:disabled):hover {
+    opacity: 0.7;
+  }
+}
