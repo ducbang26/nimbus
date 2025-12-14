@@ -25,18 +25,18 @@ const UITypography = ({ ref, ...props }: IUITypographyProps) => {
     color = ETypographyColor.NEUTRAL_950,
     size = 16,
     tag: Tag = 'p',
+    letterSpacing,
     typography = ETypography.TEXT_16_LIGHT,
-    letterSpacing = EFontLetterSpacing.NONE,
     className,
     children,
     ...restProps
   } = props;
   const paragraphClassNames = clsx(
     s.paragraph,
-    typography && s[`paragraph__${typography}`],
-    color && s[`paragraph__${color}`],
     size && s[`paragraph__${size}`],
+    color && s[`paragraph__${color}`],
     letterSpacing && s[`paragraph__${letterSpacing}`],
+    typography && s[`paragraph__${typography}`],
     className
   );
   return (
