@@ -1,0 +1,67 @@
+.form {
+  margin-bottom: rem(40px);
+  &_info {
+    &_item {
+      margin-bottom: rem(32px);
+    }
+
+    &_label {
+      margin-bottom: rem(16px);
+    }
+    &_value {
+      margin-bottom: rem(10px);
+    }
+
+    &_social_item {
+      margin-right: rem(32px);
+    }
+  }
+
+  &_contact {
+    padding: rem(40px) rem(48px);
+    background-color: var(--neutral-50, #f5f5f5);
+    border-radius: rem(20px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    &_title {
+      margin-bottom: rem(40px);
+      color: var(--neutral-950, #252525);
+      font-weight: 400;
+    }
+
+    &_field {
+      margin-bottom: rem(32px);
+    }
+
+    &_input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: rem(1px) solid var(--neutral-300, #d4d4d4);
+      padding: rem(10px) rem(8px);
+      font-size: rem(20px);
+      font-family: inherit;
+      color: var(--neutral-950, #252525);
+      outline: none;
+      transition: border-color 0.3s ease;
+
+      &::placeholder {
+        color: var(--neutral-500, #737373);
+        font-weight: 300;
+      }
+
+      &:focus {
+        border-bottom-color: var(--neutral-950, #252525);
+      }
+
+      &:hover:not(:focus) {
+        border-bottom-color: var(--neutral-400, #a3a3a3);
+      }
+    }
+
+    &_helper {
+      margin-bottom: rem(20px);
+      color: var(--neutral-500, #737373);
+    }
+  }
+}
