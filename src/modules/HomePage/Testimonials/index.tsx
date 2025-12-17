@@ -29,6 +29,20 @@ const Testimonials = () => {
                 src="/images/testi-1.png"
                 alt="connection-image"
               />
+              <Image
+                width={0}
+                height={0}
+                sizes="100vw"
+                src="/images/testi-1.png"
+                alt="connection-image"
+              />
+              <Image
+                width={0}
+                height={0}
+                sizes="100vw"
+                src="/images/testi-1.png"
+                alt="connection-image"
+              />
             </div>
           </div>
           <div className={s.testimonials_slider_content}>
