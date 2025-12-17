@@ -6,6 +6,7 @@ import Ai from '@Icons/Ai';
 import GPS from '@Icons/GPS';
 import Speed from '@Icons/Speed';
 import Video from '@Icons/Video';
+import UIButton from '@Components/Button';
 
 const Why = () => {
   return (
@@ -17,6 +18,7 @@ const Why = () => {
           <p className={s.drone_showcase__description}>
             Our drones provide the best combination of power, intelligence, and reliability.
           </p>
+          <UIButton color='gray'>Explore More</UIButton>
         </div>
 
         <div className={`${s.drone_showcase__features} grid grid-cols-12`}>

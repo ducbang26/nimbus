@@ -6,7 +6,9 @@
   touch-action: manipulation;
   cursor: pointer;
   border-radius: rem(9999px);
-
+  font-size: rem(20px);
+  font-weight: 300;
+  
   &.disabled {
     opacity: 0.3;
     cursor: not-allowed;
@@ -51,37 +53,42 @@
 }
 
 .primary {
-  background-color: var(--neutral-950, #252525);
+  background-color: var(--neutral-950);
   transition: transform 0.4s var(--easeOutQuart);
-
-  @include pcSmall {
-    padding: rem(10px) rem(60px);
-  }
 }
 
 .secondary {
-  background-color: var(--white, #ffffff);
+  background-color: var(--white);
 
   transition:
     transform 0.4s var(--easeOutQuart),
     0.4s background-color var(--easeOutQuart);
 }
 
+.gray {
+  background-color: var(--neutral-50);
+  transition: transform 0.4s var(--easeOutQuart);
+}
+
 .solid {
   &.primary {
-    color: var(--white, #ffffff);
+    color: var(--white);
   }
 
   &.secondary {
-    color: var(--neutral-950, #252525);
+    color: var(--neutral-950);
+  }
+
+  &.gray {
+    color: var(--neutral-300);
   }
 }
 
 .outline {
   background: transparent !important;
   &.primary {
-    border: rem(1px) solid var(--neutral-950, #252525);
-    color: var(--white, #ffffff);
+    border: rem(1px) solid var(--neutral-950);
+    color: var(--white);
   }
 }
 
