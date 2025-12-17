@@ -3,12 +3,7 @@ import React from 'react';
 
 import s from './styles.module.scss';
 import { ETypographyColor } from '@Components/Typography/constants';
-import {
-  TButtonColor,
-  TButtonSize,
-  TButtonType,
-  TButtonVariant,
-} from '@Components/Button/contants';
+import { TButtonColor, TButtonSize, TButtonType, TButtonVariant } from './constants';
 
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'color'> {

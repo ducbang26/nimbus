@@ -2,8 +2,8 @@ import Container from '@Components/Container';
 import React from 'react';
 import s from './styles.module.scss';
 import Slider from './Slider';
-import { Button } from '@Components/Button';
 import Image from 'next/image';
+import UIButton from '@Components/Button';
 
 const Explore = () => {
   return (
@@ -18,7 +18,7 @@ const Explore = () => {
 
           <div className={s.slider_title_wrap}>
             <h5 className={`${s.slider__title}`}>Drone Model</h5>
-            <Button color="grey">View All Models</Button>
+            <UIButton color='gray'>View All Models</UIButton>
           </div>
         </Container>
 

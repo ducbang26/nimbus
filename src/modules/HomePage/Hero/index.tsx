@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import s from './styles.module.scss';
-import { Button } from '@Components/Button';
+import UIButton from '@Components/Button';
 
 const Hero = () => {
   return (
@@ -17,7 +17,7 @@ const Hero = () => {
             <p className={`${s.hero__cta_txt} txt-light`}>
               Experience the Future of Aerial Technology
             </p>
-            <Button color='white'>Explore Our Drones</Button>
+            <UIButton color='secondary'>Explore Our Drones</UIButton>
           </div>
           <div className={s.home__hero_preview}>
             <Image
