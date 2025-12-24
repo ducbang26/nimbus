@@ -1,11 +1,13 @@
-export type TFontSize = 14 | 16 | 20 | 24 | 32 | 100;
-export type TLineHeight = 'auto' | 20 | 24;
+export type TFontSize = 14 | 16 | 20 | 24 | 32 | 40 | 100;
+export type TLineHeight = 'auto' | 20 | 24 | 60;
 export type TTypographyTag = 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export enum ETypography {
   TEXT_100_LIGHT = 'text_100_light',
+  TEXT_40_REGULAR = 'text_40_regular',
   TEXT_32_REGULAR = 'text_32_regular',
   TEXT_24_MEDIUM = 'text_24_medium',
+  TEXT_24_LIGHT = 'text_24_light',
   TEXT_20_REGULAR = 'text_20_regular',
   TEXT_20_LIGHT = 'text_20_light',
   TEXT_16_MEDIUM = 'text_16_medium',

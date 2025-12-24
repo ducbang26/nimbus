@@ -4,12 +4,20 @@
     width: 100%;
     color: var(--white);
     mix-blend-mode: difference;
+
+    &__black {
+        color: var(--neutral-950);
+    }
 }
 
 .header__line {
     width: 100%;
     height: 2.4rem;
     background: var(--white);
+
+    &__black {
+        background: var(--neutral-950);
+    }
 }
 
 .header__main {
