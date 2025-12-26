@@ -5,6 +5,7 @@ import Why from './Why';
 import About from './About';
 import Explore from './Explore';
 import Testimonials from './Testimonials';
+import News from './News';
 
 const HomePage = () => {
   return (
@@ -12,8 +13,9 @@ const HomePage = () => {
       <Hero />
       <About />
       <Why />
-      <Explore />
+      <Explore />      
       <Testimonials />
+      <News />
     </main>
   );
 };
