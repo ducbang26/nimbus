@@ -1,0 +1,11 @@
+.productItem {
+  &_image {
+    width: 100%;
+    object-fit: cover;
+    background-color: var(--neutral-100);
+    margin-bottom: rem(10px);
+  }
+  &_content {
+    margin-bottom: rem(10px);
+  }
+}
