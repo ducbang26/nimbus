@@ -9,6 +9,21 @@
     letter-spacing: -0.03em;
   }
 
+  &__text_52_light {
+    font-size: rem(52px);
+    font-weight: 300;
+  }
+
+  &__text_40_regular {
+    font-size: rem(40px);
+    font-weight: 400;
+  }
+
+  &__text_36_light {
+    font-size: rem(36px);
+    font-weight: 300;
+  }
+
   &__text_32_regular {
     font-size: rem(32px);
     font-weight: 400;
@@ -17,6 +32,16 @@
   &__text_24_medium {
     font-size: rem(24px);
     font-weight: 500;
+  }
+
+  &__text_24_regular {
+    font-size: rem(24px);
+    font-weight: 400;
+  }
+
+  &__text_24_light {
+    font-size: rem(24px);
+    font-weight: 300;
   }
 
   &__text_20_regular {
@@ -82,11 +107,36 @@
     color: inherit;
   }
 
+  &__white {
+    color: var(--white, #fff);
+  }
+
+  &__neutral_300 {
+    color: var(--neutral-300, #b0b0b0);
+  }
+
   &__neutral_500 {
     color: var(--neutral-500, #6d6d6d);
   }
 
   &__neutral_950 {
     color: var(--neutral-950, #252525);
+  }
+
+  /* Line Height */
+  &__lh_20 {
+    line-height: rem(20px);
+  }
+
+  &__lh_24 {
+    line-height: rem(24px);
+  }
+
+  &__lh_48 {
+    line-height: rem(48px);
+  }
+
+  &__lh_60 {
+    line-height: rem(60px);
   }
 }

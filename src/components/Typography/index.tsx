@@ -39,7 +39,7 @@ const UITypography = ({ ref, ...props }: IUITypographyProps) => {
     size && s[`paragraph__${size}`],
     color && s[`paragraph__${color}`],
     letterSpacing && s[`paragraph__${letterSpacing}`],
-    lineHeight && s[`paragraph__${lineHeight}`],
+    lineHeight && s[`paragraph__lh_${lineHeight}`],
     typography && s[`paragraph__${typography}`],
     className
   );

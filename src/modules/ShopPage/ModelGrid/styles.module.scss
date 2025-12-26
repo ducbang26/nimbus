@@ -1,0 +1,54 @@
+.modelGrid {
+  &_filters {
+    display: flex;
+    justify-content: center;
+    margin-top: rem(20px);
+    margin-bottom: rem(12px);
+  }
+
+  &_filter {
+    display: inline-block;
+    padding-left: rem(20px);
+    padding-right: rem(20px);
+
+    &_inactive {
+      color: var(--neutral-300);
+    }
+  }
+
+  &_models {
+    &_list {
+      row-gap: rem(20px);
+
+      &_wrapper {
+        padding: rem(20px);
+        background-color: var(--neutral-100);
+      }
+    }
+
+    &_title {
+      margin-bottom: rem(8px);
+    }
+
+    &_description {
+      margin-bottom: rem(20px);
+    }
+  }
+
+  &_pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: rem(20px);
+    margin-bottom: rem(12px);
+
+    &_item {
+      display: inline-block;
+      padding-left: rem(20px);
+      padding-right: rem(20px);
+
+      &_inactive {
+        color: var(--neutral-300);
+      }
+    }
+  }
+}
