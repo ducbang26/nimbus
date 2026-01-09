@@ -1,15 +1,16 @@
+import React from 'react';
+import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
 import { ETypography } from '@Components/Typography/constants';
-
-import { clsx } from 'clsx';
-import s from './styles.module.scss';
-import Facebook from '@Icons/Facebook';
-import UIButton from '@Components/Button';
 import Behance from '@Icons/Behance';
-import Youtube from '@Icons/Youtube';
 import Dribbble from '@Icons/Dribbble';
+import Facebook from '@Icons/Facebook';
+import Youtube from '@Icons/Youtube';
+import { clsx } from 'clsx';
 
-const ContactPageForm = () => {
+import s from './styles.module.scss';
+
+const ContactPageForm = () : React.ReactElement => {
   const infoItems = [
     {
       label: 'Phone',

@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { Suspense } from 'react';
-import s from './styles.module.scss';
 import { AboutDrone } from '@Components/AboutDrone';
-import { Canvas } from '@react-three/fiber';
 import { Environment } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 
-const About = () => {
+import s from './styles.module.scss';
+
+const About = () : React.ReactElement => {
   
   return (
     <section className={s.home__about}>

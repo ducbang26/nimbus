@@ -1,14 +1,15 @@
-import Container from '@Components/Container';
 import React from 'react';
-import s from './styles.module.scss';
-import Image from 'next/image';
+import UIButton from '@Components/Button';
+import Container from '@Components/Container';
 import Ai from '@Icons/Ai';
 import GPS from '@Icons/GPS';
 import Speed from '@Icons/Speed';
 import Video from '@Icons/Video';
-import UIButton from '@Components/Button';
+import Image from 'next/image';
 
-const Why = () => {
+import s from './styles.module.scss';
+
+const Why = () : React.ReactElement => {
   return (
     <section className={s.drone_showcase}>
       <Container>

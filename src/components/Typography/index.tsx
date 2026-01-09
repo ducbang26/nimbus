@@ -1,7 +1,4 @@
-import { clsx } from 'clsx';
-import { PropsWithChildren, Ref } from 'react';
-
-import s from './styles.module.scss';
+import React, { PropsWithChildren, Ref } from 'react';
 import {
   EFontLetterSpacing,
   ETypography,
@@ -10,6 +7,9 @@ import {
   TLineHeight,
   TTypographyTag,
 } from '@Components/Typography/constants';
+import { clsx } from 'clsx';
+
+import s from './styles.module.scss';
 
 export interface IUITypographyProps extends PropsWithChildren {
   className?: string;
@@ -22,7 +22,7 @@ export interface IUITypographyProps extends PropsWithChildren {
   ref?: Ref<HTMLParagraphElement>;
 }
 
-const UITypography = ({ ref, ...props }: IUITypographyProps) => {
+const UITypography = ({ ref, ...props }: IUITypographyProps) : React.ReactElement => {
   const {
     color = ETypographyColor.NEUTRAL_950,
     size = 16,

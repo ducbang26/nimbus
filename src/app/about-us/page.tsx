@@ -1,6 +1,7 @@
+import React from 'react';
 import AboutUsPage from '@Modules/AboutUsPage';
 
-const Page = () => {
+const Page = () : React.ReactElement =>  {
   return <AboutUsPage />;
 };
 

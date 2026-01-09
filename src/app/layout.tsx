@@ -1,7 +1,8 @@
+import MainLayout from '@Layouts/MainLayout';
 import type { Metadata } from 'next';
 import { DM_Sans, Montserrat } from 'next/font/google';
+
 import '@Styles/app.scss';
-import MainLayout from '@Layouts/MainLayout';
 
 const dmSans = DM_Sans({
   variable: '--font-dm-sans',
@@ -22,7 +23,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) : React.ReactNode {
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${montserrat.variable}`}>

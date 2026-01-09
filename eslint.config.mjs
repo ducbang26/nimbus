@@ -1,11 +1,69 @@
+/* eslint-disable import/no-unresolved */
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import simpleImportSort from "eslint-plugin-simple-import-sort";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // Override default ignores of eslint-config-next.
+  {
+    plugins: {
+      "simple-import-sort": simpleImportSort,
+    },
+    rules:  {
+      "import/no-unresolved": "error",
+      "import/first": "error",
+      "react/jsx-props-no-spreading": "off",
+      "unused-imports/no-unused-imports": "off",
+      "react/function-component-definition": "off",
+      "react/destructuring-assignment": "error",
+      "react/require-default-props": "off",
+      "react-hooks/exhaustive-deps": [
+        "off",
+        {
+          "additionalHooks": "useEffect"
+        }
+      ],
+      "no-param-reassign": "error",
+      "react/button-has-type": "off",
+      "react/jsx-no-useless-fragment": "warn",
+      // "react/no-array-index-key": "error",
+      "no-return-assign": "error",
+      "react/no-unused-prop-types": "warn",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_",
+          "caughtErrorsIgnorePattern": "^_"
+        }
+      ],
+      "simple-import-sort/imports": [
+        "error",
+        {
+          "groups": [
+            ["^react", "^@?\\w"], // React and external packages
+            ["^(@/components)(/.*)?", "^(@/lib)(/.*)?"], // Aliased internal imports
+            ["^\\./(?=.*/)(?!.*/style$)", "^\\.(?!.*/style$)"], // Relative path imports
+            ["^.+\\.module\\.(css|scss)$"], // Style imports (last)
+            ["^.+\\.(png|gif|jpg|jpeg|svg)$"] // Media imports
+          ]
+        }
+      ],
+      "simple-import-sort/exports": "error",
+      "@typescript-eslint/explicit-function-return-type": "error",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "no-console": "warn",
+      "no-promise-executor-return": "error"
+      // "@typescript-eslint/ban-ts-comment": [
+      //   "warn",
+      //   {
+      //     "ts-ignore": "allow-with-description"
+      //   }
+      // ]
+    }
+  },
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",

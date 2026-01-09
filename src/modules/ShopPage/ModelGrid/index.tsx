@@ -1,24 +1,25 @@
 'use client';
 
-import { clsx } from 'clsx';
-import s from './styles.module.scss';
+import React, { useState } from 'react';
 import UIButton from '@Components/Button';
-import { useState } from 'react';
-import { EModelFilter, MOCK_ITEMS, MODEL_FILTERS } from '@Modules/ShopPage/constants';
 import UITypography from '@Components/Typography';
 import { ETypography, ETypographyColor } from '@Components/Typography/constants';
+import { EModelFilter, MOCK_ITEMS, MODEL_FILTERS } from '@Modules/ShopPage/constants';
 import ProductItem from '@Modules/ShopPage/ModelGrid/Item';
+import { clsx } from 'clsx';
 
-const ShopPageModelGrid = () => {
+import s from './styles.module.scss';
+
+const ShopPageModelGrid = () : React.ReactElement => {
   const [activeFilter, setActiveFilter] = useState(EModelFilter.ALL);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, _setTotalPages] = useState(4);
 
-  const handleFilterClick = (filter: EModelFilter) => {
+  const handleFilterClick = (filter: EModelFilter) : void => {
     setActiveFilter(filter);
   };
 
-  const handlePageClick = (page: number) => {
+  const handlePageClick = (page: number) : void => {
     setCurrentPage(page);
   };
 

@@ -1,8 +1,10 @@
+import React from 'react';
 import UITypography from '@Components/Typography';
 import { EFontLetterSpacing, ETypography } from '@Components/Typography/constants';
+
 import s from './styles.module.scss';
 
-const ContactPageHeader = () => {
+const ContactPageHeader = () : React.ReactElement => {
   return (
     <div className={s.header}>
       <UITypography typography={ETypography.TEXT_100_LIGHT} className={s.header_title}>

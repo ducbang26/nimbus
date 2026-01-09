@@ -1,9 +1,10 @@
+import React from 'react';
 import Arrow from '@Icons/Arrow';
 import BrandLogo from '@Icons/BrandLogo';
-import React from 'react';
+
 import s from './styles.module.scss';
 
-const Footer = () => {
+const Footer = () : React.ReactElement => {
   return (
     <footer className={s.footer}>
       <div className={`${s.footer__main} grid grid-cols-12`}>

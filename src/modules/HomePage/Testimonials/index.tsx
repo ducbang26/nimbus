@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './styles.module.scss';
 import Container from '@Components/Container';
-import Image from 'next/image';
 
-const Testimonials = () => {
+import s from './styles.module.scss';
+
+const Testimonials = () : React.ReactElement => {
   return (
     <section className={s.testimonials}>
       <Container className={s.testimonials_wrap}>
@@ -20,25 +20,51 @@ const Testimonials = () => {
         </div>
 
         <div className={`${s.testimonials_slider} grid`}>
-          <div className={s.testimonials_slider_img}>
-            <div className={`${s.img_wrap} grid-1-1`}>
-              <Image
-                width={0}
-                height={0}
-                sizes="100vw"
-                src="/images/testi-1.png"
-                alt="connection-image"
-              />
+          <div className={s.testimonials_thumbnail}>
+            <div className={s.testimonials_thumbnail_wrap}>
+              <div className={`${s.testimonials_thumbnail_list} grid-1-1`}>
+                <div className={s.thumbnail_img}>
+                  <div className={s.thumbnail_img_wrap}>
+                    <div className={s.thumbnail_img_inner}>
+                      {/* <Image
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                        src="/images/testi-1.png"
+                        alt="connection-image"
+                      /> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className={s.testimonials_slider_content}>
             <div className={`grid-1-1`}>
-              <p>&quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;</p>
-              <p>&quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;</p>
-              <p>&quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;</p>
+              <p className={s.testimonials_slider_text}>
+                &quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;
+              </p>
+              <p className={s.testimonials_slider_text}>
+                &quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;
+              </p>
+              <p className={s.testimonials_slider_text}>
+                &quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;
+              </p>
             </div>
-            <div>
-              
+            <div className={s.testimonials_slider_info}>
+              <div className={s.line}></div>
+              <div className={s.info_inner}>
+                <div className={`grid-1-1`}>
+                  <div className={s.info_avt}> </div>
+                  <div className={s.info_avt}> </div>
+                  <div className={s.info_avt}> </div>
+                </div>
+                <div className={`grid-1-1`}>
+                  <div className={s.info_name}>David, Photographer</div>
+                  <div className={s.info_name}>David, Photographer</div>
+                  <div className={s.info_name}>David, Photographer</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

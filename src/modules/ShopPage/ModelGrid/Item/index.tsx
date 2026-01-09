@@ -1,8 +1,10 @@
+import React from 'react';
 import UITypography from '@Components/Typography';
-import s from './styles.module.scss';
-import Image from 'next/image';
 import { ETypography, ETypographyColor } from '@Components/Typography/constants';
 import { clsx } from 'clsx';
+import Image from 'next/image';
+
+import s from './styles.module.scss';
 
 interface IProductItemProps {
   image: string;
@@ -11,7 +13,7 @@ interface IProductItemProps {
   price: string;
 }
 
-const ProductItem = ({ image, title, description, price }: IProductItemProps) => {
+const ProductItem = ({ image, title, description, price }: IProductItemProps) : React.ReactElement => {
   return (
     <div className={clsx('col-span-3', s.productItem)}>
       <div className={s.productItem_image}>
