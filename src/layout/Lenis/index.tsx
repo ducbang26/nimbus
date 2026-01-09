@@ -1,7 +1,7 @@
 'use client';
-import { LenisRef, ReactLenis } from 'lenis/react';
-import { gsap } from 'gsap';
 import React, { PropsWithChildren, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { LenisRef, ReactLenis } from 'lenis/react';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface ISmoothScroller extends PropsWithChildren {}
@@ -21,7 +21,7 @@ export default function LenisScroller({ children }: ISmoothScroller): React.Reac
 
     gsap.ticker.add(update);
 
-    return () => {
+    return () : void => {
       gsap.ticker.remove(update);
     };
   }, []);

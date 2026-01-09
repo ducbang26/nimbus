@@ -1,13 +1,14 @@
 'use client';
 import React from 'react';
-import Hero from './Hero';
-import Why from './Why';
+
 import About from './About';
 import Explore from './Explore';
-import Testimonials from './Testimonials';
+import Hero from './Hero';
 import News from './News';
+import Testimonials from './Testimonials';
+import Why from './Why';
 
-const HomePage = () => {
+const HomePage = () : React.ReactElement => {
   return (
     <main>
       <Hero />

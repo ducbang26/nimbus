@@ -1,9 +1,10 @@
-import Image from 'next/image';
 import React from 'react';
-import s from './styles.module.scss';
 import UIButton from '@Components/Button';
+import Image from 'next/image';
 
-const Hero = () => {
+import s from './styles.module.scss';
+
+const Hero = () : React.ReactElement => {
   return (
     <section className={s.home__hero}>
       <div className={`${s.home__hero_main} container`}>

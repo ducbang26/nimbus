@@ -1,6 +1,6 @@
 import React from 'react';
 
-const User = () => {
+const User = () : React.ReactElement => {
   return (
     <svg
       width="24"

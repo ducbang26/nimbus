@@ -1,9 +1,11 @@
+import React from 'react';
 import UITypography from '@Components/Typography';
 import { ETypography } from '@Components/Typography/constants';
-import s from './styles.module.scss';
 import Image from 'next/image';
 
-const AboutUsPage = () => {
+import s from './styles.module.scss';
+
+const AboutUsPage = (): React.ReactElement => {
   return (
     <main className={s.about}>
       <Image

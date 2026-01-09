@@ -1,20 +1,23 @@
 'use client';
 
-import clsx from 'clsx';
-import s from './styles.module.scss';
+import React from 'react';
+import UITypography from '@Components/Typography';
 import {
   EFontLetterSpacing,
   ETypography,
   ETypographyColor,
 } from '@Components/Typography/constants';
-import UITypography from '@Components/Typography';
+import Arrow from '@Icons/Arrow';
+import { COLLECTION_ITEMS } from '@Modules/ShopPage/constants';
+import clsx from 'clsx';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import { COLLECTION_ITEMS } from '@Modules/ShopPage/constants';
-import Arrow from '@Icons/Arrow';
 
-const ShopPageCollection = () => {
+import s from './styles.module.scss';
+
+import 'swiper/css';
+
+const ShopPageCollection = (): React.ReactElement => {
   return (
     <>
       <div className={clsx(s.collection, 'container grid grid-cols-12')}>

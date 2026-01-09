@@ -1,9 +1,10 @@
-import { clsx } from 'clsx';
 import React from 'react';
+import { ETypographyColor } from '@Components/Typography/constants';
+import { clsx } from 'clsx';
+
+import { TButtonColor, TButtonSize, TButtonType, TButtonVariant } from './constants';
 
 import s from './styles.module.scss';
-import { ETypographyColor } from '@Components/Typography/constants';
-import { TButtonColor, TButtonSize, TButtonType, TButtonVariant } from './constants';
 
 export interface ButtonProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'color'> {
@@ -19,7 +20,7 @@ export interface ButtonProps
   onClick?: () => void;
 }
 
-const UIButton = (props: ButtonProps) => {
+const UIButton = (props: ButtonProps) : React.ReactElement => {
   const {
     children,
     type = 'button',

@@ -1,12 +1,16 @@
 import React from 'react'
-import s from './styles.module.scss';
+import UIButton from '@Components/Button';
 import Container from '@Components/Container';
 
-const News = () => {
+import s from './styles.module.scss';
+
+const News = () : React.ReactElement => {
   return (
     <section className={s.news}>
-      <Container>
+      <Container className={s.news_wrap}>
+        <div>news</div>
         <div></div>
+        <div><UIButton color='gray'>View All Models</UIButton></div>
       </Container>
     </section>
   )

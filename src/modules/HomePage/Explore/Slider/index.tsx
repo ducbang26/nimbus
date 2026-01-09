@@ -1,10 +1,12 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import s from './styles.module.scss';
 import Arrow from '@Icons/Arrow';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-const Slider = () => {
+import s from './styles.module.scss';
+
+import 'swiper/css';
+
+const Slider = () : React.ReactElement => {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   const sliderData = [
@@ -31,8 +33,7 @@ const Slider = () => {
   ];
 
   return (
-    <>
-      <Swiper
+    <Swiper
         slidesPerView={'auto'}
         spaceBetween={20}
         className={s.slider}
@@ -56,7 +57,6 @@ const Slider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
   );
 };
 

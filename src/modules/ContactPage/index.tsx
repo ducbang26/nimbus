@@ -1,9 +1,11 @@
+import React from 'react';
 import ContactPageForm from '@Modules/ContactPage/Form';
 import ContactPageHeader from '@Modules/ContactPage/Header';
 import Image from 'next/image';
+
 import s from './styles.module.scss';
 
-const ContactPage = () => {
+const ContactPage = () : React.ReactElement => {
   return (
     <main>
       <div className="container">

@@ -1,9 +1,11 @@
-import ShopPageHero from '@Modules/ShopPage/Hero';
-import s from './styles.module.scss';
-import ShopPageModelGrid from '@Modules/ShopPage/ModelGrid';
+import React from 'react';
 import ShopPageCollection from '@Modules/ShopPage/Collection';
+import ShopPageHero from '@Modules/ShopPage/Hero';
+import ShopPageModelGrid from '@Modules/ShopPage/ModelGrid';
 
-const ShopPage = () => {
+import s from './styles.module.scss';
+
+const ShopPage = () : React.ReactElement => {
   return (
     <main className={s.shop}>
       <ShopPageHero />

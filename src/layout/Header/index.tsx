@@ -1,15 +1,16 @@
+import { useMemo } from 'react';
+import Container from '@Components/Container';
+import { BLACK_HEADER_PAGES, EPagePaths, NAVIGATION_PAGES } from '@Constants/index';
 import Cart from '@Icons/Cart';
 import Search from '@Icons/Search';
 import User from '@Icons/User';
-import s from './styles.module.scss';
-import Container from '@Components/Container';
-import Link from 'next/link';
 import { clsx } from 'clsx';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { BLACK_HEADER_PAGES, EPagePaths, NAVIGATION_PAGES } from '@Constants/index';
-import { useMemo } from 'react';
 
-const Header = () => {
+import s from './styles.module.scss';
+
+const Header = () : React.ReactElement => {
   const pathname = usePathname();
 
   const isBlackHeader = useMemo(

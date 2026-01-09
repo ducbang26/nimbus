@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './styles.module.scss';
 import Container from '@Components/Container';
-import Image from 'next/image';
 
-const Testimonials = () => {
+import s from './styles.module.scss';
+
+const Testimonials = () : React.ReactElement => {
   return (
     <section className={s.testimonials}>
       <Container className={s.testimonials_wrap}>
@@ -36,23 +36,34 @@ const Testimonials = () => {
                     </div>
                   </div>
                 </div>
-
-
-                
               </div>
             </div>
           </div>
           <div className={s.testimonials_slider_content}>
             <div className={`grid-1-1`}>
-              <p className={s.testimonials_slider_text}>&quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;</p>
-              <p className={s.testimonials_slider_text}>&quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;</p>
-              <p className={s.testimonials_slider_text}>&quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;</p>
+              <p className={s.testimonials_slider_text}>
+                &quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;
+              </p>
+              <p className={s.testimonials_slider_text}>
+                &quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;
+              </p>
+              <p className={s.testimonials_slider_text}>
+                &quot;The best drone I’ve ever used—smooth flight and incredible footage!&quot;
+              </p>
             </div>
             <div className={s.testimonials_slider_info}>
               <div className={s.line}></div>
               <div className={s.info_inner}>
-                <div className={s.info_avt}> </div>
-                <div className={s.info_name}> </div>
+                <div className={`grid-1-1`}>
+                  <div className={s.info_avt}> </div>
+                  <div className={s.info_avt}> </div>
+                  <div className={s.info_avt}> </div>
+                </div>
+                <div className={`grid-1-1`}>
+                  <div className={s.info_name}>David, Photographer</div>
+                  <div className={s.info_name}>David, Photographer</div>
+                  <div className={s.info_name}>David, Photographer</div>
+                </div>
               </div>
             </div>
           </div>

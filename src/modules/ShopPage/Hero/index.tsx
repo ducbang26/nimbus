@@ -1,10 +1,11 @@
+import React from 'react';
+import UITypography from '@Components/Typography';
+import { ETypography, ETypographyColor } from '@Components/Typography/constants';
 import Image from 'next/image';
 
 import s from './styles.module.scss';
-import UITypography from '@Components/Typography';
-import { ETypography, ETypographyColor } from '@Components/Typography/constants';
 
-const ShopPageHero = () => {
+const ShopPageHero = () : React.ReactElement => {
   return (
     <div className={s.hero}>
       <div className={s.hero_container}>

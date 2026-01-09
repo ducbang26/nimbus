@@ -1,11 +1,13 @@
-import Container from '@Components/Container';
 import React from 'react';
-import s from './styles.module.scss';
-import Slider from './Slider';
-import Image from 'next/image';
 import UIButton from '@Components/Button';
+import Container from '@Components/Container';
+import Image from 'next/image';
 
-const Explore = () => {
+import Slider from './Slider';
+
+import s from './styles.module.scss';
+
+const Explore = () : React.ReactElement => {
   return (
     <>
       <section className={s.home_explore}>
