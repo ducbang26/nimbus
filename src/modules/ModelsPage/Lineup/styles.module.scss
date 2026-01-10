@@ -1,0 +1,19 @@
+.lineup {
+  margin-bottom: rem(40px);
+
+  &_title {
+    text-align: center;
+    margin-bottom: rem(20px);
+  }
+
+  &_items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &_button {
+    display: flex;
+    justify-content: center;
+    margin-top: rem(20px);
+  }
+}
