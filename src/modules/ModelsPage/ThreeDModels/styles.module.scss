@@ -1,0 +1,23 @@
+.threeDModels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &_title {
+    text-align: center;
+    margin-bottom: rem(20px);
+  }
+
+  &_filter {
+    display: flex;
+    column-gap: rem(14px);
+    margin-bottom: rem(20px);
+  }
+
+  &_models {
+    img {
+      height: rem(780px);
+    }
+  }
+}

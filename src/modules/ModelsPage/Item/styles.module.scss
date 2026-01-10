@@ -1,0 +1,18 @@
+.productItem {
+  width: 50%;
+
+  &_image {
+    img {
+      aspect-ratio: 72 / 60;
+      object-fit: contain;
+    }
+  }
+
+  &_content {
+    padding: rem(20px) rem(60px);
+  }
+
+  &_title {
+    margin-bottom: rem(8px);
+  }
+}

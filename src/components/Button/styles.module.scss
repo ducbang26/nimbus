@@ -52,6 +52,10 @@
   padding: rem(16px) rem(24px);
 }
 
+.sm {
+  padding: rem(12px) rem(20px);
+}
+
 .primary {
   background-color: var(--neutral-950);
   transition: transform 0.4s var(--easeOutQuart);

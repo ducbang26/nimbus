@@ -100,9 +100,10 @@ a {
   color: inherit;
 }
 
-input, textarea {
-    all: unset;
-  }
+input,
+textarea {
+  all: unset;
+}
 
 html {
   box-sizing: border-box;
@@ -283,4 +284,8 @@ svg {
 
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.grid-cols-8 {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
 }

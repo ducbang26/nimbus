@@ -1,0 +1,26 @@
+.hero {
+  &_container {
+    text-align: center;
+    margin-bottom: rem(40px);
+  }
+
+  &_title {
+    margin-bottom: rem(12px);
+  }
+
+  &_banner {
+    position: relative;
+    margin-bottom: rem(40px);
+  }
+
+  &_image {
+    aspect-ratio: 1440 / 680;
+  }
+
+  &_button {
+    position: absolute;
+    bottom: rem(16px);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
