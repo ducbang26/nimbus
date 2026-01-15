@@ -8,6 +8,7 @@ export enum ETypography {
   TEXT_40_REGULAR = 'text_40_regular',
   TEXT_36_LIGHT = 'text_36_light',
   TEXT_32_REGULAR = 'text_32_regular',
+  TEXT_32_LIGHT = 'text_32_light',
   TEXT_28_REGULAR = 'text_28_regular',
   TEXT_24_MEDIUM = 'text_24_medium',
   TEXT_24_REGULAR = 'text_24_regular',
@@ -16,6 +17,7 @@ export enum ETypography {
   TEXT_20_LIGHT = 'text_20_light',
   TEXT_16_MEDIUM = 'text_16_medium',
   TEXT_16_LIGHT = 'text_16_light',
+  TEXT_14_MEDIUM = 'text_14_medium',
   TEXT_14_LIGHT = 'text_14_light',
 }
 

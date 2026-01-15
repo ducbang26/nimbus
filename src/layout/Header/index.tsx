@@ -10,11 +10,11 @@ import { usePathname } from 'next/navigation';
 
 import s from './styles.module.scss';
 
-const Header = () : React.ReactElement => {
+const Header = (): React.ReactElement => {
   const pathname = usePathname();
 
   const isBlackHeader = useMemo(
-    () => BLACK_HEADER_PAGES.includes(pathname as EPagePaths),
+    () => BLACK_HEADER_PAGES.includes(('/' + pathname.split('/')[1]) as EPagePaths),
     [pathname]
   );
 

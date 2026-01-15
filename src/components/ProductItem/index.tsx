@@ -3,6 +3,7 @@ import UITypography from '@Components/Typography';
 import { ETypography, ETypographyColor } from '@Components/Typography/constants';
 import { clsx } from 'clsx';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import s from './styles.module.scss';
 
@@ -11,11 +12,12 @@ interface IProductItemProps {
   title: string;
   description: string;
   price: string;
+  index: number;
 }
 
-const ProductItem = ({ image, title, description, price }: IProductItemProps) : React.ReactElement => {
+const ProductItem = ({ image, title, description, price, index }: IProductItemProps) : React.ReactElement => {
   return (
-    <div className={clsx('col-span-3', s.productItem)}>
+    <Link href={`/product/${index}`} className={clsx('col-span-3', s.productItem)}>
       <div className={s.productItem_image}>
         <Image src={image} alt={title} width={500} height={500} />
       </div>
@@ -26,7 +28,7 @@ const ProductItem = ({ image, title, description, price }: IProductItemProps) : 
       <UITypography typography={ETypography.TEXT_20_REGULAR} color={ETypographyColor.NEUTRAL_300}>
         {price}
       </UITypography>
-    </div>
+    </Link>
   );
 };
 

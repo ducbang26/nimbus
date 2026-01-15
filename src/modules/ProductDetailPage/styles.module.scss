@@ -1,0 +1,41 @@
+.productDetail {
+  padding: rem(40px) 0;
+
+  &_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  &_image {
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+  }
+
+  &_info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &_title {
+    margin-bottom: 16px;
+  }
+
+  &_description {
+    margin-bottom: 16px;
+  }
+
+  &_price {
+    margin-bottom: 32px;
+  }
+
+  &_actions {
+    display: flex;
+    gap: 16px;
+  }
+}

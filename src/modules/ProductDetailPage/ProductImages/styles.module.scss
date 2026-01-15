@@ -1,0 +1,40 @@
+.productImages {
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12px);
+    height: rem(600px);
+    overflow-y: scroll;
+  }
+
+  &_selected {
+    margin-left: rem(-8px);
+    background-color: var(--neutral-50);
+    height: rem(600px);
+
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.productImageCard {
+  cursor: pointer;
+  img {
+    aspect-ratio: 92/120;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__selected {
+    border: 1px solid var(--neutral-300);
+    padding: rem(4px);
+    border-radius: rem(8px);
+
+    img {
+      border-radius: rem(4px);
+    }
+  }
+}

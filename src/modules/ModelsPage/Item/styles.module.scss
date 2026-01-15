@@ -1,5 +1,14 @@
 .productItem {
   width: 50%;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
 
   &_image {
     img {
