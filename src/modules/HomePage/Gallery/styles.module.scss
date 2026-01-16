@@ -1,0 +1,34 @@
+.gallery {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  position: relative;
+  width: 488px;
+  height: 700px;
+
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    transform-origin: center;
+    list-style: none;
+
+    .slider_image {
+      width: 100%;
+      height: 100%;
+      background-color: var(--neutral-50);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: height 0.3s ease-in-out;
+    }
+  }
+}
