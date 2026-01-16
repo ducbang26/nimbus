@@ -4,6 +4,7 @@ import React from 'react';
 import About from './About';
 import CTA from './CTA';
 import Explore from './Explore';
+import Gallery from './Gallery';
 import Hero from './Hero';
 import HowItWork from './HowItWork';
 import Innovation from './Innovation';
@@ -22,6 +23,7 @@ const HomePage = (): React.ReactElement => {
       <News />
       <HowItWork />
       <Innovation />
+      <Gallery />
       <CTA />
     </main>
   );
