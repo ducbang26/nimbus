@@ -1,8 +1,9 @@
+import { ReactElement } from 'react';
 import UIButton from '@Components/Button';
 import Minus from '@Icons/Minus';
 import Plus from '@Icons/Plus';
 import clsx from 'clsx';
-import { ReactElement } from 'react';
+
 import s from './styles.module.scss';
 
 const MinusPlusInput = (): ReactElement => {

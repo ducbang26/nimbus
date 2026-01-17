@@ -1,16 +1,17 @@
-import TrashCan from '@Icons/TrashCan';
 import { ReactElement } from 'react';
-import s from './styles.module.scss';
 import UIButton from '@Components/Button';
-import Image from 'next/image';
+import MinusPlusInput from '@Components/MinusPlusInput';
 import UITypography from '@Components/Typography';
 import {
   EFontLetterSpacing,
   ETypography,
   ETypographyColor,
 } from '@Components/Typography/constants';
+import TrashCan from '@Icons/TrashCan';
 import { clsx } from 'clsx';
-import MinusPlusInput from '@Components/MinusPlusInput';
+import Image from 'next/image';
+
+import s from './styles.module.scss';
 
 interface ICartItemProps {
   name: string;
