@@ -42,7 +42,7 @@ const Header = (): React.ReactElement => {
             <Link className={s.header__icons_item} href="#" aria-label="User">
               <User />
             </Link>
-            <Link className={s.header__icons_item} href="#" aria-label="Cart">
+            <Link className={s.header__icons_item} href={EPagePaths.CART} aria-label="Cart">
               <Cart />
             </Link>
           </div>

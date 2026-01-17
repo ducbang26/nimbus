@@ -54,6 +54,11 @@
     font-weight: 300;
   }
 
+  &__text_20_medium {
+    font-size: rem(20px);
+    font-weight: 500;
+  }
+
   &__text_20_regular {
     font-size: rem(20px);
     font-weight: 400;
@@ -80,6 +85,11 @@
   }
   &__text_14_light {
     font-size: rem(14px);
+    font-weight: 300;
+  }
+
+  &__text_12_light {
+    font-size: rem(12px);
     font-weight: 300;
   }
 
@@ -129,6 +139,10 @@
     color: var(--neutral-300, #b0b0b0);
   }
 
+  &__neutral_400 {
+    color: var(--neutral-400, #a0a0a0);
+  }
+
   &__neutral_500 {
     color: var(--neutral-500, #6d6d6d);
   }
@@ -152,5 +166,9 @@
 
   &__lh_60 {
     line-height: rem(60px);
+  }
+
+  &__lh_100 {
+    line-height: rem(100px);
   }
 }

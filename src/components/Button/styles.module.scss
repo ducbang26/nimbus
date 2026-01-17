@@ -42,6 +42,11 @@
 }
 
 .iconSize {
+  &_lg {
+    width: rem(32px);
+    height: rem(32px);
+  }
+
   &_md {
     width: rem(24px);
     height: rem(24px);

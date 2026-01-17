@@ -18,4 +18,14 @@
   &_32 {
     margin-bottom: rem(32px);
   }
+
+  &_40 {
+    margin-bottom: rem(40px);
+  }
+}
+
+.text {
+  &_end {
+    text-align: end;
+  }
 }
