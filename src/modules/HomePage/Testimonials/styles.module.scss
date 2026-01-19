@@ -1,7 +1,7 @@
 .testimonials {
   height: 400vh;
   position: relative;
-  
+
   .testimonials_wrap {
     padding: rem(40px) 0;
     position: sticky;
@@ -75,16 +75,26 @@
 }
 
 .testimonials_thumbnail {
-  grid-area: 1/1/1/8;
+  grid-column: 1 / 8;
+  grid-row: 1 / 2;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
 
-  .img_wrap {
-    width: 100%;
+.testimonials_thumbnail_list {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.thumbnail_img {
+  width: 100%;
+  height: 100%;
+
+  img {
+    position: absolute;
     height: 100%;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
 }
 

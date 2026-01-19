@@ -1,5 +1,7 @@
 'use client';
 import React, { useLayoutEffect, useRef, useState } from 'react';
+import ArrowLeft from '@Icons/ArrowLeft';
+import ArrowRight from '@Icons/ArrowRight';
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 
@@ -59,7 +61,10 @@ const Gallery = (): React.ReactElement => {
   }, [cards]);
 
   return (
-    <section className={s.gallery}>
+    <section className={`${s.gallery} container`}>
+      <div className={`${s.btn}`}>
+        <ArrowLeft />
+      </div>
       <div className={s.slider}>
         {cards.map((color, index) => {
           const isDraggable = index === 0;
@@ -78,6 +83,9 @@ const Gallery = (): React.ReactElement => {
             />
           );
         })}
+      </div>
+      <div className={`${s.btn}`}>
+        <ArrowRight />
       </div>
     </section>
   );
