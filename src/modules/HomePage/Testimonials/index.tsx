@@ -1,9 +1,10 @@
 import React from 'react';
 import Container from '@Components/Container';
+import Image from 'next/image';
 
 import s from './styles.module.scss';
 
-const Testimonials = () : React.ReactElement => {
+const Testimonials = (): React.ReactElement => {
   return (
     <section className={s.testimonials}>
       <Container className={s.testimonials_wrap}>
@@ -21,21 +22,33 @@ const Testimonials = () : React.ReactElement => {
 
         <div className={`${s.testimonials_slider} grid`}>
           <div className={s.testimonials_thumbnail}>
-            <div className={s.testimonials_thumbnail_wrap}>
-              <div className={`${s.testimonials_thumbnail_list} grid-1-1`}>
-                <div className={s.thumbnail_img}>
-                  <div className={s.thumbnail_img_wrap}>
-                    <div className={s.thumbnail_img_inner}>
-                      {/* <Image
-                        width={0}
-                        height={0}
-                        sizes="100vw"
-                        src="/images/testi-1.png"
-                        alt="connection-image"
-                      /> */}
-                    </div>
-                  </div>
-                </div>
+            <div className={`${s.testimonials_thumbnail_list} grid-1-1`}>
+              <div className={s.thumbnail_img}>
+                <Image
+                  width={762}
+                  height={550}
+                  sizes=""
+                  src="/images/testi-1.png"
+                  alt="connection-image"
+                />
+              </div>
+              <div className={s.thumbnail_img}>
+                <Image
+                  width={762}
+                  height={550}
+                  sizes=""
+                  src="/images/testi-1.png"
+                  alt="connection-image"
+                />
+              </div>
+              <div className={s.thumbnail_img}>
+                <Image
+                  width={762}
+                  height={550}
+                  sizes=""
+                  src="/images/testi-1.png"
+                  alt="connection-image"
+                />
               </div>
             </div>
           </div>

@@ -1,15 +1,15 @@
 .gallery {
-  padding-top: 150px;
-  padding-bottom: 150px;
+  padding-top: rem(150px);
+  padding-bottom: rem(150px);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .slider {
   position: relative;
-  width: 488px;
-  height: 700px;
+  width: rem(488px);
+  height: rem(700px);
 
   &__item {
     position: absolute;
@@ -17,7 +17,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 8px;
     transform-origin: center;
     list-style: none;
 
