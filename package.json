@@ -1,5 +1,3 @@
-
-
 {
   "name": "out",
   "version": "0.1.0",
@@ -30,6 +28,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.23",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -43,6 +42,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
+    "lodash-move": "^1.1.1",
     "prettier": "^3.3.3",
     "simple-import-sort": "^0.0.1-security",
     "typescript": "^5"
