@@ -10,7 +10,7 @@ const AboutUsPage = (): React.ReactElement => {
     <main className={s.about}>
       <Image
         className={s.about_bg}
-        src="/images/hero-bg.webp"
+        src="/images/about-hero.png"
         alt="about-us-bg"
         width={1920}
         height={1080}

@@ -6,10 +6,10 @@
     }
 
     &_label {
-      margin-bottom: rem(16px);
+      margin-bottom: rem(4px);
     }
     &_value {
-      margin-bottom: rem(10px);
+      white-space: pre-line;
     }
 
     &_social_item {
@@ -18,10 +18,9 @@
   }
 
   &_contact {
-    padding: rem(40px) rem(48px);
+    padding: rem(24px) rem(48px);
     background-color: var(--neutral-50, #f5f5f5);
     border-radius: rem(20px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
     &_title {
       margin-bottom: rem(40px);

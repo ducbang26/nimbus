@@ -1,5 +1,5 @@
 export type TFontSize = 14 | 16 | 20 | 24 | 32 | 40 | 100;
-export type TLineHeight = 'auto' | 20 | 24 | 48 | 60 | 100;
+export type TLineHeight = 'auto' | 20 | 24 | 28 | 48 | 60 | 100;
 export type TTypographyTag = 'p' | 'span' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export enum ETypography {
