@@ -1,0 +1,22 @@
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: rem(20px);
+  height: rem(20px);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  padding: rem(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  opacity: 0;
+
+  &_text {
+    font-size: rem(12px);
+    font-weight: bold;
+    display: none;
+  }
+}
