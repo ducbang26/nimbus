@@ -8,9 +8,9 @@
   border-radius: rem(9999px);
   font-size: rem(20px);
   font-weight: 300;
-  
-  &.disabled {
-    opacity: 0.3;
+
+  &:disabled {
+    background-color: var(--neutral-50);
     cursor: not-allowed;
   }
 
@@ -42,6 +42,11 @@
 }
 
 .iconSize {
+  &_lg {
+    width: rem(32px);
+    height: rem(32px);
+  }
+
   &_md {
     width: rem(24px);
     height: rem(24px);
@@ -69,22 +74,17 @@
     0.4s background-color var(--easeOutQuart);
 }
 
-.gray {
-  background-color: var(--neutral-50);
-  transition: transform 0.4s var(--easeOutQuart);
-}
-
 .solid {
   &.primary {
     color: var(--white);
+
+    &:disabled {
+      color: var(--neutral-300);
+    }
   }
 
   &.secondary {
     color: var(--neutral-950);
-  }
-
-  &.gray {
-    color: var(--neutral-300);
   }
 }
 

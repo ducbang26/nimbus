@@ -19,7 +19,7 @@ const ModelsPageHero = (): React.ReactElement => {
       </div>
       <div className={s.hero_banner}>
         <Image
-          src="/images/hero-bg.webp"
+          src="/images/shop-model.png"
           alt="hero-image"
           width={1920}
           height={1080}

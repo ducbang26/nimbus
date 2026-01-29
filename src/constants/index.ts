@@ -4,6 +4,8 @@ export enum EPagePaths {
   ABOUT_US = '/about-us',
   BLOGS = '/blogs',
   CONTACT = '/contact',
+  CART = '/cart',
+  PRODUCT_DETAIL = '/product',
 }
 
 export const NAVIGATION_PAGES = [
@@ -29,4 +31,10 @@ export const NAVIGATION_PAGES = [
   },
 ];
 
-export const BLACK_HEADER_PAGES = [EPagePaths.ABOUT_US, EPagePaths.CONTACT, EPagePaths.MODELS];
+export const BLACK_HEADER_PAGES = [
+  EPagePaths.ABOUT_US,
+  EPagePaths.CONTACT,
+  EPagePaths.MODELS,
+  EPagePaths.PRODUCT_DETAIL,
+  EPagePaths.CART
+];

@@ -10,11 +10,11 @@ import { usePathname } from 'next/navigation';
 
 import s from './styles.module.scss';
 
-const Header = () : React.ReactElement => {
+const Header = (): React.ReactElement => {
   const pathname = usePathname();
 
   const isBlackHeader = useMemo(
-    () => BLACK_HEADER_PAGES.includes(pathname as EPagePaths),
+    () => BLACK_HEADER_PAGES.includes(('/' + pathname.split('/')[1]) as EPagePaths),
     [pathname]
   );
 
@@ -42,7 +42,7 @@ const Header = () : React.ReactElement => {
             <Link className={s.header__icons_item} href="#" aria-label="User">
               <User />
             </Link>
-            <Link className={s.header__icons_item} href="#" aria-label="Cart">
+            <Link className={s.header__icons_item} href={EPagePaths.CART} aria-label="Cart">
               <Cart />
             </Link>
           </div>

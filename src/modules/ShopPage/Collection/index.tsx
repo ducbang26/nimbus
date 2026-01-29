@@ -22,13 +22,18 @@ const ShopPageCollection = (): React.ReactElement => {
     <>
       <div className={clsx(s.collection, 'container grid grid-cols-12')}>
         <div className={clsx('col-span-4')}>
-          <UITypography typography={ETypography.TEXT_36_LIGHT} letterSpacing={EFontLetterSpacing.L}>
+          <UITypography
+            typography={ETypography.TEXT_36_LIGHT}
+            letterSpacing={EFontLetterSpacing.L}
+            className="mb_20"
+          >
             Find the Perfect Drone for You
           </UITypography>
           <UITypography
             typography={ETypography.TEXT_24_LIGHT}
             letterSpacing={EFontLetterSpacing.S}
             color={ETypographyColor.NEUTRAL_300}
+            lineHeight={28}
           >
             Explore our cutting-edge drones designed for every need, from cinematic filming to
             high-speed racing.
@@ -36,7 +41,7 @@ const ShopPageCollection = (): React.ReactElement => {
         </div>
         <Image
           className="col-span-8"
-          src="/images/ticker-bg.png"
+          src="/images/shop-model.png"
           alt="collection-image"
           width={1000}
           height={1000}
@@ -63,7 +68,10 @@ const ShopPageCollection = (): React.ReactElement => {
                 <Image src={item.image} alt={item.title} width={600} height={600} />
               </div>
               <div className={s.collection_item_content}>
-                <UITypography typography={ETypography.TEXT_32_REGULAR} letterSpacing={EFontLetterSpacing.M}>
+                <UITypography
+                  typography={ETypography.TEXT_32_REGULAR}
+                  letterSpacing={EFontLetterSpacing.M}
+                >
                   {item.title} {item.subtitle && `(${item.subtitle})`}
                 </UITypography>
                 <div className={s.collection_item_arrow}>
@@ -78,7 +86,7 @@ const ShopPageCollection = (): React.ReactElement => {
       <div className={clsx(s.collection_footer)}>
         <div className={s.collection_footer_image_wrap}>
           <Image
-            src="/images/ticker-bg.png"
+            src="/images/shop-footer.png"
             alt="collection-image"
             width={1000}
             height={1000}

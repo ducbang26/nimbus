@@ -4,19 +4,20 @@
     width: 100%;
     color: var(--white);
     mix-blend-mode: difference;
+    transition: filter 0.3s ease;
 
     &__black {
-        color: var(--neutral-950);
+        color: var(--white);
     }
 }
 
 .header__line {
     width: 100%;
     height: 2.4rem;
-    background: var(--white);
+    background: var(--neutral-950);
 
     &__black {
-        background: var(--neutral-950);
+        background: var(--white);
     }
 }
 

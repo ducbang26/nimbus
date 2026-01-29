@@ -50,7 +50,7 @@ const UIButton = (props: ButtonProps) : React.ReactElement => {
         disabled || loading ? s.disabled : null,
         stretch ? s.stretch : null,
         className,
-        'js-external-link'
+        !disabled && 'js-button'
       )}
     >
       {children}

@@ -1,0 +1,124 @@
+.cartItem {
+  padding-bottom: rem(20px);
+  margin-bottom: rem(20px);
+
+  /* if not last child  */
+  &:not(:last-child) {
+    border-bottom: 1px solid var(--neutral-200);
+  }
+
+  &_product {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &_image {
+      width: rem(203px);
+      height: rem(142px);
+      margin-left: rem(20px);
+      margin-right: rem(20px);
+
+      img {
+        aspect-ratio: 203 / 142;
+        object-fit: cover;
+      }
+    }
+
+    &_info {
+      height: 100%;
+    }
+  }
+}
+
+.orderSummary {
+  background-color: var(--neutral-50);
+  padding: rem(16px);
+  border-radius: rem(12px);
+
+  &_value {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: rem(16px);
+
+    &_amount {
+      display: inline-flex;
+      align-items: center;
+
+      span {
+        margin-left: rem(2px);
+      }
+    }
+  }
+
+  &_warranty {
+    display: flex;
+    gap: rem(8px);
+    margin-top: rem(8px);
+    margin-bottom: rem(16px);
+
+    &_icon {
+      width: rem(20px);
+      height: rem(20px);
+      flex-shrink: 0;
+    }
+
+    &_learnMore {
+      text-decoration: underline;
+      color: var(--neutral-950);
+    }
+  }
+
+  &_discountInput {
+    &_wrapper {
+      width: 100%;
+      position: relative;
+      background-color: var(--neutral-100);
+      border-radius: rem(99px);
+      padding: rem(10px) rem(12px);
+      margin-bottom: rem(16px);
+    }
+
+    &_applyButton {
+      position: absolute;
+      right: rem(10px);
+      top: rem(12px);
+    }
+  }
+}
+
+.orderInfo {
+  padding: rem(16px) rem(12px);
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--neutral-200);
+  margin: rem(5px) 0;
+}
+
+.importantNotes {
+  padding: rem(12px);
+  border-radius: rem(12px);
+  background-color: #fff6d4;
+  margin-bottom: rem(8px);
+
+  &_header {
+    display: flex;
+    align-items: center;
+    gap: rem(8px);
+    margin-bottom: rem(16px);
+
+    &_icon {
+      width: rem(24px);
+      height: rem(24px);
+      flex-shrink: 0;
+    }
+  }
+
+  &_warrantyLink {
+    text-decoration: underline;
+    color: var(--neutral-950);
+  }
+}

@@ -14,10 +14,10 @@ const ContactPage = () : React.ReactElement => {
       </div>
       <Image
         className={s.contact_footerImage}
-        src="/images/hero-bg.webp"
+        src="/images/contact.png"
         alt=""
-        height="160"
-        width="296"
+        height="1800"
+        width="1800"
       />
     </main>
   );

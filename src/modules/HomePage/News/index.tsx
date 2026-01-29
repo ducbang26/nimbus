@@ -58,7 +58,7 @@ const News = (): React.ReactElement => {
           </div>
         </div>
         <div className={s.news_button_wrap}>
-          <UIButton color="gray">View All Models</UIButton>
+          <UIButton>View All Models</UIButton>
         </div>
       </Container>
     </section>

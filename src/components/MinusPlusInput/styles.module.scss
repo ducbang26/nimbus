@@ -1,0 +1,18 @@
+.minusPlusInput {
+  &_input {
+    width: rem(20px);
+    text-align: center;
+    border-radius: rem(999px);
+    background-color: var(--neutral-50);
+    font-size: rem(20px);
+    padding: rem(16px);
+    font-weight: 300;
+    color: var(--neutral-500);
+  }
+
+  &_container {
+    display: flex;
+    align-items: center;
+    gap: rem(20px);
+  }
+}

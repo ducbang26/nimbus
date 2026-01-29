@@ -1,7 +1,7 @@
 import React from 'react';
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
-import { ETypography } from '@Components/Typography/constants';
+import { ETypography, ETypographyColor } from '@Components/Typography/constants';
 import Behance from '@Icons/Behance';
 import Dribbble from '@Icons/Dribbble';
 import Facebook from '@Icons/Facebook';
@@ -10,7 +10,7 @@ import { clsx } from 'clsx';
 
 import s from './styles.module.scss';
 
-const ContactPageForm = () : React.ReactElement => {
+const ContactPageForm = (): React.ReactElement => {
   const infoItems = [
     {
       label: 'Phone',
@@ -18,11 +18,11 @@ const ContactPageForm = () : React.ReactElement => {
     },
     {
       label: 'Email',
-      value: 'info@nimbusair.com',
+      value: 'nimbusair@contact.com',
     },
     {
       label: 'Address',
-      value: '123 Main St, Anytown, USA',
+      value: '1234 Drone Street, Sky City, USA \n (Open 9AM - 5PM)',
     },
   ];
 
@@ -125,7 +125,11 @@ const ContactPageForm = () : React.ReactElement => {
             rows={4}
           />
         </div>
-        <UITypography typography={ETypography.TEXT_14_LIGHT} className={s.form_contact_helper}>
+        <UITypography
+          typography={ETypography.TEXT_14_LIGHT}
+          className={s.form_contact_helper}
+          color={ETypographyColor.NEUTRAL_500}
+        >
           We typically reply to inquiries within 24 hours.
         </UITypography>
         <UIButton className={s.form_contact_button}>Place Order</UIButton>

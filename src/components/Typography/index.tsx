@@ -22,7 +22,7 @@ export interface IUITypographyProps extends PropsWithChildren {
   ref?: Ref<HTMLParagraphElement>;
 }
 
-const UITypography = ({ ref, ...props }: IUITypographyProps) : React.ReactElement => {
+const UITypography = ({ ref, ...props }: IUITypographyProps): React.ReactElement => {
   const {
     color = ETypographyColor.NEUTRAL_950,
     size = 16,
