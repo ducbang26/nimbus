@@ -1,6 +1,9 @@
 'use client';
 
 import { ReactElement, useEffect, useRef } from 'react';
+import UITypography from '@Components/Typography';
+import { ETypography } from '@Components/Typography/constants';
+import { rem } from '@Utils/rem';
 import { gsap } from 'gsap';
 
 import s from './styles.module.scss';
@@ -10,13 +13,13 @@ interface ICursor {
 }
 
 const Cursor = ({ isEnter }: ICursor): ReactElement => {
-  const cursorTextRef = useRef<HTMLSpanElement>(null);
+  const cursorTextRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const cursor = document.getElementById('custom-cursor');
     if (!cursor) return;
 
-    if (isEnter) gsap.to(cursor, { opacity: 1 });
+    if (isEnter) gsap.to(cursor, { opacity: 1, yPercent: -50, xPercent: -50 });
   }, [isEnter]);
 
   useEffect(() => {
@@ -28,39 +31,25 @@ const Cursor = ({ isEnter }: ICursor): ReactElement => {
 
     const pos = { x: 0, y: 0 };
     const vel = { x: 0, y: 0 };
-    let targetPos = { x: 0, y: 0 };
-    let isHoveringClickable = false;
+    const targetPos = { x: 0, y: 0 };
+    let _isHoveringClickable = false;
+    let _hoveringButton: Element | null = null;
 
     const setX = gsap.quickSetter(cursor, 'x', 'px');
     const setY = gsap.quickSetter(cursor, 'y', 'px');
-    const setRotation = gsap.quickSetter(cursor, 'rotate', 'deg');
-    const setScaleX = gsap.quickSetter(cursor, 'scaleX');
-    const setScaleY = gsap.quickSetter(cursor, 'scaleY');
-
-    const getScale = (diffX: number, diffY: number): number => {
-      const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
-      return Math.min(distance / 100, 0.25);
-    };
-
-    const getAngle = (diffX: number, diffY: number): number => {
-      return (Math.atan2(diffY, diffX) * 180) / Math.PI;
-    };
 
     const update = (): void => {
-      const rotation = getAngle(vel.x, vel.y);
-      const scale = getScale(vel.x, vel.y);
-
       setX(pos.x);
       setY(pos.y);
-      setRotation(rotation);
-
-      if (!isHoveringClickable) {
-        setScaleX(1 + scale);
-        setScaleY(1 - scale);
-      }
     };
 
     const animate = (): void => {
+      if (_hoveringButton?.classList.contains('js-button')) {
+        const rect = _hoveringButton.getBoundingClientRect();
+        targetPos.x = rect.left + rem(1.2);
+        targetPos.y = rect.top + rem(1.2);
+      }
+
       const speed = 0.35;
       pos.x += (targetPos.x - pos.x) * speed;
       pos.y += (targetPos.y - pos.y) * speed;
@@ -71,18 +60,76 @@ const Cursor = ({ isEnter }: ICursor): ReactElement => {
     };
 
     const onMouseMove = (e: MouseEvent): void => {
-      targetPos.x = e.clientX;
-      targetPos.y = e.clientY;
+      if (!_hoveringButton || !_hoveringButton.classList.contains('js-button')) {
+        targetPos.x = e.clientX;
+        targetPos.y = e.clientY;
+      }
       update();
     };
 
-    const handleCursorHover = (isHovering: boolean): void => {
-      isHoveringClickable = isHovering;
-      gsap.to(cursor, {
-        scale: isHovering ? 0.5 : 1,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
+    const handleCursorHover = (
+      isHovering: boolean,
+      element?: Element,
+      event?: MouseEvent
+    ): void => {
+      _isHoveringClickable = isHovering;
+      _hoveringButton = isHovering ? element || null : null;
+
+      if (!isHovering && event) {
+        targetPos.x = event.clientX;
+        targetPos.y = event.clientY;
+      }
+
+      if (isHovering && element?.classList.contains('js-button')) {
+        const rect = element.getBoundingClientRect();
+        gsap.to(cursor, {
+          width: rect.width + rem(1.6),
+          height: rect.height + rem(1.6),
+          backgroundColor: 'transparent',
+          border: '0.2rem solid #F6F6F6',
+          mixBlendMode: 'difference',
+          duration: 0.3,
+          ease: 'power2.out',
+          xPercent: 0,
+          yPercent: 0,
+          left: rem(-2),
+          top: rem(-2),
+        });
+        gsap.to(cursorTextRef.current, { opacity: 0, duration: 0.3 });
+      } else if (isHovering && element?.classList.contains('js-product-item')) {
+        gsap.to(cursor, {
+          width: rem(12),
+          height: rem(12),
+          backgroundColor: '#B0B0B0',
+          border: 'none',
+          mixBlendMode: 'normal',
+          xPercent: -50,
+          yPercent: -50,
+          left: 0,
+          top: 0,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
+        gsap.to(cursorTextRef.current, { opacity: 1, duration: 0.3 });
+      } else {
+        gsap.to(cursor, {
+          width: rem(4),
+          height: rem(4),
+          border: 'none',
+          mixBlendMode: 'difference',
+          duration: 0.3,
+          ease: 'power2.out',
+          backgroundColor: '#F6F6F6',
+          xPercent: -50,
+          yPercent: -50,
+          left: 0,
+          top: 0,
+        });
+        gsap.to(cursorTextRef.current, {
+          opacity: 0,
+          duration: 0.3,
+        });
+      }
     };
 
     const hideCursor = (): void => {
@@ -97,14 +144,24 @@ const Cursor = ({ isEnter }: ICursor): ReactElement => {
     document.addEventListener('mouseleave', hideCursor);
     document.addEventListener('mouseenter', showCursor);
 
-    document.querySelectorAll('a, button, .js-external-link').forEach((element) => {
-      element.addEventListener('mouseenter', () => handleCursorHover(true));
-      element.addEventListener('mouseleave', () => handleCursorHover(false));
-    });
+    const attachListeners = (): void => {
+      document.querySelectorAll('a, button, .js-external-link').forEach((element) => {
+        element.addEventListener('mouseenter', () => handleCursorHover(true, element));
+        element.addEventListener('mouseleave', (e) =>
+          handleCursorHover(false, undefined, e as MouseEvent)
+        );
+      });
+    };
+
+    attachListeners();
+
+    const observer = new MutationObserver(attachListeners);
+    observer.observe(document.body, { childList: true, subtree: true });
 
     animate();
 
-    return () => {
+    return (): void => {
+      observer.disconnect();
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseleave', hideCursor);
       document.removeEventListener('mouseenter', showCursor);
@@ -113,9 +170,14 @@ const Cursor = ({ isEnter }: ICursor): ReactElement => {
 
   return (
     <div id="custom-cursor" className={s.cursor}>
-      <span className={s.cursor_text} ref={cursorTextRef}>
+      <UITypography
+        tag="span"
+        typography={ETypography.TEXT_20_LIGHT}
+        ref={cursorTextRef}
+        className={s.cursor_text}
+      >
         View
-      </span>
+      </UITypography>
     </div>
   );
 };

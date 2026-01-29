@@ -7,7 +7,7 @@ import Slider from './Slider';
 
 import s from './styles.module.scss';
 
-const Explore = () : React.ReactElement => {
+const Explore = (): React.ReactElement => {
   return (
     <>
       <section className={s.home_explore}>
@@ -20,7 +20,7 @@ const Explore = () : React.ReactElement => {
 
           <div className={s.slider_title_wrap}>
             <h5 className={`${s.slider__title}`}>Drone Model</h5>
-            <UIButton color='gray'>View All Models</UIButton>
+            <UIButton>View All Models</UIButton>
           </div>
         </Container>
 

@@ -17,7 +17,7 @@ interface IProductItemProps {
 
 const ProductItem = ({ image, title, description, price, index }: IProductItemProps) : React.ReactElement => {
   return (
-    <Link href={`/product/${index}`} className={clsx('col-span-3', s.productItem)}>
+    <Link href={`/product/${index}`} className={clsx('col-span-3 js-product-item', s.productItem)}>
       <div className={s.productItem_image}>
         <Image src={image} alt={title} width={500} height={500} />
       </div>

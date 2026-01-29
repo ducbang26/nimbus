@@ -1,9 +1,9 @@
 'use client';
 import React, { PropsWithChildren } from 'react';
+import Cursor from '@Components/Cursor';
 import Footer from '@Layouts/Footer';
 import Header from '@Layouts/Header';
 import LenisScroller from '@Layouts/Lenis';
-import Cursor from '@Components/Cursor';
 
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (

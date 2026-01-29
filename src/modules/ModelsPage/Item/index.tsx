@@ -1,6 +1,7 @@
 import UITypography from '@Components/Typography';
 import { ETypography } from '@Components/Typography/constants';
 import { MOCK_ITEMS } from '@Modules/ShopPage/constants';
+import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,10 +18,13 @@ const ModelsLineUpItem = ({
   title,
   description,
 }: IModelsLineUpItemProps): React.ReactElement => {
-  const index = MOCK_ITEMS.findIndex(item => item.title === title);
-  
+  const index = MOCK_ITEMS.findIndex((item) => item.title === title);
+
   return (
-    <Link href={`/product/${index >= 0 ? index : 0}`} className={s.productItem}>
+    <Link
+      href={`/product/${index >= 0 ? index : 0}`}
+      className={clsx('js-product-item', s.productItem)}
+    >
       <div className={s.productItem_image}>
         <Image src={image} alt={title} width={1000} height={1000} />
       </div>

@@ -2,21 +2,21 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: rem(20px);
-  height: rem(20px);
+  width: rem(40px);
+  height: rem(40px);
+  border-radius: rem(999px);
   pointer-events: none;
-  z-index: 9999;
+  z-index: 2;
   mix-blend-mode: difference;
   padding: rem(10px);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  background-color: var(--neutral-50);
   opacity: 0;
 
   &_text {
-    font-size: rem(12px);
-    font-weight: bold;
-    display: none;
+
+    opacity: 0;
   }
 }

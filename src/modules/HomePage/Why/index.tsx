@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 import s from './styles.module.scss';
 
-const Why = () : React.ReactElement => {
+const Why = (): React.ReactElement => {
   return (
     <section className={s.drone_showcase}>
       <Container>
@@ -19,12 +19,14 @@ const Why = () : React.ReactElement => {
           <p className={s.drone_showcase__description}>
             Our drones provide the best combination of power, intelligence, and reliability.
           </p>
-          <UIButton color='gray'>Explore More</UIButton>
+          <UIButton disabled>Explore More</UIButton>
         </div>
 
         <div className={`${s.drone_showcase__features} grid grid-cols-12`}>
           <div className={s.drone_showcase__feature_card}>
-            <div className={`${s.drone_showcase__feature_icon} ${s.drone_showcase__feature_icon__video}`}>
+            <div
+              className={`${s.drone_showcase__feature_icon} ${s.drone_showcase__feature_icon__video}`}
+            >
               <span className={s.drone_showcase__feature_svg}>
                 <Video />
               </span>
@@ -34,7 +36,9 @@ const Why = () : React.ReactElement => {
           </div>
 
           <div className={s.drone_showcase__feature_card}>
-            <div className={`${s.drone_showcase__feature_icon} ${s.drone_showcase__feature_icon__speed}`}>
+            <div
+              className={`${s.drone_showcase__feature_icon} ${s.drone_showcase__feature_icon__speed}`}
+            >
               <span className={s.drone_showcase__feature_svg}>
                 <Speed />
               </span>
@@ -44,7 +48,9 @@ const Why = () : React.ReactElement => {
           </div>
 
           <div className={s.drone_showcase__feature_card}>
-            <div className={`${s.drone_showcase__feature_icon} ${s.drone_showcase__feature_icon__gps}`}>
+            <div
+              className={`${s.drone_showcase__feature_icon} ${s.drone_showcase__feature_icon__gps}`}
+            >
               <span className={s.drone_showcase__feature_svg}>
                 <GPS />
               </span>
@@ -54,7 +60,9 @@ const Why = () : React.ReactElement => {
           </div>
 
           <div className={s.drone_showcase__feature_card}>
-            <div className={`${s.drone_showcase__feature_icon} ${s.drone_showcase__feature_icon__ai}`}>
+            <div
+              className={`${s.drone_showcase__feature_icon} ${s.drone_showcase__feature_icon__ai}`}
+            >
               <span className={s.drone_showcase__feature_svg}>
                 <Ai />
               </span>
