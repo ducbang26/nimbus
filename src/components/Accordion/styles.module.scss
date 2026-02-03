@@ -1,0 +1,37 @@
+.accordion {
+  &_button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &_content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+    white-space: pre-line;
+  }
+
+  &_icon {
+    &_container {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+    }
+
+    &_line {
+      position: absolute;
+      right: 0;
+      width: rem(12px);
+      height: rem(2px);
+      background-color: var(--neutral-950);
+      border-radius: rem(999px);
+      transition: transform 0.3s ease;
+      &__open {
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

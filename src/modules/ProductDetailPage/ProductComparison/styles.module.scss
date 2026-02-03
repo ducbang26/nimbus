@@ -1,0 +1,56 @@
+.productComparison {
+  &_table {
+    width: 100%;
+    font-size: rem(16px);
+    color: var(--neutral-500);
+    line-height: rem(24px);
+    cursor: default;
+
+    th {
+      width: rem(203px);
+    }
+
+    th,
+    td {
+      font-weight: 300;
+      padding: rem(9px) rem(20px);
+    }
+
+    th {
+      text-align: start;
+      background-color: var(--neutral-50);
+    }
+
+    tr:first-child th:first-child {
+      background-color: transparent;
+    }
+
+    tr:first-child {
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
+    tr:nth-child(2) {
+      th,
+      rd {
+        padding: rem(12px) rem(20px) rem(9px);
+      }
+    }
+
+    tr:last-child {
+      th,
+      rd {
+        padding: rem(9px) rem(20px) rem(12px);
+      }
+    }
+
+    td {
+      text-align: center;
+    }
+
+    tr:hover {
+      background-color: var(--neutral-50);
+    }
+  }
+}

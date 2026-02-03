@@ -1,0 +1,31 @@
+.mb {
+  &_8 {
+    margin-bottom: rem(8px);
+  }
+
+  &_16 {
+    margin-bottom: rem(16px);
+  }
+
+  &_20 {
+    margin-bottom: rem(20px);
+  }
+
+  &_24 {
+    margin-bottom: rem(24px);
+  }
+
+  &_32 {
+    margin-bottom: rem(32px);
+  }
+
+  &_40 {
+    margin-bottom: rem(40px);
+  }
+}
+
+.text {
+  &_end {
+    text-align: end;
+  }
+}

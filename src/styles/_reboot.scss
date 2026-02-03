@@ -108,6 +108,7 @@ textarea {
 html {
   box-sizing: border-box;
   font-size: vw(10px);
+  background: var(--white);
   -webkit-font-smoothing: subpixel-antialiased !important;
 
   // /* width */
@@ -286,6 +287,14 @@ svg {
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
+.grid-cols-7 {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
 .grid-cols-8 {
   grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.grid-cols-9 {
+  grid-template-columns: repeat(9, minmax(0, 1fr));
 }

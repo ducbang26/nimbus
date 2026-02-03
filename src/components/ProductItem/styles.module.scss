@@ -1,0 +1,21 @@
+.productItem {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  &_image {
+    width: 100%;
+    object-fit: cover;
+    background-color: var(--neutral-50);
+    margin-bottom: rem(10px);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &_content {
+    margin-bottom: rem(10px);
+  }
+}
