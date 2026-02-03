@@ -21,6 +21,7 @@ interface ICartItemProps {
 }
 
 const CartItem = (props: ICartItemProps): ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { name, image, quantity, price } = props;
   return (
     <div className={clsx(s.cartItem, 'col-span-9 grid grid-cols-9')}>
