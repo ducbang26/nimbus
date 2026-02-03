@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { Suspense } from 'react';
 import { AboutDrone } from '@Components/AboutDrone';
-import { Environment } from '@react-three/drei';
+import { Environment, OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 
 import s from './styles.module.scss';
 
-const About = () : React.ReactElement => {
-  
+const About = (): React.ReactElement => {
   return (
     <section className={s.home__about}>
       <div className={`${s.about__main} container grid grid-cols-12`}>
@@ -23,8 +21,16 @@ const About = () : React.ReactElement => {
       </div>
 
       <div className={s.home__about_model}>
-        {/* <Canvas shadows camera={{ position: [0, 5, 6], fov: 25, near: 0.1, far: 100 }}>
+        <Canvas shadows camera={{ position: [0, 5, 6], fov: 25, near: 0.1, far: 100 }}>
           <Suspense fallback={null}>
+            <OrbitControls
+              minDistance={6}
+              maxDistance={10}
+              enableZoom={false}
+              minPolarAngle={1.3}
+              maxPolarAngle={Math.PI / 2}
+              enablePan={false}
+            />
             <directionalLight
               position={[-2, 2, 1]}
               castShadow
@@ -35,7 +41,7 @@ const About = () : React.ReactElement => {
             <Environment preset="warehouse" environmentIntensity={0.8} />
             <AboutDrone />
           </Suspense>
-        </Canvas> */}
+        </Canvas>
       </div>
     </section>
   );
