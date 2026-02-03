@@ -14,7 +14,7 @@ import { clsx } from 'clsx';
 
 import s from './styles.module.scss';
 
-const ProductDetailPage = (): React.ReactElement => {
+const ProductDetailPage = ({ id }: { id: string }): React.ReactElement => {
   return (
     <main className={clsx('container', s.productDetail)}>
       <div className="mb_20">
@@ -23,7 +23,7 @@ const ProductDetailPage = (): React.ReactElement => {
           letterSpacing={EFontLetterSpacing.M}
           className="mb_20"
         >
-          AeroVision Pro
+          AeroVision Pro {id}
         </UITypography>
         <UITypography typography={ETypography.TEXT_20_LIGHT}>
           The Ultimate Drone for Filmmakers & Professionals

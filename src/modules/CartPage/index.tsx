@@ -71,7 +71,7 @@ const CartPage = (): React.ReactElement => {
             </div>
           </div>
           {MOCK_CART_ITEMS.map((item) => (
-            <CartItem key={item.id} />
+            <CartItem key={item.id} name={''} image={''} quantity={0} price={0} />
           ))}
         </div>
 
