@@ -1,4 +1,5 @@
 import React from 'react';
+
 import UITypography from '@Components/Typography';
 import { ETypography, ETypographyColor } from '@Components/Typography/constants';
 import { clsx } from 'clsx';
@@ -15,7 +16,13 @@ interface IProductItemProps {
   index: number;
 }
 
-const ProductItem = ({ image, title, description, price, index }: IProductItemProps) : React.ReactElement => {
+const ProductItem = ({
+  image,
+  title,
+  description,
+  price,
+  index,
+}: IProductItemProps): React.ReactElement => {
   return (
     <Link href={`/product/${index}`} className={clsx('col-span-3 js-product-item', s.productItem)}>
       <div className={s.productItem_image}>

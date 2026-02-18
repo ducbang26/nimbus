@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+
 import UITypography from '@Components/Typography';
 import {
   EFontLetterSpacing,
@@ -11,11 +12,10 @@ import Arrow from '@Icons/Arrow';
 import { COLLECTION_ITEMS } from '@Modules/ShopPage/constants';
 import clsx from 'clsx';
 import Image from 'next/image';
+import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import s from './styles.module.scss';
-
-import 'swiper/css';
 
 const ShopPageCollection = (): React.ReactElement => {
   return (

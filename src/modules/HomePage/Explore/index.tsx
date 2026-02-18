@@ -1,10 +1,10 @@
 import React from 'react';
+
 import UIButton from '@Components/Button';
 import Container from '@Components/Container';
 import Image from 'next/image';
 
 import Slider from './Slider';
-
 import s from './styles.module.scss';
 
 const Explore = (): React.ReactElement => {

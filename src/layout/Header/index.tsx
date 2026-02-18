@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
+
 import Container from '@Components/Container';
 import { BLACK_HEADER_PAGES, EPagePaths, NAVIGATION_PAGES } from '@Constants/index';
 import Cart from '@Icons/Cart';

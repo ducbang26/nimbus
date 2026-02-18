@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+
 import UIButton from '@Components/Button';
 import ProductItem from '@Components/ProductItem';
 import UITypography from '@Components/Typography';

@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 import s from './styles.module.scss';
 
-const ModelsPageFilters = () : React.ReactElement=> {
+const ModelsPageFilters = (): React.ReactElement => {
   return (
     <div className={clsx('container grid grid-cols-12', s.modelFilters)}>
       <div className={clsx('col-start-3 col-span-8 grid grid-cols-8', s.modelFilters_filters)}>

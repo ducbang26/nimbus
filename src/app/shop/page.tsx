@@ -1,7 +1,8 @@
 import React from 'react';
+
 import ShopPage from '@Modules/ShopPage';
 
-const Page = () :React.ReactElement => {
+const Page = (): React.ReactElement => {
   return <ShopPage />;
 };
 

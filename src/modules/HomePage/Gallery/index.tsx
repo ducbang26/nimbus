@@ -1,21 +1,17 @@
 'use client';
 import React, { useState } from 'react';
+
 import ArrowLeft from '@Icons/ArrowLeft';
 import ArrowRight from '@Icons/ArrowRight';
 
 import CardDeck from './CardDeck';
-
 import s from './styles.module.scss';
 
 const Gallery = (): React.ReactElement => {
   const [leftPressed, setLeftPressed] = useState<boolean | null>(null);
   const [rightPressed, setRightPressed] = useState<boolean | null>(null);
 
-  const cardImage = [
-    '/images/gallery1.png',
-    '/images/gallery2.png',
-    '/images/gallery3.png',
-  ];
+  const cardImage = ['/images/gallery1.png', '/images/gallery2.png', '/images/gallery3.png'];
 
   const onLeftPressed = (): void => {
     setLeftPressed((prev) => !prev);

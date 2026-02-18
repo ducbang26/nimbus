@@ -1,4 +1,5 @@
 import React from 'react';
+
 import UIButton from '@Components/Button';
 import Container from '@Components/Container';
 import Image from 'next/image';
@@ -22,7 +23,9 @@ const News = (): React.ReactElement => {
               />
             </div>
             <div>
-              <div className={s.news_item_title}>Eco Bike changed my daily commute—fast, smooth, and eco-friendly!</div>
+              <div className={s.news_item_title}>
+                Eco Bike changed my daily commute—fast, smooth, and eco-friendly!
+              </div>
               <div className={s.news_item_date}>March 1st, 2025</div>
             </div>
           </div>
@@ -37,7 +40,9 @@ const News = (): React.ReactElement => {
               />
             </div>
             <div>
-              <div className={s.news_item_title}>Eco Bike changed my daily commute—fast, smooth, and eco-friendly!</div>
+              <div className={s.news_item_title}>
+                Eco Bike changed my daily commute—fast, smooth, and eco-friendly!
+              </div>
               <div className={s.news_item_date}>March 1st, 2025</div>
             </div>
           </div>
@@ -52,7 +57,9 @@ const News = (): React.ReactElement => {
               />
             </div>
             <div>
-              <div className={s.news_item_title}>Eco Bike changed my daily commute—fast, smooth, and eco-friendly!</div>
+              <div className={s.news_item_title}>
+                Eco Bike changed my daily commute—fast, smooth, and eco-friendly!
+              </div>
               <div className={s.news_item_date}>March 1st, 2025</div>
             </div>
           </div>

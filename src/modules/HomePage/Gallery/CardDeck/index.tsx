@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import Image from 'next/image';
@@ -152,7 +153,7 @@ const CardDeck = ({ cards, leftPressed, rightPressed }: ICardDeck): React.ReactE
           }}
           style={{ position: 'absolute' }}
         >
-          <Image src={card} alt="" height="700" width="488"/>
+          <Image src={card} alt="" height="700" width="488" />
         </div>
       ))}
     </div>

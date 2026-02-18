@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+
 import UITypography from '@Components/Typography';
 import { ETypography } from '@Components/Typography/constants';
 import { clsx } from 'clsx';

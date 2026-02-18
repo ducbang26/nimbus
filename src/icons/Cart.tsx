@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cart = () : React.ReactElement => {
+const Cart = (): React.ReactElement => {
   return (
     <svg
       width="24"

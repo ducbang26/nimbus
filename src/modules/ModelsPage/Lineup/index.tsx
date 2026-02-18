@@ -4,7 +4,6 @@ import { ETypography } from '@Components/Typography/constants';
 import ModelsLineUpItem from '@Modules/ModelsPage/Item';
 
 import { MOCK_ITEMS } from './constants';
-
 import s from './styles.module.scss';
 
 const ModelsPageLineup = (): React.ReactElement => {

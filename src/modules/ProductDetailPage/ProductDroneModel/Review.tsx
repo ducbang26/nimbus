@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+
 import UITypography from '@Components/Typography';
 import { ETypography } from '@Components/Typography/constants';
 import ThumbUp from '@Icons/ThumbUp';
@@ -30,10 +31,9 @@ const Review = (): ReactElement => {
         <div className={s.review_avatar}>
           <Image src="/images/drone1.png" alt="avatar" width={40} height={40} />
         </div>
-        <UITypography
-          typography={ETypography.TEXT_16_LIGHT}
-          className={s.review_date}
-        >David, Photographer</UITypography>
+        <UITypography typography={ETypography.TEXT_16_LIGHT} className={s.review_date}>
+          David, Photographer
+        </UITypography>
       </div>
     </div>
   );
