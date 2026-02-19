@@ -36,5 +36,5 @@ export const BLACK_HEADER_PAGES = [
   EPagePaths.CONTACT,
   EPagePaths.MODELS,
   EPagePaths.PRODUCT_DETAIL,
-  EPagePaths.CART
+  EPagePaths.CART,
 ];

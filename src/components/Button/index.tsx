@@ -1,13 +1,15 @@
 import React from 'react';
+
 import { ETypographyColor } from '@Components/Typography/constants';
 import { clsx } from 'clsx';
 
 import { TButtonColor, TButtonSize, TButtonType, TButtonVariant } from './constants';
-
 import s from './styles.module.scss';
 
-export interface ButtonProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size' | 'color'> {
+export interface ButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'size' | 'color'
+> {
   type?: TButtonType;
   size?: TButtonSize;
   iconSize?: TButtonSize;
@@ -20,7 +22,7 @@ export interface ButtonProps
   onClick?: () => void;
 }
 
-const UIButton = (props: ButtonProps) : React.ReactElement => {
+const UIButton = (props: ButtonProps): React.ReactElement => {
   const {
     children,
     type = 'button',

@@ -1,10 +1,8 @@
 'use client';
 import React from 'react';
+
 import UITypography from '@Components/Typography';
-import {
-  EFontLetterSpacing,
-  ETypography,
-} from '@Components/Typography/constants';
+import { EFontLetterSpacing, ETypography } from '@Components/Typography/constants';
 import ProductComparison from '@Modules/ProductDetailPage/ProductComparison';
 import ProductDroneModel from '@Modules/ProductDetailPage/ProductDroneModel';
 import ProductImages from '@Modules/ProductDetailPage/ProductImages';

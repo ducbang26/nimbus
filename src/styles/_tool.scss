@@ -90,14 +90,21 @@
 }
 
 @mixin backdrop($color) {
-
-  @supports (backdrop-filter: blur(30px) or (-webkit-backdrop-filter: blur(30px),
-    )) {
+  @supports (
+    backdrop-filter: blur(30px) or
+      (
+        -webkit-backdrop-filter: blur(30px),
+      )
+  ) {
     backdrop-filter: blur(10px);
   }
 
-  @supports not (backdrop-filter: blur(30px) or (-webkit-backdrop-filter: blur(30px),
-    )) {
+  @supports not (
+    backdrop-filter: blur(30px) or
+      (
+        -webkit-backdrop-filter: blur(30px),
+      )
+  ) {
     background-color: rgba($color, 0.5);
   }
 }
@@ -149,7 +156,6 @@
 }
 
 @mixin overrideAutocomplete($bgColor: white, $color: black) {
-
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -167,7 +173,10 @@
 }
 
 @function calcAuto($min-vw, $max-vw, $min-font-size, $max-font-size) {
-  @return calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+  @return calc(
+    #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+      ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+  );
 }
 
 @mixin fontCalc($min-vw, $max-vw, $min-font-size, $max-font-size) {
@@ -189,7 +198,10 @@
       font-size: $min-font-size;
 
       @media screen and (min-width: $min-vw) {
-        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
       }
 
       @media screen and (min-width: $max-vw) {
@@ -219,22 +231,22 @@
     'tablet': rem(32px),
     'pc': 0,
   );
-$px: map-merge($default-px, $value);
+  $px: map-merge($default-px, $value);
 
-@include mobile {
-  padding-left: map-get($px, 'mobile');
-  padding-right: map-get($px, 'mobile');
-}
+  @include mobile {
+    padding-left: map-get($px, 'mobile');
+    padding-right: map-get($px, 'mobile');
+  }
 
-@include minTablet {
-  padding-left: map-get($px, 'tablet');
-  padding-right: map-get($px, 'tablet');
-}
+  @include minTablet {
+    padding-left: map-get($px, 'tablet');
+    padding-right: map-get($px, 'tablet');
+  }
 
-@include pc {
-  padding-left: map-get($px, 'pc');
-  padding-right: map-get($px, 'pc');
-}
+  @include pc {
+    padding-left: map-get($px, 'pc');
+    padding-right: map-get($px, 'pc');
+  }
 }
 
 @mixin make-typography-color() {

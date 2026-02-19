@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "prettier --write . && eslint . --fix"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -28,6 +28,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/lodash": "^4.17.23",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -43,7 +44,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "lodash-move": "^1.1.1",
-    "prettier": "^3.3.3",
+    "prettier": "^3.8.1",
     "simple-import-sort": "^0.0.1-security",
     "typescript": "^5"
   }

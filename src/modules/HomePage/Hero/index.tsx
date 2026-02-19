@@ -1,10 +1,11 @@
 import React from 'react';
+
 import UIButton from '@Components/Button';
 import Image from 'next/image';
 
 import s from './styles.module.scss';
 
-const Hero = () : React.ReactElement => {
+const Hero = (): React.ReactElement => {
   return (
     <section className={s.home__hero}>
       <div className={`${s.home__hero_main} container`}>
@@ -18,7 +19,7 @@ const Hero = () : React.ReactElement => {
             <p className={`${s.hero__cta_txt} txt-light`}>
               Experience the Future of Aerial Technology
             </p>
-            <UIButton color='secondary'>Explore Our Drones</UIButton>
+            <UIButton color="secondary">Explore Our Drones</UIButton>
           </div>
           <div className={s.home__hero_preview}>
             <Image

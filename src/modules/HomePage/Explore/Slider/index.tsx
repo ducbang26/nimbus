@@ -1,12 +1,12 @@
 import React from 'react';
+
 import Arrow from '@Icons/Arrow';
+import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import s from './styles.module.scss';
 
-import 'swiper/css';
-
-const Slider = () : React.ReactElement => {
+const Slider = (): React.ReactElement => {
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   const sliderData = [
@@ -34,29 +34,29 @@ const Slider = () : React.ReactElement => {
 
   return (
     <Swiper
-        slidesPerView={'auto'}
-        spaceBetween={20}
-        className={s.slider}
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-      >
-        {sliderData.map((item, index) => (
-          <SwiperSlide
-            key={index}
-            className={`${s.slider__item} ${activeIndex === index ? s.active_slide : ''}`}
-          >
-            <div className={s.slider_image} style={{ backgroundImage: `url(${item.image})` }}></div>
-            <div className={s.slider_content}>
-              <div>
-                <p className={s.drone_title}>{item.title}</p>
-                <p className={s.drone_description}>{item.desc}</p>
-              </div>
-              <div className={s.icon_wrapper}>
-                <Arrow />
-              </div>
+      slidesPerView={'auto'}
+      spaceBetween={20}
+      className={s.slider}
+      onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+    >
+      {sliderData.map((item, index) => (
+        <SwiperSlide
+          key={index}
+          className={`${s.slider__item} ${activeIndex === index ? s.active_slide : ''}`}
+        >
+          <div className={s.slider_image} style={{ backgroundImage: `url(${item.image})` }}></div>
+          <div className={s.slider_content}>
+            <div>
+              <p className={s.drone_title}>{item.title}</p>
+              <p className={s.drone_description}>{item.desc}</p>
             </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            <div className={s.icon_wrapper}>
+              <Arrow />
+            </div>
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

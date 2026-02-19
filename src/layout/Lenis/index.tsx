@@ -1,12 +1,25 @@
 'use client';
-import React, { PropsWithChildren, useEffect, useRef } from 'react';
+import React, {
+  PropsWithChildren,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
+
 import { gsap } from 'gsap';
 import { LenisRef, ReactLenis } from 'lenis/react';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface ISmoothScroller extends PropsWithChildren {}
+interface LenisContextValue {
+  start: () => void;
+}
 
-export default function LenisScroller({ children }: ISmoothScroller): React.ReactElement {
+const LenisContext = createContext<LenisContextValue>({ start: () => {} });
+
+export const useLenisControl = (): LenisContextValue => useContext(LenisContext);
+
+export default function LenisScroller({ children }: PropsWithChildren): React.ReactElement {
   const lenisRef = useRef<LenisRef>(null);
 
   useEffect(() => {
@@ -21,18 +34,20 @@ export default function LenisScroller({ children }: ISmoothScroller): React.Reac
 
     gsap.ticker.add(update);
 
-    return () : void => {
+    return (): void => {
       gsap.ticker.remove(update);
     };
   }, []);
 
+  const start = useCallback(() => {
+    lenisRef.current?.lenis?.start();
+  }, []);
+
   return (
-    <ReactLenis
-      root
-      ref={lenisRef}
-      options={{ autoRaf: false }}
-    >
-      {children}
-    </ReactLenis>
+    <LenisContext.Provider value={{ start }}>
+      <ReactLenis root ref={lenisRef} options={{ autoRaf: false }}>
+        {children}
+      </ReactLenis>
+    </LenisContext.Provider>
   );
 }
