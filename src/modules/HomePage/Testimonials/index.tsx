@@ -1,13 +1,41 @@
 import React from 'react';
+import { useRef } from "react";
 import Container from '@Components/Container';
+import { useGSAP } from "@gsap/react";
+import { IAnimationElement } from '@Types/common';
+import gsap from "gsap";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
 import s from './styles.module.scss';
 
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
 const Testimonials = (): React.ReactElement => {
+  const containerRef = useRef<IAnimationElement>(null);
+  const scrollBarTrackRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    if (!containerRef.current) return;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top top',
+        end: 'bottom bottom',
+        // markers: true,
+        scrub: true,
+      },
+    });
+
+    tl.to(scrollBarTrackRef.current, {
+      width: '100%',
+    });
+  
+  }, { scope: containerRef });
+
   return (
-    <section className={s.testimonials}>
-      <Container className={s.testimonials_wrap}>
+    <section className={`${s.testimonials} testimonials`} ref={containerRef}>
+      <Container className={s.testimonials_wrap} >
         <div className={s.testimonials_header}>
           <h5 className={`${s.testimonials_title} txt-light`}>Trusted by Pilots Worldwide</h5>
           <p className={s.testimonials_desc}>See what our users say about their experience.</p>
@@ -16,7 +44,7 @@ const Testimonials = (): React.ReactElement => {
         <div className="grid">
           <div className={s.bar}>
             <div className={s.bar_thumb}></div>
-            <div className={s.bar_track}></div>
+            <div className={s.bar_track} ref={scrollBarTrackRef}></div>
           </div>
         </div>
 
