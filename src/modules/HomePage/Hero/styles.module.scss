@@ -6,16 +6,43 @@
   position: relative;
 }
 
+.preloader__container {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.image__wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.image__wrapper_inner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+}
+
+/* Final image special handling */
+#final-image {
+  z-index: 10;
+}
+
 .home__hero_bg {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
-
-  .hero__bg_image {
-    width: 100%;
-    height: 100%;
-  }
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .home__hero_main {
