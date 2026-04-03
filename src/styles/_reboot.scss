@@ -149,6 +149,20 @@ html {
   }
 }
 
+/* Core Lenis styles from the official documentation */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Important: This class is applied when lenis.stop() is called */
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 [hidden] {
   visibility: hidden;
 }

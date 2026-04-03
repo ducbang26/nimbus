@@ -8,8 +8,8 @@
 
 .preloader__container {
   position: relative;
-  width: 400px;
-  height: 300px;
+  width: rem(400px);
+  height: rem(300px);
   overflow: hidden;
   z-index: 5;
 }
@@ -47,7 +47,7 @@
 
 .home__hero_main {
   position: relative;
-  z-index: 1;
+  z-index: 6;
   width: 100%;
   height: 100%;
   display: flex;
@@ -95,7 +95,6 @@
     min-width: rem(225px);
     text-align: center;
   }
-
 }
 
 .home__hero_preview {

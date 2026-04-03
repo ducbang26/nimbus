@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { CustomEase, Flip } from 'gsap/all';
@@ -6,6 +6,7 @@ import { useGSAP } from '@gsap/react';
 
 import UIButton from '@Components/Button';
 import s from './styles.module.scss';
+import { useLenis } from 'lenis/react';
 
 // =========================
 // GSAP SETUP
@@ -19,12 +20,18 @@ CustomEase.create('gentleIn', '0.38, 0.005, 0.215, 1');
 
 const INITIAL_ZOOM = 1.2;
 
-// =========================
-// COMPONENT
-// =========================
+const HERO_BG = [
+  { src: '/images/cta-image.png' },
+  { src: '/images/home-why-bg.webp' },
+  { src: '/images/cta-image.png' },
+  { src: '/images/ticker-bg.png' },
+  { src: '/images/hero-bg.webp' },
+];
+
 const Hero = () => {
   const scopeRef = useRef(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
+  const lenis = useLenis();
 
   // IMAGE REFS
   const imageWrappersRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -44,8 +51,8 @@ const Hero = () => {
   function resetToInitialState() {
     // Reset container
     gsap.set(preloaderContainerRef.current, {
-      width: '400px',
-      height: '300px',
+      width: '40rem',
+      height: '30rem',
       position: 'relative',
       overflow: 'hidden',
     });
@@ -98,6 +105,10 @@ const Hero = () => {
     const tl: gsap.core.Timeline = gsap.timeline();
     tlRef.current = tl;
 
+    tl.add(() => {
+      lenis?.stop();
+    }, 'start');
+
     // PHASE 1 – IMAGE REVEAL
     imageWrappersRef.current.forEach((wrapper, i) => {
       tl.to(
@@ -124,14 +135,17 @@ const Hero = () => {
         const finalImage = finalWrapper.querySelector('img');
         const state = Flip.getState(finalWrapper);
 
+        gsap.set(preloaderContainerRef.current, {
+          overflow: 'visible',
+        });
+
         gsap.set(finalWrapper, {
-          position: 'fixed',
           top: '50%',
           left: '50%',
           xPercent: -50,
           yPercent: -50,
-          width: '100vw',
-          height: '100vh',
+          width: '100dvw',
+          height: '100dvh',
         });
 
         Flip.from(state, {
@@ -141,6 +155,7 @@ const Hero = () => {
         });
 
         gsap.to(finalImage, {
+          height: '100%',
           scale: 1,
           duration: 1.2,
           ease: 'customEase',
@@ -149,7 +164,7 @@ const Hero = () => {
     }, 'zoom');
 
     // PHASE 3 – UI
-    // tl.add('ui', '+=0.3');
+    tl.add('ui', '+=0.3');
 
     // tl.to(
     //   headerLeftRef.current,
@@ -193,6 +208,9 @@ const Hero = () => {
     //   },
     //   'ui+=0.5'
     // );
+    tl.add(() => {
+      lenis?.start();
+    }, 'ui+=0.7');
   };
 
   // =========================
@@ -202,8 +220,9 @@ const Hero = () => {
     () => {
       runAnimation();
     },
-    { scope: scopeRef }
+    {dependencies: [lenis], scope: scopeRef }
   );
+
   return (
     <section ref={scopeRef} className={s.home__hero}>
       {/* CONTENT */}
@@ -230,22 +249,16 @@ const Hero = () => {
       {/* BACKGROUND */}
       <div className={s.home__hero_bg}>
         <div ref={preloaderContainerRef} className={s.preloader__container}>
-          {[0, 1, 2, 3].map((_, i) => (
+          {HERO_BG.map((image, i) => (
             <div
               key={i}
               ref={(el) => {
                 imageWrappersRef.current[i] = el;
               }}
               className={s.image__wrapper}
-              id={i == 3 ? 'final-image' : ''}
+              id={i == HERO_BG.length - 1 ? 'final-image' : ''}
             >
-              <Image
-                src="/images/hero-bg.webp"
-                alt=""
-                width={2880}
-                height={1700}
-                priority={i === 0}
-              />
+              <Image src={image.src} alt="" width={2880} height={1700} priority={i === 0} />
             </div>
           ))}
         </div>
