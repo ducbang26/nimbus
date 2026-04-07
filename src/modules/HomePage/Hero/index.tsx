@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import React, { Suspense, useEffect, useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { CustomEase, Flip } from 'gsap/all';
@@ -7,6 +7,9 @@ import { useGSAP } from '@gsap/react';
 import UIButton from '@Components/Button';
 import s from './styles.module.scss';
 import { useLenis } from 'lenis/react';
+import { Canvas } from '@react-three/fiber';
+import { Environment, OrbitControls } from '@react-three/drei';
+import { AboutDrone } from '@Components/AboutDrone';
 
 // =========================
 // GSAP SETUP
@@ -21,11 +24,11 @@ CustomEase.create('gentleIn', '0.38, 0.005, 0.215, 1');
 const INITIAL_ZOOM = 1.2;
 
 const HERO_BG = [
-  { src: '/images/cta-image.png' },
+  { src: '/images/hero-bg.png' },
   { src: '/images/home-why-bg.webp' },
   { src: '/images/cta-image.png' },
   { src: '/images/ticker-bg.png' },
-  { src: '/images/hero-bg.webp' },
+  { src: '/images/hero-bg.png' },
 ];
 
 const Hero = () => {
@@ -39,10 +42,10 @@ const Hero = () => {
   const preloaderContainerRef = useRef<HTMLDivElement | null>(null);
 
   // UI REFS
-  const headerLeftRef = useRef(null);
-  const headerMiddleRef = useRef(null);
-  const socialLinksRef = useRef(null);
-  const footerRef = useRef(null);
+  const heroHeadingRef = useRef(null);
+  const heroSubtitleRef = useRef(null);
+  const heroBtnRef = useRef(null);
+  const previewRef = useRef<HTMLDivElement | null>(null);
 
   // =========================
   // RESET STATE
@@ -220,50 +223,96 @@ const Hero = () => {
     () => {
       runAnimation();
     },
-    {dependencies: [lenis], scope: scopeRef }
+    { dependencies: [lenis], scope: scopeRef }
   );
 
   return (
-    <section ref={scopeRef} className={s.home__hero}>
-      {/* CONTENT */}
-      <div className={`${s.home__hero_main} container`}>
-        <div className="grid grid-cols-12">
-          <h3 ref={headerLeftRef} className={`${s.home__hero_heading} txt-light`}>
-            Revolutionize <br /> Your Perspective
-          </h3>
-        </div>
-
-        <div className={`${s.home__hero_bottom} grid grid-cols-12`}>
-          <div ref={headerMiddleRef} className={`${s.home__hero_cta} txt-light`}>
-            <p className={s.hero__cta_txt}>Experience the Future of Aerial Technology</p>
-            <UIButton color="secondary">Explore Our Drones</UIButton>
-          </div>
-
-          <div ref={socialLinksRef} className={s.home__hero_preview}>
-            <Image src="/images/hero-preview.avif" alt="" width={296} height={160} />
-            <div className={s.hero__preview_txt}>View new drone 2025</div>
-          </div>
-        </div>
-      </div>
-
-      {/* BACKGROUND */}
-      <div className={s.home__hero_bg}>
-        <div ref={preloaderContainerRef} className={s.preloader__container}>
-          {HERO_BG.map((image, i) => (
-            <div
-              key={i}
-              ref={(el) => {
-                imageWrappersRef.current[i] = el;
-              }}
-              className={s.image__wrapper}
-              id={i == HERO_BG.length - 1 ? 'final-image' : ''}
-            >
-              <Image src={image.src} alt="" width={2880} height={1700} priority={i === 0} />
+    <>
+      <section ref={scopeRef} className={`${s.home__hero}`}>
+        <div className={`${s.home__hero_wrap}`}>
+          <div className={`${s.home__hero_main}`}>
+            <div className={`${s.hero__heading_wrap} grid grid-cols-12`}>
+              <h3 ref={heroHeadingRef} className={`${s.home__hero_heading} txt-light`}>
+                Revolutionize <br /> Your Perspective
+              </h3>
             </div>
-          ))}
+
+            <div className={`${s.home__hero_bottom} grid grid-cols-12`}>
+              <div className={`${s.home__hero_cta} txt-light`}>
+                <p ref={heroSubtitleRef} className={s.hero__cta_txt}>
+                  Experience the Future of Aerial Technology
+                </p>
+                <div ref={heroBtnRef}>
+                  <UIButton color="secondary">Explore Our Drones</UIButton>
+                </div>
+              </div>
+
+              {/* <div ref={previewRef} className={s.home__hero_preview}>
+        <Image src="/images/hero-preview.avif" alt="" width={296} height={160} />
+        <div className={s.hero__preview_txt}>View new drone 2025</div>
+      </div> */}
+            </div>
+          </div>
+          <div className={`${s.about__main} container grid grid-cols-12`}>
+            <div className={`${s.about__main_subtitle} txt-med`}>ABOUT OUR DRONE</div>
+            <div className={s.about__main_content}>
+              <h4 className={`${s.about__main_title} txt-light`}>What is Our Drone?</h4>
+              <p className={`${s.about__main_txt} txt-light`}>
+                Our drones are designed for professionals, hobbyists, and adventurers alike. Whether
+                you need stunning aerial photography, precision mapping, or high-speed racing, our
+                advanced drones deliver cutting-edge performance with ease.
+              </p>
+            </div>
+          </div>
+          <div style={{ width: '100%', height: '100vh' }}></div>
+
+          {/* BACKGROUND */}
+          <div className={s.home__hero_bg}>
+            <div ref={preloaderContainerRef} className={s.preloader__container}>
+              {HERO_BG.map((image, i) => (
+                <div
+                  key={i}
+                  ref={(el) => {
+                    imageWrappersRef.current[i] = el;
+                  }}
+                  className={s.image__wrapper}
+                  id={i == HERO_BG.length - 1 ? 'final-image' : ''}
+                >
+                  <Image src={image.src} alt="" width={2880} height={1700} priority={i === 0} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+        {/* CONTENT */}
+
+        <div className={s.home__about_model}>
+          <div className={s.about__model_wrap}>
+            <Canvas shadows camera={{ position: [0, 5, 6], fov: 25, near: 0.1, far: 100 }}>
+              <Suspense fallback={null}>
+                <OrbitControls
+                  minDistance={6}
+                  maxDistance={10}
+                  enableZoom={false}
+                  minPolarAngle={1.3}
+                  maxPolarAngle={Math.PI / 2}
+                  enablePan={false}
+                />
+                <directionalLight
+                  position={[-2, 2, 1]}
+                  castShadow
+                  shadow-mapSize-width={256}
+                  intensity={2}
+                  shadow-bias={-0.0001}
+                />
+                <Environment preset="warehouse" environmentIntensity={0.8} />
+                <AboutDrone />
+              </Suspense>
+            </Canvas>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
