@@ -1,17 +1,18 @@
 import React, { Suspense, useRef } from 'react';
-import Image from 'next/image';
+
+import { AboutDrone } from '@Components/AboutDrone';
+import UIButton from '@Components/Button';
+import Fade from '@Components/FadeAnim';
+import TypoAnim from '@Components/TypoAnim';
+import { useLenisControl } from '@Layouts/Lenis';
+import { useGSAP } from '@gsap/react';
+import { Environment, OrbitControls } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import { gsap } from 'gsap';
 import { CustomEase, Flip } from 'gsap/all';
-import { useGSAP } from '@gsap/react';
+import Image from 'next/image';
 
-import UIButton from '@Components/Button';
 import s from './styles.module.scss';
-import { useLenis } from 'lenis/react';
-import { Canvas } from '@react-three/fiber';
-import { Environment, OrbitControls } from '@react-three/drei';
-import { AboutDrone } from '@Components/AboutDrone';
-import TypoAnim from '@Components/TypoAnim';
-import Fade from '@Components/FadeAnim';
 
 // =========================
 // GSAP SETUP
@@ -36,7 +37,7 @@ const HERO_BG = [
 const Hero = () => {
   const scopeRef = useRef(null);
   const tlRef = useRef<gsap.core.Timeline | null>(null);
-  const lenis = useLenis();
+  const lenis = useLenisControl();
 
   // IMAGE REFS
   const imageWrappersRef = useRef<(HTMLDivElement | null)[]>([]);

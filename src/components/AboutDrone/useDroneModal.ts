@@ -1,10 +1,12 @@
+import { RefObject } from 'react';
+
+import { useLenisControl } from '@Layouts/Lenis';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { RefObject } from 'react';
 import * as THREE from 'three';
+
 import { useDroneGUI } from './useDroneGUI';
-import { useLenis } from 'lenis/react';
 
 type Props = {
   modalRef: RefObject<THREE.Group | null>;
@@ -16,7 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const useDroneModal = ({ modalRef, width }: Props): void => {
   const rpsNode = width.value / 550;
   // useDroneGUI({ modalRef });
-  const lenis = useLenis();
+  const lenis = useLenisControl();
 
   useGSAP(
     () => {
