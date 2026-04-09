@@ -1,4 +1,5 @@
 import { ReactElement, useEffect, useRef, useState } from 'react';
+
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
 import { ETypography } from '@Components/Typography/constants';
@@ -31,7 +32,7 @@ const UIAccordion = ({ title, content }: IUIAccordionProps): ReactElement => {
         </div>
       </UIButton>
       <div ref={contentRef} className={s.accordion_content}>
-        <div className="mb_8"/>
+        <div className="mb_8" />
         {content}
       </div>
     </>

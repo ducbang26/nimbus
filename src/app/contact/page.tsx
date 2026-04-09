@@ -1,8 +1,9 @@
-import React from "react";
-import ContactPage from "@Modules/ContactPage";
+import React from 'react';
 
-const Page = () : React.ReactElement => {
+import ContactPage from '@Modules/ContactPage';
+
+const Page = (): React.ReactElement => {
   return <ContactPage />;
-}
+};
 
 export default Page;

@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactElement, useEffect, useRef } from 'react';
+
 import UITypography from '@Components/Typography';
 import { ETypography } from '@Components/Typography/constants';
 import { rem } from '@Utils/rem';

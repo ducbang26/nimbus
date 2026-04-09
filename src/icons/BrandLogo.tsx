@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BrandLogo = () : React.ReactElement => {
+const BrandLogo = (): React.ReactElement => {
   return (
     <svg
       width="1320"

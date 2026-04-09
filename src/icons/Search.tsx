@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Search = () : React.ReactElement => {
+const Search = (): React.ReactElement => {
   return (
     <svg
       width="24"

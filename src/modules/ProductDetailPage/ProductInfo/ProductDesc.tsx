@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+
 import UIAccordion from '@Components/Accordion';
 import UITypography from '@Components/Typography';
 import { ETypography, ETypographyColor } from '@Components/Typography/constants';

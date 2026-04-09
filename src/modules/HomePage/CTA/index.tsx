@@ -1,19 +1,18 @@
 import React from 'react';
+
 import UIButton from '@Components/Button';
 import Image from 'next/image';
 
 import s from './styles.module.scss';
 
-const CTA = () : React.ReactElement => {
+const CTA = (): React.ReactElement => {
   return (
     <section className={s.cta}>
       <div className={`${s.cta_main} container`}>
         <div className={`${s.cta_bottom} grid grid-cols-12`}>
           <div className={`${s.cta_content} txt-light`}>
-            <div className={`${s.cta_content_txt} txt-light`}>
-              Ready to Ride the Future?
-            </div>
-            <UIButton color='secondary'>Get Your Drone</UIButton>
+            <div className={`${s.cta_content_txt} txt-light`}>Ready to Ride the Future?</div>
+            <UIButton color="secondary">Get Your Drone</UIButton>
           </div>
         </div>
       </div>

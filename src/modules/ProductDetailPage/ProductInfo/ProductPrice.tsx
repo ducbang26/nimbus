@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
 import { ETypography, ETypographyColor } from '@Components/Typography/constants';
@@ -11,7 +12,7 @@ import s from './styles.module.scss';
 
 const ProductPrice = (): ReactElement => {
   return (
-    <div className='mb_20'>
+    <div className="mb_20">
       <UITypography typography={ETypography.TEXT_32_REGULAR} className="mb_24">
         AeroVison Pro
       </UITypography>

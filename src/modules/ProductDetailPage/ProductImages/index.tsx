@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+
 import ProductImageCard from '@Modules/ProductDetailPage/ProductImages/ImageCard';
 import clsx from 'clsx';
 import Image from 'next/image';
