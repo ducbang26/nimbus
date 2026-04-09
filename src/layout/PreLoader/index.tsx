@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 import { useGLTF } from '@react-three/drei';
+import { useLenisControl } from '@Layouts/Lenis';
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
 import { peek } from 'suspend-react';
@@ -14,40 +15,46 @@ const MODEL_PATH = '/models/dji-fpv/drone.gltf';
 
 interface PreLoaderProps {
   onComplete?: () => void;
+  modelPath?: string;
 }
 
-const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
+const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PATH }) => {
+  const lenis = useLenisControl();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const progressWrapperRef = useRef<HTMLDivElement>(null);
   const percentRef = useRef<HTMLSpanElement>(null);
   const processBarRef = useRef<HTMLDivElement>(null);
+  const startLenisTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hideLoaderTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const dataProxy = useRef({
-    percent: 0,
+    percent: 1,
     isAssetLoaded: false,
-    looper: { offset: 0, deal: 1 },
+    looper: { offset: 1, deal: 1.15 },
   });
 
   const refQuickProcessing = useRef<gsap.QuickToFunc | null>(null);
 
   useEffect(() => {
+    lenis.stop();
+
     // Kick off model loading — populates suspend-react cache for useGLTF
-    useGLTF.preload(MODEL_PATH);
+    useGLTF.preload(modelPath);
 
     const isLoaded = (): boolean => {
-      return peek([GLTFLoader, MODEL_PATH]) != null;
+      return peek([GLTFLoader, modelPath]) != null;
     };
 
     refQuickProcessing.current = gsap.quickTo(dataProxy.current, 'percent', {
       ease: 'power3.out',
       duration: 0.4,
       onUpdate: () => {
-        const ps = Math.floor(dataProxy.current.percent);
+        const ps = Math.max(1, Math.min(100, Math.floor(dataProxy.current.percent)));
         if (percentRef.current) {
-          percentRef.current.textContent = `${ps < 10 ? '0' : ''}${ps}%`;
+          percentRef.current.textContent = `${ps < 10 ? '0' : ''}${ps}`;
         }
         if (processBarRef.current) {
-          processBarRef.current.style.setProperty('--po', `${ps / 100}`);
+          processBarRef.current.style.setProperty('--progress-width', `${ps}%`);
         }
       },
     });
@@ -58,16 +65,16 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
       refQuickProcessing.current?.(Math.floor(d.offset));
       d.offset += d.deal;
 
-      if (d.offset >= 100) {
+      if (d.offset >= 100 && dataProxy.current.isAssetLoaded) {
         gsap.ticker.remove(looper);
         refQuickProcessing.current?.(100);
-        dataProxy.current.isAssetLoaded = true;
 
-        setTimeout(() => {
+        hideLoaderTimeoutRef.current = setTimeout(() => {
           if (wrapperRef.current) {
+            gsap.set(wrapperRef.current, { clipPath: 'inset(0% 0% 0% 0%)' });
             gsap.to(wrapperRef.current, {
-              y: '-100%',
-              duration: 0.8,
+              clipPath: 'inset(0% 0% 100% 0%)',
+              duration: 1.5,
               ease: 'power3.inOut',
               onComplete: () => {
                 gsap.to(progressWrapperRef.current, {
@@ -77,6 +84,9 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
                   onComplete: () => {
                     wrapperRef.current?.classList.add(s.isHide);
                     progressWrapperRef.current?.classList.add(s.isHide);
+                    startLenisTimeoutRef.current = setTimeout(() => {
+                      lenis.start();
+                    }, 2000);
                     onComplete?.();
                   },
                 });
@@ -84,14 +94,21 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
             });
           }
         }, 300);
-      } else if (d.offset > 96) {
-        d.deal = isLoaded() ? 4 : 0.00001;
       } else {
-        if (isLoaded()) {
-          d.deal = 10;
+        if (isLoaded() && !dataProxy.current.isAssetLoaded) {
+          dataProxy.current.isAssetLoaded = true;
+          d.deal = 6;
         } else {
-          d.deal *= 0.9;
-          if (d.deal < 0.000001) d.deal = 1;
+          if (dataProxy.current.isAssetLoaded) {
+            d.deal = Math.max(d.deal, 2.5);
+          } else if (d.offset > 94) {
+            // Hold at the edge until the 3D model is actually ready.
+            d.offset = 94;
+            d.deal = 0.02;
+          } else {
+            d.deal *= 0.94;
+            if (d.deal < 0.08) d.deal = 0.2;
+          }
         }
       }
     };
@@ -100,8 +117,10 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
 
     return (): void => {
       gsap.ticker.remove(looper);
+      if (hideLoaderTimeoutRef.current) clearTimeout(hideLoaderTimeoutRef.current);
+      if (startLenisTimeoutRef.current) clearTimeout(startLenisTimeoutRef.current);
     };
-  }, [onComplete]);
+  }, [lenis, modelPath, onComplete]);
 
   return (
     <>
@@ -113,9 +132,9 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete }) => {
       </div>
 
       <div className={s.preLoader} ref={wrapperRef}>
-        {/* <div className={s.preLoader_percent}>
-        <span ref={percentRef}>00%</span>
-      </div> */}
+        <div className={s.preLoader_percent}>
+          <span ref={percentRef}>01</span>
+        </div>
       </div>
     </>
   );
