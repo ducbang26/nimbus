@@ -1,5 +1,11 @@
 'use client';
-import React, { PropsWithChildren, createContext, useContext, useEffect, useLayoutEffect, useRef } from 'react';
+import React, {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useLayoutEffect,
+  useRef,
+} from 'react';
 import { gsap } from 'gsap';
 import { LenisRef, ReactLenis } from 'lenis/react';
 
@@ -20,7 +26,6 @@ export default function LenisScroller({ children }: ISmoothScroller): React.Reac
   const lenisRef = useRef<LenisRef>(null);
 
   useLayoutEffect(() => {
-    window.scrollTo(0, 0);
     lenisRef.current?.lenis?.stop();
   }, []);
 
@@ -31,18 +36,14 @@ export default function LenisScroller({ children }: ISmoothScroller): React.Reac
 
     gsap.ticker.add(update);
 
-    return () : void => {
+    return (): void => {
       gsap.ticker.remove(update);
     };
   }, []);
 
   return (
     <LenisContext.Provider value={lenisRef}>
-      <ReactLenis
-        root
-        ref={lenisRef}
-        options={{ autoRaf: false }}
-      >
+      <ReactLenis root ref={lenisRef} options={{ autoRaf: false }}>
         {children}
       </ReactLenis>
     </LenisContext.Provider>

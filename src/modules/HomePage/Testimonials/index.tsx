@@ -1,9 +1,9 @@
 import React from 'react';
-import { useRef } from "react";
+import { useRef } from 'react';
 import Container from '@Components/Container';
-import { useGSAP } from "@gsap/react";
+import { useGSAP } from '@gsap/react';
 import { IAnimationElement } from '@Types/common';
-import gsap from "gsap";
+import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
@@ -15,27 +15,28 @@ const Testimonials = (): React.ReactElement => {
   const containerRef = useRef<IAnimationElement>(null);
   const scrollBarTrackRef = useRef<HTMLDivElement | null>(null);
 
-  useGSAP(() => {
-    if (!containerRef.current) return;
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: 'bottom bottom',
-        // markers: true,
-        scrub: true,
-      },
-    });
+  useGSAP(
+    () => {
+      if (!containerRef.current) return;
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      });
 
-    tl.to(scrollBarTrackRef.current, {
-      width: '100%',
-    });
-  
-  }, { scope: containerRef });
+      tl.to(scrollBarTrackRef.current, {
+        width: '100%',
+      });
+    },
+    { scope: containerRef }
+  );
 
   return (
     <section className={`${s.testimonials} testimonials`} ref={containerRef}>
-      <Container className={s.testimonials_wrap} >
+      <Container className={s.testimonials_wrap}>
         <div className={s.testimonials_header}>
           <h5 className={`${s.testimonials_title} txt-light`}>Trusted by Pilots Worldwide</h5>
           <p className={s.testimonials_desc}>See what our users say about their experience.</p>

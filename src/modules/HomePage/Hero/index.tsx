@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useLayoutEffect, useRef } from 'react';
+import React, { Suspense, useRef } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { CustomEase, Flip } from 'gsap/all';
@@ -10,6 +10,7 @@ import { useLenis } from 'lenis/react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { AboutDrone } from '@Components/AboutDrone';
+import TypoAnim from '@Components/TypoAnim';
 
 // =========================
 // GSAP SETUP
@@ -105,7 +106,9 @@ const Hero = () => {
     tlRef.current?.kill();
     resetToInitialState();
 
-    const tl: gsap.core.Timeline = gsap.timeline();
+    const tl: gsap.core.Timeline = gsap.timeline({
+      ease: 'circ.out',
+    });
     tlRef.current = tl;
 
     tl.add(() => {
@@ -228,20 +231,24 @@ const Hero = () => {
 
   return (
     <>
-      <section ref={scopeRef} className={`${s.home__hero}`}>
+      <section ref={scopeRef} className={`${s.home__hero} home-hero`}>
         <div className={`${s.home__hero_wrap}`}>
           <div className={`${s.home__hero_main}`}>
             <div className={`${s.hero__heading_wrap} grid grid-cols-12`}>
-              <h3 ref={heroHeadingRef} className={`${s.home__hero_heading} txt-light`}>
-                Revolutionize <br /> Your Perspective
-              </h3>
+              <TypoAnim delayTrigger={2.5} stagger={0.2}>
+                <h3 ref={heroHeadingRef} className={`${s.home__hero_heading} txt-light`}>
+                  Revolutionize <br /> Your Perspective
+                </h3>
+              </TypoAnim>
             </div>
 
             <div className={`${s.home__hero_bottom} grid grid-cols-12`}>
               <div className={`${s.home__hero_cta} txt-light`}>
-                <p ref={heroSubtitleRef} className={s.hero__cta_txt}>
-                  Experience the Future of Aerial Technology
-                </p>
+                <TypoAnim delayTrigger={2.9} stagger={0.05}>
+                  <p ref={heroSubtitleRef} className={s.hero__cta_txt}>
+                    Experience the Future of Aerial Technology
+                  </p>
+                </TypoAnim>
                 <div ref={heroBtnRef}>
                   <UIButton color="secondary">Explore Our Drones</UIButton>
                 </div>
@@ -264,7 +271,7 @@ const Hero = () => {
               </p>
             </div>
           </div>
-          <div style={{ width: '100%', height: '100vh' }}></div>
+          <div style={{ width: '100%', height: '80vh' }}></div>
 
           {/* BACKGROUND */}
           <div className={s.home__hero_bg}>

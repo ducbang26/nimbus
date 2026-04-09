@@ -1,20 +1,16 @@
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
+import { useDroneModal } from './useDroneModal';
 
 export function AboutDrone({ ...props }): React.ReactElement {
+  const modalRef = useRef<THREE.Group>(null);
   const { nodes, materials } = useGLTF('/models/dji-fpv/drone.gltf');
-  const groupRef = useRef(null);
+
+  useDroneModal({ modalRef, width: { value: 0 } });
 
   return (
-    <group
-      ref={groupRef}
-      {...props}
-      dispose={null}
-      rotation={[-0.3, 0, 0]}
-      position={[0, -0.7, 0]}
-      scale={0.8}
-    >
+    <group ref={modalRef} {...props} dispose={null} scale={0.8}>
       <group position={[0, 1.017, -0.135]} rotation={[-0.475, 0, 0]} scale={3.531}>
         <group rotation={[-Math.PI / 2, 0, 0]} scale={0.283}>
           <mesh
