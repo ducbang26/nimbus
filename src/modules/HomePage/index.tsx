@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 
-import About from './About';
 import CTA from './CTA';
 import Explore from './Explore';
 import Gallery from './Gallery';
@@ -16,7 +15,6 @@ const HomePage = (): React.ReactElement => {
   return (
     <main>
       <Hero />
-      <About />
       <Why />
       <Explore />
       <Testimonials />

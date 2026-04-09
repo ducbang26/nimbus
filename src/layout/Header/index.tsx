@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import s from './styles.module.scss';
+import Fade from '@Components/FadeAnim';
 
 const Header = (): React.ReactElement => {
   const pathname = usePathname();
@@ -94,29 +95,54 @@ const Header = (): React.ReactElement => {
         className={clsx(s.header__line, isBlackHeader && s.header__line__black)}
       ></div>
       <Container>
-        <div ref={mainRef} className={s.header__main}>
-          <div className={`${s.header__logo} ${s.txt_med}`}>
-            <Link href="/">NIMBUS AIR</Link>
-          </div>
+        <div className={s.header__main}>
+          <Fade direction="top" from="10px" delayTrigger={3.3}>
+            <div style={{ opacity: 0 }} className={`${s.header__logo} ${s.txt_med}`}>
+              <Link href="/">NIMBUS AIR</Link>
+            </div>
+          </Fade>
           <nav className={s.main_nav}>
             <ul className={s.main__nav_list}>
-              {NAVIGATION_PAGES.map((page) => (
-                <li className={s.main__nav_item} key={page.href}>
-                  <Link href={page.href}>{page.label}</Link>
-                </li>
+              {NAVIGATION_PAGES.map((page, index) => (
+                <Fade key={page.href} direction="top" from="10px" delayTrigger={3.4 + index * 0.1}>
+                  <li style={{ opacity: 0 }} className={s.main__nav_item}>
+                    <Link href={page.href}>{page.label}</Link>
+                  </li>
+                </Fade>
               ))}
             </ul>
           </nav>
           <div className={s.header__icons}>
-            <Link className={s.header__icons_item} href="#" aria-label="Search">
-              <Search />
-            </Link>
-            <Link className={s.header__icons_item} href="#" aria-label="User">
-              <User />
-            </Link>
-            <Link className={s.header__icons_item} href={EPagePaths.CART} aria-label="Cart">
-              <Cart />
-            </Link>
+            <Fade direction="top" from="10px" delayTrigger={3.3}>
+              <Link
+                style={{ opacity: 0 }}
+                className={s.header__icons_item}
+                href="#"
+                aria-label="Search"
+              >
+                <Search />
+              </Link>
+            </Fade>
+            <Fade direction="top" from="10px" delayTrigger={3.3}>
+              <Link
+                style={{ opacity: 0 }}
+                className={s.header__icons_item}
+                href="#"
+                aria-label="User"
+              >
+                <User />
+              </Link>
+            </Fade>
+            <Fade direction="top" from="10px" delayTrigger={3.3}>
+              <Link
+                style={{ opacity: 0 }}
+                className={s.header__icons_item}
+                href={EPagePaths.CART}
+                aria-label="Cart"
+              >
+                <Cart />
+              </Link>
+            </Fade>
           </div>
         </div>
       </Container>

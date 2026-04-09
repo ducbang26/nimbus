@@ -2,10 +2,11 @@
 import React, {
   PropsWithChildren,
   createContext,
-  useCallback,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useRef,
+  useCallback,
+  useEffect,
 } from 'react';
 
 import { gsap } from 'gsap';
@@ -22,14 +23,13 @@ export const useLenisControl = (): LenisContextValue => useContext(LenisContext)
 export default function LenisScroller({ children }: PropsWithChildren): React.ReactElement {
   const lenisRef = useRef<LenisRef>(null);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  useLayoutEffect(() => {
     lenisRef.current?.lenis?.stop();
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function update(time: number): void {
-      lenisRef.current?.lenis?.raf(time * 1000);
+      lenisRef.current?.lenis?.raf(time);
     }
 
     gsap.ticker.add(update);
