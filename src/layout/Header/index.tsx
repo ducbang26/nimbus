@@ -9,10 +9,11 @@ import { rem } from '@Utils/rem';
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import s from './styles.module.scss';
 import Fade from '@Components/FadeAnim';
+import UIButton from '@Components/Button';
 
 const Header = (): React.ReactElement => {
   const pathname = usePathname();
@@ -20,6 +21,7 @@ const Header = (): React.ReactElement => {
   const lineRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
+  const navigate = useRouter();
 
   const isBlackHeader = useMemo(
     () => BLACK_HEADER_PAGES.includes(('/' + pathname.split('/')[1]) as EPagePaths),
@@ -106,7 +108,13 @@ const Header = (): React.ReactElement => {
               {NAVIGATION_PAGES.map((page, index) => (
                 <Fade key={page.href} direction="top" from="10px" delayTrigger={3.4 + index * 0.1}>
                   <li style={{ opacity: 0 }} className={s.main__nav_item}>
-                    <Link href={page.href}>{page.label}</Link>
+                    <UIButton
+                      variant={'text'}
+                      color={'primary'}
+                      onClick={() => navigate.push(page.href)}
+                    >
+                      <div>{page.label}</div>
+                    </UIButton>
                   </li>
                 </Fade>
               ))}
