@@ -11,6 +11,7 @@ import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
 import { AboutDrone } from '@Components/AboutDrone';
 import TypoAnim from '@Components/TypoAnim';
+import Fade from '@Components/FadeAnim';
 
 // =========================
 // GSAP SETUP
@@ -45,7 +46,6 @@ const Hero = () => {
   // UI REFS
   const heroHeadingRef = useRef(null);
   const heroSubtitleRef = useRef(null);
-  const heroBtnRef = useRef(null);
   const previewRef = useRef<HTMLDivElement | null>(null);
 
   // =========================
@@ -168,55 +168,6 @@ const Hero = () => {
         });
       }
     }, 'zoom');
-
-    // PHASE 3 – UI
-    tl.add('ui', '+=0.3');
-
-    // tl.to(
-    //   headerLeftRef.current,
-    //   {
-    //     opacity: 1,
-    //     y: 0,
-    //     duration: 0.6,
-    //     ease: 'directionalEase',
-    //   },
-    //   'ui'
-    // );
-
-    // tl.to(
-    //   headerMiddleRef.current,
-    //   {
-    //     opacity: 1,
-    //     y: 0,
-    //     duration: 0.6,
-    //     ease: 'directionalEase',
-    //   },
-    //   'ui+=0.15'
-    // );
-
-    // tl.to(
-    //   socialLinksRef.current,
-    //   {
-    //     opacity: 1,
-    //     y: 0,
-    //     duration: 0.6,
-    //     ease: 'directionalEase',
-    //   },
-    //   'ui+=0.3'
-    // );
-
-    // tl.to(
-    //   footerRef.current,
-    //   {
-    //     y: 0,
-    //     duration: 0.7,
-    //     ease: 'directionalEase',
-    //   },
-    //   'ui+=0.5'
-    // );
-    tl.add(() => {
-      lenis?.start();
-    }, 'ui+=0.7');
   };
 
   // =========================
@@ -249,9 +200,11 @@ const Hero = () => {
                     Experience the Future of Aerial Technology
                   </p>
                 </TypoAnim>
-                <div ref={heroBtnRef}>
-                  <UIButton color="secondary">Explore Our Drones</UIButton>
-                </div>
+                <Fade direction="bottom" from="10px" delayTrigger={3.4} duration={1.2}>
+                  <div style={{ opacity: 0 }}>
+                    <UIButton color="secondary">Explore Our Drones</UIButton>
+                  </div>
+                </Fade>
               </div>
 
               {/* <div ref={previewRef} className={s.home__hero_preview}>
@@ -261,14 +214,20 @@ const Hero = () => {
             </div>
           </div>
           <div className={`${s.about__main} container grid grid-cols-12`}>
-            <div className={`${s.about__main_subtitle} txt-med`}>ABOUT OUR DRONE</div>
+            <TypoAnim delayTrigger={0.7} stagger={0.1}>
+              <div className={`${s.about__main_subtitle} txt-med`}>ABOUT OUR DRONE</div>
+            </TypoAnim>
             <div className={s.about__main_content}>
-              <h4 className={`${s.about__main_title} txt-light`}>What is Our Drone?</h4>
-              <p className={`${s.about__main_txt} txt-light`}>
-                Our drones are designed for professionals, hobbyists, and adventurers alike. Whether
-                you need stunning aerial photography, precision mapping, or high-speed racing, our
-                advanced drones deliver cutting-edge performance with ease.
-              </p>
+              <TypoAnim delayTrigger={0.7} stagger={0.1}>
+                <h4 className={`${s.about__main_title} txt-light`}>What is Our Drone?</h4>
+              </TypoAnim>
+              <TypoAnim delayTrigger={1} stagger={0.02}>
+                <p className={`${s.about__main_txt} txt-light`}>
+                  Our drones are designed for professionals, hobbyists, and adventurers alike.
+                  Whether you need stunning aerial photography, precision mapping, or high-speed
+                  racing, our advanced drones deliver cutting-edge performance with ease.
+                </p>
+              </TypoAnim>
             </div>
           </div>
           <div style={{ width: '100%', height: '80vh' }}></div>
@@ -297,14 +256,14 @@ const Hero = () => {
           <div className={s.about__model_wrap}>
             <Canvas shadows camera={{ position: [0, 5, 6], fov: 25, near: 0.1, far: 100 }}>
               <Suspense fallback={null}>
-                <OrbitControls
+                {/* <OrbitControls
                   minDistance={6}
                   maxDistance={10}
                   enableZoom={false}
                   minPolarAngle={1.3}
                   maxPolarAngle={Math.PI / 2}
                   enablePan={false}
-                />
+                /> */}
                 <directionalLight
                   position={[-2, 2, 1]}
                   castShadow

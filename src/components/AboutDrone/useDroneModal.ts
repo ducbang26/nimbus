@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { RefObject } from 'react';
 import * as THREE from 'three';
 import { useDroneGUI } from './useDroneGUI';
+import { useLenis } from 'lenis/react';
 
 type Props = {
   modalRef: RefObject<THREE.Group | null>;
@@ -15,37 +16,41 @@ gsap.registerPlugin(ScrollTrigger);
 export const useDroneModal = ({ modalRef, width }: Props): void => {
   const rpsNode = width.value / 550;
   // useDroneGUI({ modalRef });
+  const lenis = useLenis();
 
   useGSAP(
     () => {
       if (!modalRef.current) return;
 
-      gsap.set(modalRef.current.rotation, { x: -0.3, y: 0, z: 0 });
+      gsap.set(modalRef.current.rotation, { x: -0.36, y: 1, z: 0 });
       gsap.set(modalRef.current.position, {
         x: 0,
-        y: -5,
+        y: -7,
         z: 0,
       });
 
       const tl = gsap.timeline();
 
       tl.to(modalRef.current.position, {
-        x: 0.17,
-        y: -2.54,
-        z: -0.9,
+        x: 0.23,
+        y: -2.21,
+        z: 0.42,
         duration: 2,
         ease: 'power3.inOut',
       }).to(
         modalRef.current.rotation,
         {
-          x: 0.078,
-          y: -0.39,
-          z: 0.09,
+          x: -0.36,
+          y: -0.3,
+          z: 0.1,
           duration: 2,
           ease: 'power3.inOut',
         },
-        '-=1.75'
+        '-=1.85'
       );
+      tl.add(() => {
+        lenis?.start();
+      }, '+=0.1');
     },
     { dependencies: [modalRef.current] }
   );
@@ -65,7 +70,7 @@ export const useDroneModal = ({ modalRef, width }: Props): void => {
       });
 
       tl.to(modalRef.current.rotation, {
-        x: 0,
+        x: -0.35,
         y: 0,
         z: 0,
       });
@@ -73,7 +78,7 @@ export const useDroneModal = ({ modalRef, width }: Props): void => {
         modalRef.current.position,
         {
           x: 0,
-          y: -1.2,
+          y: -1.6,
           z: 0,
         },
         '<'
