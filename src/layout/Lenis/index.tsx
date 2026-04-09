@@ -5,24 +5,22 @@ import React, {
   useContext,
   useLayoutEffect,
   useRef,
+  useCallback,
+  useEffect,
 } from 'react';
+
 import { gsap } from 'gsap';
 import { LenisRef, ReactLenis } from 'lenis/react';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-interface ISmoothScroller extends PropsWithChildren {}
+interface LenisContextValue {
+  start: () => void;
+}
 
-const LenisContext = createContext<React.RefObject<LenisRef | null> | null>(null);
+const LenisContext = createContext<LenisContextValue>({ start: () => {} });
 
-export const useLenisContext = () => {
-  const ctx = useContext(LenisContext);
-  if (!ctx) {
-    throw new Error('useLenisContext must be used within LenisScroller');
-  }
-  return ctx;
-};
+export const useLenisControl = (): LenisContextValue => useContext(LenisContext);
 
-export default function LenisScroller({ children }: ISmoothScroller): React.ReactElement {
+export default function LenisScroller({ children }: PropsWithChildren): React.ReactElement {
   const lenisRef = useRef<LenisRef>(null);
 
   useLayoutEffect(() => {
@@ -41,8 +39,12 @@ export default function LenisScroller({ children }: ISmoothScroller): React.Reac
     };
   }, []);
 
+  const start = useCallback(() => {
+    lenisRef.current?.lenis?.start();
+  }, []);
+
   return (
-    <LenisContext.Provider value={lenisRef}>
+    <LenisContext.Provider value={{ start }}>
       <ReactLenis root ref={lenisRef} options={{ autoRaf: false }}>
         {children}
       </ReactLenis>

@@ -1,14 +1,10 @@
 .header {
-    position: relative;
-    z-index: 9999;
-    width: 100%;
-    color: var(--white);
-    mix-blend-mode: difference;
-    transition: filter 0.3s ease;
-
-    &__black {
-        color: var(--white);
-    }
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  color: var(--white);
+  mix-blend-mode: difference;
+  transition: filter 0.3s ease;
 }
 
 .header__line {
@@ -16,42 +12,44 @@
     height: 2.4rem;
     background: var(--black);
 
-    &__black {
-        background: var(--white);
-    }
+  &__black {
+    background: var(--white);
+  }
 }
 
 .header__main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: rem(20px);
+  padding-bottom: rem(20px);
+  z-index: 99999;
 }
 
 .header__logo {
-    font-family: var(--font-montserrat);
-    font-size: 2.4rem;
-    line-height: 1.1em;
+  font-family: var(--font-montserrat);
+  font-size: rem(24px);
+  line-height: 1.1em;
 }
 
 .main__nav_list {
-    display: flex;
-    column-gap: 3.2rem;
+  display: flex;
+  column-gap: rem(32px);
 }
 
 .main__nav_item {
-    a { 
-        font-size: rem(20px);
-    }
+  a {
+    font-size: rem(20px);
+  }
 }
 
 .header__icons {
-    display: flex;
-    column-gap: 2rem;
+  display: flex;
+  column-gap: rem(20px);
 }
 
 .header__icons_item {
-    width: 2.4rem;
-    height: 2.4rem;
+  width: rem(24px);
+  height: rem(24px);
 }

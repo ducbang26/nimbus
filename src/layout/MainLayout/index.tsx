@@ -13,6 +13,7 @@ const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <ReactLenis root options={{ smoothWheel: true }}>
       <Cursor isEnter={true} />
+
       <Header />
       {children}
       <Footer />
