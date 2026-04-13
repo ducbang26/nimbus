@@ -1,10 +1,6 @@
 'use client';
 import React, {
   PropsWithChildren,
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
   useLayoutEffect,
   useRef,
 } from 'react';
@@ -12,21 +8,8 @@ import React, {
 import { gsap } from 'gsap';
 import { LenisRef, ReactLenis } from 'lenis/react';
 
-interface LenisContextValue {
-  start: () => void;
-  stop: () => void;
-}
-
-const LenisContext = createContext<LenisContextValue>({ start: () => {}, stop: () => {} });
-
-export const useLenisControl = (): LenisContextValue => useContext(LenisContext);
-
 export default function LenisScroller({ children }: PropsWithChildren): React.ReactElement {
   const lenisRef = useRef<LenisRef>(null);
-
-  useLayoutEffect(() => {
-    lenisRef.current?.lenis?.stop();
-  }, []);
 
   useLayoutEffect(() => {
     function update(time: number): void {
@@ -40,19 +23,9 @@ export default function LenisScroller({ children }: PropsWithChildren): React.Re
     };
   }, []);
 
-  const start = useCallback(() => {
-    lenisRef.current?.lenis?.start();
-  }, []);
-
-  const stop = useCallback(() => {
-    lenisRef.current?.lenis?.stop();
-  }, []);
-
   return (
-    <LenisContext.Provider value={{ start, stop }}>
-      <ReactLenis root ref={lenisRef} options={{ autoRaf: false }}>
-        {children}
-      </ReactLenis>
-    </LenisContext.Provider>
+    <ReactLenis root ref={lenisRef} options={{ autoRaf: false }}>
+      {children}
+    </ReactLenis>
   );
 }

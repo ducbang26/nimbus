@@ -11,10 +11,6 @@ import { usePathname } from 'next/navigation';
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
   return (
     <LenisScroller>
       <PreLoader key={pathname} modelPath="/models/dji-fpv/drone.gltf" />
