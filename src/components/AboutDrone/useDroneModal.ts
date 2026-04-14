@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/refs */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { RefObject } from 'react';
 
 import { useGSAP } from '@gsap/react';
@@ -5,7 +7,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import * as THREE from 'three';
 
-import { useDroneGUI } from './useDroneGUI';
+// import { useDroneGUI } from './useDroneGUI';
 import { useLenis } from 'lenis/react';
 
 type Props = {

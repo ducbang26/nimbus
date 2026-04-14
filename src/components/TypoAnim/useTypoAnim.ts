@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/preserve-manual-memoization */
 import { useCallback, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 
@@ -37,7 +38,7 @@ export default function useTypoAnim({
     if (!el) return;
 
     el.classList.add(s.LineMask);
-    return () => {
+    return (): void => {
       el.classList.remove(s.LineMask);
     };
   }, [refContent]);
@@ -64,7 +65,7 @@ export default function useTypoAnim({
         delayTrigger,
       });
 
-      splitter.lines.forEach((line: any, index: any) => {
+      splitter.lines.forEach((line: HTMLElement, index: number) => {
         const words = line.querySelectorAll('.word') as NodeListOf<HTMLElement>;
         if (!words.length) return;
 

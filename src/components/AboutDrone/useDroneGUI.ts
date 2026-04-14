@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/refs */
 // useDroneGUI.ts
 import { useEffect } from 'react';
 import GUI from 'lil-gui';
@@ -7,7 +8,7 @@ interface UseDroneGUIProps {
   modalRef: React.RefObject<THREE.Group | null>;
 }
 
-export function useDroneGUI({ modalRef }: UseDroneGUIProps) {
+export function useDroneGUI({ modalRef }: UseDroneGUIProps): void {
   useEffect(() => {
     if (!modalRef.current) return;
 
@@ -26,7 +27,7 @@ export function useDroneGUI({ modalRef }: UseDroneGUIProps) {
     outerFolder.add(outer.rotation, 'z', -Math.PI, Math.PI, 0.01).name('rotationZ').listen();
     outerFolder.open();
 
-    return () => {
+    return (): void => {
       gui.destroy();
     };
   }, [modalRef.current]);

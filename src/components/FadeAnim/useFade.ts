@@ -1,9 +1,8 @@
+/* eslint-disable react-hooks/preserve-manual-memoization */
 import { gsap } from 'gsap';
 import { getDelay } from '@Utils/UiHelper';
 import { IAnimationElement } from '@Types/common';
-import { useCallback, useLayoutEffect } from 'react';
-
-import s from '../TypoAnim/styles.module.scss';
+import { useCallback } from 'react';
 
 type FadeDirection = 'top' | 'bottom' | 'left' | 'right' | 'none';
 

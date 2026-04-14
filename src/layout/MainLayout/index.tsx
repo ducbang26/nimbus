@@ -1,5 +1,5 @@
 'use client';
-import React, { PropsWithChildren, useEffect } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import Cursor from '@Components/Cursor';
 import Footer from '@Layouts/Footer';
