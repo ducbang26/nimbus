@@ -34,9 +34,17 @@
   }
 
   .bar {
-    grid-area: 1/4/1/10;
+    grid-area: 1/1/1/5;
     position: relative;
     height: rem(8px);
+
+    @include minTablet {
+      grid-area: 1/2/1/8;
+    }
+
+    @include pcSmall {
+      grid-area: 1/4/1/10;
+    }
 
     &_thumb {
       position: absolute;
@@ -65,18 +73,38 @@
   height: 100%;
 
   &_content {
-    grid-area: 1/8/1/13;
-    background-color: var(--neutral-50);
+    grid-area: 1/1/1/5;
+    z-index: 5;
     padding: rem(20px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    background-color: rgba($color: var(--black), $alpha: 0.6);
+    justify-content: flex-end;
+
+    @include minTablet {
+      grid-area: 1/6/1/9;
+      background-color: var(--neutral-50);
+      justify-content: space-between;
+    }
+
+    @include pcSmall {
+      grid-area: 1/8/1/13;
+    }
   }
 }
 
 .testimonials_thumbnail {
-  grid-column: 1 / 8;
-  grid-row: 1 / 2;
+  z-index: 4;
+  grid-area: 1/1/1/5;
+
+  @include minTablet {
+    grid-area: 1/1/1/6;
+  }
+
+  @include pcSmall {
+    grid-area: 1/1/1/8;
+  }
+
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -102,7 +130,11 @@
   font-size: rem(36px);
   line-height: 1.2;
   font-weight: 200;
-  color: var(--neutral-950);
+  color: var(--neutral-50);
+
+  @include minTablet {
+    color: var(--neutral-950);
+  }
 }
 
 .info_inner {
@@ -122,7 +154,11 @@
   font-size: rem(20px);
   letter-spacing: 0.02em;
   font-weight: 200;
-  color: var(--neutral-950);
+  color: var(--neutral-50);
+
+  @include minTablet {
+    color: var(--neutral-950);
+  }
 }
 
 .info_avt {
