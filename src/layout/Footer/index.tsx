@@ -4,6 +4,7 @@ import Arrow from '@Icons/Arrow';
 import BrandLogo from '@Icons/BrandLogo';
 
 import s from './styles.module.scss';
+import Link from 'next/link';
 
 const Footer = (): React.ReactElement => {
   return (
@@ -20,76 +21,76 @@ const Footer = (): React.ReactElement => {
         <nav className={`${s.footer__nav} ${s.footer__nav__pages}`}>
           <ul className={s.footer__list}>
             <li className={`${s.footer__item} txt-light`}>
-              <a href="#" className={s.footer__link}>
+              <Link href="#" className={s.footer__link}>
                 Shop
-              </a>
+              </Link>
             </li>
             <li className={`${s.footer__item} txt-light`}>
-              <a href="#" className={s.footer__link}>
+              <Link href="#" className={s.footer__link}>
                 Model
-              </a>
+              </Link>
             </li>
             <li className={`${s.footer__item} txt-light`}>
-              <a href="#" className={s.footer__link}>
+              <Link href="#" className={s.footer__link}>
                 About
-              </a>
+              </Link>
             </li>
             <li className={`${s.footer__item} txt-light`}>
-              <a href="#" className={s.footer__link}>
+              <Link href="#" className={s.footer__link}>
                 Contact
-              </a>
+              </Link>
             </li>
             <li className={`${s.footer__item} txt-light`}>
-              <a href="#" className={s.footer__link}>
+              <Link href="#" className={s.footer__link}>
                 Blog
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
         <nav className={`${s.footer__nav} ${s.footer__nav__social}`}>
           <ul className={s.footer__list}>
             <li className={`${s.footer__item} txt-light`}>
-              <a href="#" className={s.footer__link}>
+              <Link href="#" className={s.footer__link}>
                 Facebook
-              </a>
+              </Link>
             </li>
             <li className={`${s.footer__item} txt-light`}>
-              <a href="#" className={s.footer__link}>
+              <Link href="#" className={s.footer__link}>
                 Instagram
-              </a>
+              </Link>
             </li>
             <li className={`${s.footer__item} txt-light`}>
-              <a href="#" className={s.footer__link}>
+              <Link href="#" className={s.footer__link}>
                 Youtube
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
         <nav className={`${s.footer__nav} ${s.footer__nav__external}`}>
           <ul className={s.footer__list}>
             <li className={s.footer__item}>
-              <a href="#" className={`${s.footer__link} ${s.footer__link__external}`}>
+              <Link href="#" className={`${s.footer__link} ${s.footer__link__external}`}>
                 <div className={`txt-regular ${s.link__external_text}`}>Google Play</div>
                 <span className={s.footer__link_icon}>
                   <Arrow />
                 </span>
-              </a>
+              </Link>
             </li>
             <li className={s.footer__item}>
-              <a href="#" className={`${s.footer__link} ${s.footer__link__external}`}>
+              <Link href="#" className={`${s.footer__link} ${s.footer__link__external}`}>
                 <div className={`txt-regular ${s.link__external_text}`}>App Store</div>
                 <span className={s.footer__link_icon}>
                   <Arrow />
                 </span>
-              </a>
+              </Link>
             </li>
             <li className={s.footer__item}>
-              <a href="#" className={`${s.footer__link} ${s.footer__link__external}`}>
+              <Link href="#" className={`${s.footer__link} ${s.footer__link__external}`}>
                 <div className={`txt-regular ${s.link__external_text}`}>Help Center</div>
                 <span className={s.footer__link_icon}>
                   <Arrow />
                 </span>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -113,13 +114,13 @@ const Footer = (): React.ReactElement => {
 
       <div className={s.footer__bottom}>
         <div className={s.footer__legal}>
-          <a href="#" className={`${s.footer__link} ${s.footer__link__legal}`}>
+          <Link href="#" className={`${s.footer__link} ${s.footer__link__legal}`}>
             Privacy Policy
-          </a>
+          </Link>
           <span className={s.footer__separator}>|</span>
-          <a href="#" className={`${s.footer__link} ${s.footer__link__legal}`}>
+          <Link href="#" className={`${s.footer__link} ${s.footer__link__legal}`}>
             Terms of Service
-          </a>
+          </Link>
         </div>
         <div className={s.footer__credits}>
           <span className={s.footer__design}>Design by Wyn and Mason</span>

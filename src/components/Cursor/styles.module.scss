@@ -2,17 +2,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: rem(40px);
-  height: rem(40px);
+  width: rem(0px);
+  height: rem(0px);
   border-radius: rem(999px);
   pointer-events: none;
   z-index: 999;
-  mix-blend-mode: difference;
-  padding: rem(10px);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--neutral-50);
   opacity: 0;
 
   &_text {

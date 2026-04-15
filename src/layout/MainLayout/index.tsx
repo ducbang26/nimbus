@@ -1,5 +1,5 @@
 'use client';
-import React, { PropsWithChildren, useEffect } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import Cursor from '@Components/Cursor';
 import Footer from '@Layouts/Footer';
@@ -10,10 +10,6 @@ import { usePathname } from 'next/navigation';
 
 const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
 
   return (
     <LenisScroller>

@@ -3,13 +3,13 @@
 import { useEffect, useRef } from 'react';
 
 import { useGLTF } from '@react-three/drei';
-import { useLenisControl } from '@Layouts/Lenis';
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
 import { peek } from 'suspend-react';
 import { GLTFLoader } from 'three-stdlib';
 
 import s from './styles.module.scss';
+import { useLenis } from 'lenis/react';
 
 const MODEL_PATH = '/models/dji-fpv/drone.gltf';
 
@@ -19,12 +19,11 @@ interface PreLoaderProps {
 }
 
 const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PATH }) => {
-  const lenis = useLenisControl();
+  const lenis = useLenis();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const progressWrapperRef = useRef<HTMLDivElement>(null);
   const percentRef = useRef<HTMLSpanElement>(null);
   const processBarRef = useRef<HTMLDivElement>(null);
-  const startLenisTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hideLoaderTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const dataProxy = useRef({
@@ -36,7 +35,8 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
   const refQuickProcessing = useRef<gsap.QuickToFunc | null>(null);
 
   useEffect(() => {
-    lenis.stop();
+    lenis?.scrollTo(0, { immediate: true });
+    lenis?.stop();
 
     // Kick off model loading — populates suspend-react cache for useGLTF
     useGLTF.preload(modelPath);
@@ -84,9 +84,6 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
                   onComplete: () => {
                     wrapperRef.current?.classList.add(s.isHide);
                     progressWrapperRef.current?.classList.add(s.isHide);
-                    startLenisTimeoutRef.current = setTimeout(() => {
-                      lenis.start();
-                    }, 2000);
                     onComplete?.();
                   },
                 });
@@ -118,7 +115,6 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
     return (): void => {
       gsap.ticker.remove(looper);
       if (hideLoaderTimeoutRef.current) clearTimeout(hideLoaderTimeoutRef.current);
-      if (startLenisTimeoutRef.current) clearTimeout(startLenisTimeoutRef.current);
     };
   }, [lenis, modelPath, onComplete]);
 

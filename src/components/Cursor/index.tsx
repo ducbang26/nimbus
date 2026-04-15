@@ -81,23 +81,7 @@ const Cursor = ({ isEnter }: ICursor): ReactElement => {
         targetPos.y = event.clientY;
       }
 
-      if (isHovering && element?.classList.contains('js-button')) {
-        const rect = element.getBoundingClientRect();
-        gsap.to(cursor, {
-          width: rect.width + rem(1.6),
-          height: rect.height + rem(1.6),
-          backgroundColor: 'transparent',
-          border: '0.2rem solid #F6F6F6',
-          mixBlendMode: 'difference',
-          duration: 0.3,
-          ease: 'power2.out',
-          xPercent: 0,
-          yPercent: 0,
-          left: rem(-2),
-          top: rem(-2),
-        });
-        gsap.to(cursorTextRef.current, { opacity: 0, duration: 0.3 });
-      } else if (isHovering && element?.classList.contains('js-product-item')) {
+      if (isHovering && element?.classList.contains('js-product-item')) {
         gsap.to(cursor, {
           width: rem(12),
           height: rem(12),
@@ -109,18 +93,16 @@ const Cursor = ({ isEnter }: ICursor): ReactElement => {
           left: 0,
           top: 0,
           duration: 0.3,
-          ease: 'power2.out',
+          ease: 'power2.inOut',
         });
-        gsap.to(cursorTextRef.current, { opacity: 1, duration: 0.3 });
+        gsap.to(cursorTextRef.current, { opacity: 1, duration: 0.4 });
       } else {
         gsap.to(cursor, {
-          width: rem(4),
-          height: rem(4),
+          width: rem(0),
+          height: rem(0),
           border: 'none',
-          mixBlendMode: 'difference',
           duration: 0.3,
-          ease: 'power2.out',
-          backgroundColor: '#F6F6F6',
+          ease: 'power2.inOut',
           xPercent: -50,
           yPercent: -50,
           left: 0,
@@ -128,7 +110,7 @@ const Cursor = ({ isEnter }: ICursor): ReactElement => {
         });
         gsap.to(cursorTextRef.current, {
           opacity: 0,
-          duration: 0.3,
+          duration: 0.4,
         });
       }
     };

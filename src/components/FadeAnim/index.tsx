@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/refs */
 'use client';
 
 import React, { forwardRef, PropsWithChildren, ReactElement, useLayoutEffect, useRef } from 'react';
@@ -61,7 +62,7 @@ const Fade = forwardRef<HTMLElement, IFade>(function Fade(
         onEnter: () => animationIn(delayTrigger),
       });
 
-      return () => trigger.kill();
+      return (): void => trigger.kill();
     },
     { dependencies: [resolvedRef.current], scope: resolvedRef }
   );

@@ -32,8 +32,10 @@ export default function useSplitType({
     const instance = new SplitType(element, { types });
 
     splitterRef.current = instance;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSplitter(instance);
 
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     return () => {
       instance.revert();
       splitterRef.current = null;

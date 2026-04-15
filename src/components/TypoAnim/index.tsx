@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/refs */
 'use client';
 
 import React, { ReactElement, useLayoutEffect, useRef } from 'react';
@@ -49,7 +50,7 @@ export default function TypoAnim({
         onEnter: () => animationIn(delayTrigger, stagger),
       });
 
-      return () => trigger.kill();
+      return (): void => trigger.kill();
     },
     { dependencies: [contentRef.current], scope: contentRef }
   );
