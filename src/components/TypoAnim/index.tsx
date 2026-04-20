@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import gsap from 'gsap';
 
 import useTypoAnim from './useTypoAnim';
+import usePageEffectContext from '@Contexts/pageEffectContext';
 
 interface TypoAnimProps {
   children: ReactElement<{ ref?: React.Ref<HTMLElement> }>;
@@ -26,7 +27,9 @@ export default function TypoAnim({
   duration,
 }: TypoAnimProps): ReactElement {
   const contentRef = useRef<HTMLParagraphElement>(null);
-
+  
+  const { isReadyInteractive } = usePageEffectContext();
+  
   const { animationIn, animationHide } = useTypoAnim({
     refContent: contentRef,
     delayEnter,
@@ -41,7 +44,7 @@ export default function TypoAnim({
   useGSAP(
     () => {
       const el = contentRef.current;
-      if (!el) return;
+      if (!el || !isReadyInteractive) return;
 
       const trigger = ScrollTrigger.create({
         trigger: el,
@@ -52,7 +55,7 @@ export default function TypoAnim({
 
       return (): void => trigger.kill();
     },
-    { dependencies: [contentRef.current], scope: contentRef }
+    { dependencies: [contentRef.current, isReadyInteractive], scope: contentRef }
   );
 
   return React.cloneElement(children, {

@@ -96,7 +96,7 @@ const Header = (): React.ReactElement => {
       ></div>
       <Container>
         <div className={s.header__main}>
-          <Fade direction="top" from="10px" delayTrigger={3.3}>
+          <Fade direction="top" from="10px" delayTrigger={2.3}>
             <div style={{ opacity: 0 }} className={`${s.header__logo} ${s.txt_med}`}>
               <Link href="/">NIMBUS AIR</Link>
             </div>
@@ -104,7 +104,7 @@ const Header = (): React.ReactElement => {
           <nav className={s.main_nav}>
             <ul className={s.main__nav_list}>
               {NAVIGATION_PAGES.map((page, index) => (
-                <Fade key={page.href} direction="top" from="10px" delayTrigger={3.4 + index * 0.1}>
+                <Fade key={page.href} direction="top" from="10px" delayTrigger={2.4 + index * 0.1}>
                   <li style={{ opacity: 0 }} className={s.main__nav_item}>
                     <Link className={clsx(s.hover_un)} href={page.href}>{page.label}</Link>
                   </li>
@@ -113,7 +113,7 @@ const Header = (): React.ReactElement => {
             </ul>
           </nav>
           <div className={s.header__icons}>
-            <Fade direction="top" from="10px" delayTrigger={3.3}>
+            <Fade direction="top" from="10px" delayTrigger={2.3}>
               <Link
                 style={{ opacity: 0 }}
                 className={s.header__icons_item}
@@ -123,7 +123,7 @@ const Header = (): React.ReactElement => {
                 <Search />
               </Link>
             </Fade>
-            <Fade direction="top" from="10px" delayTrigger={3.3}>
+            <Fade direction="top" from="10px" delayTrigger={2.3}>
               <Link
                 style={{ opacity: 0 }}
                 className={s.header__icons_item}
@@ -133,7 +133,7 @@ const Header = (): React.ReactElement => {
                 <User />
               </Link>
             </Fade>
-            <Fade direction="top" from="10px" delayTrigger={3.3}>
+            <Fade direction="top" from="10px" delayTrigger={2.3}>
               <Link
                 style={{ opacity: 0 }}
                 className={s.header__icons_item}

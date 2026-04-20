@@ -10,6 +10,7 @@ import { GLTFLoader } from 'three-stdlib';
 
 import s from './styles.module.scss';
 import { useLenis } from 'lenis/react';
+import usePageEffectContext from '@Contexts/pageEffectContext';
 
 const MODEL_PATH = '/models/dji-fpv/drone.gltf';
 
@@ -25,6 +26,8 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
   const percentRef = useRef<HTMLSpanElement>(null);
   const processBarRef = useRef<HTMLDivElement>(null);
   const hideLoaderTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const { pageAfter } = usePageEffectContext();
 
   const dataProxy = useRef({
     percent: 1,
@@ -64,10 +67,11 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
 
       refQuickProcessing.current?.(Math.floor(d.offset));
       d.offset += d.deal;
-
+      
       if (d.offset >= 100 && dataProxy.current.isAssetLoaded) {
         gsap.ticker.remove(looper);
         refQuickProcessing.current?.(100);
+        pageAfter();
 
         hideLoaderTimeoutRef.current = setTimeout(() => {
           if (wrapperRef.current) {
