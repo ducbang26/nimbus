@@ -7,6 +7,7 @@ import { IAnimationElement } from '@Types/common';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import gsap from 'gsap';
+import usePageEffectContext from '@Contexts/pageEffectContext';
 
 type FadeDirection = 'top' | 'bottom' | 'left' | 'right' | 'none';
 
@@ -33,6 +34,8 @@ const Fade = forwardRef<HTMLElement, IFade>(function Fade(
   // Internal fallback ref
   const refContent = useRef<IAnimationElement>(null);
 
+  const { isReadyInteractive } = usePageEffectContext();
+
   // Resolve ref (forwarded OR internal)
   const resolvedRef = (ref as React.RefObject<IAnimationElement>) || refContent;
 
@@ -53,7 +56,7 @@ const Fade = forwardRef<HTMLElement, IFade>(function Fade(
   useGSAP(
     () => {
       const el = resolvedRef.current;
-      if (!el) return;
+      if (!el || !isReadyInteractive) return;
 
       const trigger = ScrollTrigger.create({
         trigger: el,
@@ -64,7 +67,7 @@ const Fade = forwardRef<HTMLElement, IFade>(function Fade(
 
       return (): void => trigger.kill();
     },
-    { dependencies: [resolvedRef.current], scope: resolvedRef }
+    { dependencies: [resolvedRef.current, isReadyInteractive], scope: resolvedRef }
   );
 
   /* ---------------- Render ---------------- */

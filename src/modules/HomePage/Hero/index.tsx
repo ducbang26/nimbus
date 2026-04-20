@@ -30,7 +30,7 @@ const Hero = (): React.ReactElement => {
       <div className={`${s.home__hero_wrap}`}>
         <div className={`${s.home__hero_main}`}>
           <div className={`${s.hero__heading_wrap} grid grid-cols-12`}>
-            <TypoAnim delayTrigger={2.5} stagger={0.2}>
+            <TypoAnim delayTrigger={1} stagger={0.2}>
               <h3 ref={heroHeadingRef} className={`${s.home__hero_heading} txt-light`}>
                 Revolutionize <br /> Your Perspective
               </h3>
@@ -39,12 +39,12 @@ const Hero = (): React.ReactElement => {
 
           <div className={`${s.home__hero_bottom} grid grid-cols-12`}>
             <div className={`${s.home__hero_cta} txt-light`}>
-              <TypoAnim delayTrigger={2.9} stagger={0.05}>
+              <TypoAnim delayTrigger={1.3} stagger={0.05}>
                 <p ref={heroSubtitleRef} className={s.hero__cta_txt}>
                   Experience the Future of Aerial Technology
                 </p>
               </TypoAnim>
-              <Fade direction="bottom" from="10px" delayTrigger={3.4} duration={1.2}>
+              <Fade direction="bottom" from="10px" delayTrigger={1.6} duration={1.2}>
                 <div style={{ opacity: 0 }}>
                   <UIButton color="secondary">Explore Our Drones</UIButton>
                 </div>

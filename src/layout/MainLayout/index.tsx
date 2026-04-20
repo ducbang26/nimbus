@@ -2,6 +2,7 @@
 import React, { PropsWithChildren } from 'react';
 
 import Cursor from '@Components/Cursor';
+import { PageEffectProvider } from '@Contexts/pageEffectContext';
 import Footer from '@Layouts/Footer';
 import Header from '@Layouts/Header';
 import LenisScroller from '@Layouts/Lenis';
@@ -12,15 +13,17 @@ const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
 
   return (
-    <LenisScroller>
-      <PreLoader key={pathname} modelPath="/models/dji-fpv/drone.gltf" />
-      <Cursor isEnter={true} />
+    <PageEffectProvider>
+      <LenisScroller>
+        <PreLoader key={pathname} modelPath="/models/dji-fpv/drone.gltf" />
+        <Cursor isEnter={true} />
 
-      <Header />
-      {children}
-      <Footer />
-      {/* <DebugGrid /> */}
-    </LenisScroller>
+        <Header />
+        {children}
+        <Footer />
+        {/* <DebugGrid /> */}
+      </LenisScroller>
+    </PageEffectProvider>
   );
 };
 
