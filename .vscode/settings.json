@@ -1,8 +1,3 @@
 {
-  "IDX.agenticWorkspace": true,
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#5D0D15",
-    "titleBar.activeBackground": "#82131D",
-    "statusBar.background": "#82131D"
-  }
+  "IDX.agenticWorkspace": true
 }
