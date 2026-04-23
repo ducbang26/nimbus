@@ -43,7 +43,7 @@ const Testimonials = (): React.ReactElement => {
       });
 
       /* Initial states */
-      gsap.set(texts, { y: 20, opacity: 0 });
+      gsap.set(texts, { y: '2rem', opacity: 0 });
       gsap.set(layers, { clipPath: 'inset(0% 0% 100% 0%)' });
 
       if (texts[0]) gsap.set(texts[0], { y: 0, opacity: 1 });
@@ -62,7 +62,7 @@ const Testimonials = (): React.ReactElement => {
           mainTL.to(
             texts[i - 1],
             {
-              y: -20,
+              y: '-2rem',
               opacity: 0,
               duration: 0.6,
               ease: 'power2.inOut',
@@ -74,7 +74,7 @@ const Testimonials = (): React.ReactElement => {
         if (texts[i]) {
           mainTL.fromTo(
             texts[i],
-            { y: 20, opacity: 0 },
+            { y: '2rem', opacity: 0 },
             {
               y: 0,
               opacity: 1,
