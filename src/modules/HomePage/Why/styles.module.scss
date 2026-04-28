@@ -21,7 +21,7 @@
   &__title {
     font-size: rem(100px);
     color: var(--neutral-950);
-    line-height: 0.7;
+    line-height: 1.2;
     letter-spacing: -0.05em;
   }
 
@@ -29,7 +29,7 @@
     font-size: rem(20px);
     color: var(--neutral-950);
     max-width: rem(426px);
-    line-height: 1.1;
+    line-height: 1.2;
   }
 
   &__cta {
@@ -40,7 +40,7 @@
     text-decoration: none;
     transition: all 0.3s ease;
     position: relative;
-    font-size: 14px;
+    font-size: rem(14px);
   }
 
   // Features Section
@@ -56,6 +56,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    clip-path: inset(0% 0% 100% 0%);
 
     &:nth-child(1) {
       grid-area: 1/1/1/6;
@@ -84,6 +85,10 @@
 
   &__feature_svg {
     color: var(--white);
+    svg {
+      width: rem(24px);
+      height: rem(24px)
+    }
   }
 
   &__feature_title {
@@ -97,12 +102,13 @@
   &__feature_text {
     font-size: rem(20px);
     color: var(--neutral-950);
-    line-height: 0.7;
+    line-height: 1.2;
     font-weight: 300;
   }
 
   &__features_image {
     width: 100%;
+    clip-path: inset(0% 0% 100% 0%);
     .features__image_inner {
       width: 100%;
       height: 100%;
