@@ -64,26 +64,25 @@ const Why = (): React.ReactElement => {
       const imageTL = gsap.timeline({
         scrollTrigger: {
           trigger: featuresImageRef.current,
-          start: 'top 50%',
+          start: 'top 30%',
           invalidateOnRefresh: true,
         },
       });
 
-      const featureCards = gsap.utils.toArray<HTMLElement>('.feature_card', containerRef.current);
+      const featureCards = containerRef.current.querySelectorAll('.feature_card');
 
-      mainTL.to(
-        featureCards,
-        {
-          clipPath: 'inset(0% 0% 0% 0%)',
-          duration: 0.8,
-          stagger: 0.3,
-          ease: 'power2.inOut',
-        },
-        '-=0.4'
-      );
+      gsap.set(featureCards, { clipPath: 'inset(0% 0% 100% 0%)' });
+
+      mainTL.to(featureCards, {
+        clipPath: 'inset(0% 0% 0% 0%)',
+        duration: 0.8,
+        stagger: 0.3,
+        ease: 'power2.inOut',
+      });
 
       imageTL.to(featuresImageRef.current, {
         clipPath: 'inset(0% 0% 0% 0%)',
+        delay: 0.3,
         duration: 1.2,
         ease: 'power2.inOut',
       });
