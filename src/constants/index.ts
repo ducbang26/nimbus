@@ -38,3 +38,6 @@ export const BLACK_HEADER_PAGES = [
   EPagePaths.PRODUCT_DETAIL,
   EPagePaths.CART,
 ];
+
+export const BASE_URL = 'https://fakestoreapi.com';
+export const PRODUCTS_URL = '/products';
