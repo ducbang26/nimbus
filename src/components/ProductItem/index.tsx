@@ -27,13 +27,13 @@ const ProductItem = ({
 }: IProductItemProps): React.ReactElement => {
   const dispatch = useDispatch();
 
-  const addToCartHandler = () => {
-    dispatch(addToCart({ ...data, qty }));
-  };
+  // const addToCartHandler = () => {
+  //   dispatch(addToCart({ ...data, qty }));
+  // };
 
   return (
-    // <Link href={`/product/${index}`} className={clsx('col-span-3 js-product-item', s.productItem)}>
-    <div className={clsx('col-span-3 js-product-item', s.productItem)}>
+    <Link href={`/product/${index}`} className={clsx('col-span-3 js-product-item', s.productItem)}>
+      {/* <div className={clsx('col-span-3 js-product-item', s.productItem)}> */}
       <div className={s.productItem_image}>
         <Image src={image} alt={title} width={500} height={500} />
       </div>
@@ -44,8 +44,8 @@ const ProductItem = ({
       <UITypography typography={ETypography.TEXT_20_REGULAR} color={ETypographyColor.NEUTRAL_300}>
         ${price}
       </UITypography>
-    </div>
-    // </Link>
+      {/* </div> */}
+    </Link>
   );
 };
 
