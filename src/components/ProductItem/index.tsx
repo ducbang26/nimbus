@@ -41,10 +41,10 @@ const ProductItem = ({
         <UITypography typography={ETypography.TEXT_24_REGULAR}>{title}</UITypography>
         <UITypography typography={ETypography.TEXT_16_LIGHT}>{description}</UITypography>
       </div>
+      {/* </div> */}
       <UITypography typography={ETypography.TEXT_20_REGULAR} color={ETypographyColor.NEUTRAL_300}>
         ${price}
       </UITypography>
-      {/* </div> */}
     </Link>
   );
 };
