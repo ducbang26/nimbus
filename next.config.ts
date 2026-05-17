@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
         hostname: 'fakestoreapi.com',
         pathname: '/img/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
     ],
   },
 };
