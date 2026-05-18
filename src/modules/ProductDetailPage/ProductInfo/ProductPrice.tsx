@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
@@ -11,6 +11,18 @@ import { clsx } from 'clsx';
 import s from './styles.module.scss';
 
 const ProductPrice = (): ReactElement => {
+  const [quantity, setQuantity] = useState(0);
+
+  const increase = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decrease = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   return (
     <div className="mb_20">
       <UITypography typography={ETypography.TEXT_32_REGULAR} className="mb_24">
@@ -20,11 +32,11 @@ const ProductPrice = (): ReactElement => {
         Quantity
       </UITypography>
       <div className={clsx(s.productPrice_container, 'mb_24')}>
-        <UIButton variant="icon">
+        <UIButton variant="icon" onClick={decrease}>
           <Minus />
         </UIButton>
-        <input className={s.productPrice_input} value={1} />
-        <UIButton variant="icon">
+        <input className={s.productPrice_input} value={quantity} onChange={() => {}} />
+        <UIButton variant="icon" onClick={increase}>
           <Plus />
         </UIButton>
       </div>

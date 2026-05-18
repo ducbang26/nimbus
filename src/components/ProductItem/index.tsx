@@ -23,7 +23,10 @@ const ProductItem = ({
   const imageUrl = (images as any)?.[0]?.asset?.url ?? '/images/drone1.png';
 
   return (
-    <Link href={`/product/${slug.current}`} className={clsx('col-span-3 js-product-item', s.productItem)}>
+    <Link
+      href={`/shop/${slug?.current}`}
+      className={clsx('col-span-3 js-product-item', s.productItem)}
+    >
       <div className={clsx('col-span-3 js-product-item', s.productItem)}>
         <div className={s.productItem_image}>
           <Image src={imageUrl} alt={name} width={500} height={500} />
