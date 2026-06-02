@@ -153,7 +153,7 @@ const CardDeck = ({ cards, leftPressed, rightPressed }: ICardDeck): React.ReactE
           }}
           style={{ position: 'absolute' }}
         >
-          <Image src={card} alt="" height="700" width="488" />
+          <Image src={card} alt="" height="700" width="488" priority />
         </div>
       ))}
     </div>

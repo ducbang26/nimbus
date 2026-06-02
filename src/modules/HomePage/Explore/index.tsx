@@ -47,6 +47,7 @@ const Explore = (): React.ReactElement => {
             alt=""
             height="1636"
             width="2880"
+            priority
           ></Image>
         </div>
       </div>

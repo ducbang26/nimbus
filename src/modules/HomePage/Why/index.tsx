@@ -135,6 +135,7 @@ const Why = (): React.ReactElement => {
             alt=""
             height="750"
             width="1320"
+            priority
           />
         </div>
       </Container>

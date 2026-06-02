@@ -11,7 +11,9 @@
     height: 100%;
     transform-origin: center;
     list-style: none;
-    background-color: red;
+    background-color: transparent;
+    border-radius: rem(10px);
+    overflow: hidden;
 
     .slider_image {
       width: 100%;
