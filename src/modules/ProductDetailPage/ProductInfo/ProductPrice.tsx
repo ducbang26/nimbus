@@ -1,3 +1,4 @@
+'use client';
 import { ReactElement, useState } from 'react';
 
 import UIButton from '@Components/Button';

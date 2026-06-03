@@ -1,68 +1,65 @@
 import React from 'react';
 
+import Fade from '@Components/FadeAnim';
+import { NAVIGATION_PAGES } from '@Constants/index';
 import Arrow from '@Icons/Arrow';
 import BrandLogo from '@Icons/BrandLogo';
+import { clsx } from 'clsx';
+import Link from 'next/link';
 
 import s from './styles.module.scss';
-import Link from 'next/link';
 
 const Footer = (): React.ReactElement => {
   return (
     <footer className={s.footer}>
       <div className={`${s.footer__main} grid grid-cols-12`}>
         <div className={s.footer__contact_info}>
-          <h3 className={`${s.footer__heading} txt-light`}>NIMBUS AIR</h3>
-          <p className={`${s.footer__address} txt-light`}>
-            000 Park Avenue. <br /> New York, NY10022
-            <br />
-            (+84) 774 764 910
-          </p>
+          <Fade direction="bottom" from="10px" delayTrigger={0.3}>
+            <h3 className={`${s.footer__heading} txt-light`}>NIMBUS AIR</h3>
+          </Fade>
+          <Fade direction="bottom" from="10px" delayTrigger={0.4}>
+            <p className={`${s.footer__address} txt-light`}>
+              000 Park Avenue. <br /> New York, NY10022
+              <br />
+              (+84) 774 764 910
+            </p>
+          </Fade>
         </div>
         <nav className={`${s.footer__nav} ${s.footer__nav__pages}`}>
           <ul className={s.footer__list}>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Shop
-              </Link>
-            </li>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Model
-              </Link>
-            </li>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                About
-              </Link>
-            </li>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Contact
-              </Link>
-            </li>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Blog
-              </Link>
-            </li>
+            {NAVIGATION_PAGES.map((page, index) => (
+              <Fade key={page.href} direction="bottom" from="10px" delayTrigger={0.3 + index * 0.1}>
+                <li className={`${s.footer__item} txt-light`}>
+                  <Link href={page.href} className={s.footer__link}>
+                    {page.label}
+                  </Link>
+                </li>
+              </Fade>
+            ))}
           </ul>
         </nav>
         <nav className={`${s.footer__nav} ${s.footer__nav__social}`}>
           <ul className={s.footer__list}>
             <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Facebook
-              </Link>
+              <Fade direction="bottom" from="10px" delayTrigger={0.4}>
+                <Link href="#" className={s.footer__link}>
+                  Facebook
+                </Link>
+              </Fade>
             </li>
             <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Instagram
-              </Link>
+              <Fade direction="bottom" from="10px" delayTrigger={0.5}>
+                <Link href="#" className={s.footer__link}>
+                  Instagram
+                </Link>
+              </Fade>
             </li>
             <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Youtube
-              </Link>
+              <Fade direction="bottom" from="10px" delayTrigger={0.6}>
+                <Link href="#" className={s.footer__link}>
+                  Youtube
+                </Link>
+              </Fade>
             </li>
           </ul>
         </nav>

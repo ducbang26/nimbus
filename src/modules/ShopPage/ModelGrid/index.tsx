@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import UIButton from '@Components/Button';
 import ProductItem from '@Components/ProductItem';
@@ -28,10 +28,6 @@ const ShopPageModelGrid = ({ products }: ShopPageModelGridProps): React.ReactEle
   const handlePageClick = (page: number): void => {
     setCurrentPage(page);
   };
-
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
 
   return (
     <div className={clsx('container', s.modelGrid)}>
@@ -79,7 +75,7 @@ const ShopPageModelGrid = ({ products }: ShopPageModelGridProps): React.ReactEle
             </UITypography>
           </div>
           {products.map((item) => (
-            <ProductItem key={item.slug.current} {...item}/>
+            <ProductItem key={item.slug.current} {...item} />
           ))}
         </div>
       </div>

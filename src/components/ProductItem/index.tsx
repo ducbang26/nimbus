@@ -24,7 +24,7 @@ const ProductItem = ({
 
   return (
     <Link
-      href={`/shop/${slug?.current}`}
+      href={`/product/${slug?.current}`}
       className={clsx('col-span-3 js-product-item', s.productItem)}
     >
       <div className={clsx('col-span-3 js-product-item', s.productItem)}>

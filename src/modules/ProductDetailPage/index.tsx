@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 
 import UITypography from '@Components/Typography';
@@ -8,11 +7,49 @@ import ProductDroneModel from '@Modules/ProductDetailPage/ProductDroneModel';
 import ProductImages from '@Modules/ProductDetailPage/ProductImages';
 import ProductInfo from '@Modules/ProductDetailPage/ProductInfo';
 import ProductReviews from '@Modules/ProductDetailPage/ProductReviews';
+import { ProductItemData } from '@Types/product';
 import { clsx } from 'clsx';
+import { defineQuery } from 'next-sanity';
+import { notFound } from 'next/navigation';
 
+import { sanityFetch } from '../../sanity/live';
 import s from './styles.module.scss';
 
-const ProductDetailPage = ({ slug }: { slug: string }): React.ReactElement => {
+const EVENT_QUERY = defineQuery(`*[
+  _type=="product"
+ && inStock == true &&
+ slug.current == $slug
+] 
+[0]
+{
+  _id,
+  name,
+  price,
+  category->{name},
+  description[0]{children[0]{text}},
+  shortDesc,
+  "images": images[]{
+    "url": asset->url
+  },
+  slug{current}
+}`);
+
+const ProductDetailPage = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<React.ReactElement> => {
+  const { data } = await sanityFetch({
+    query: EVENT_QUERY,
+    params: params,
+  });
+  const product = (data ?? {}) as ProductItemData;
+  if (!product) {
+    notFound();
+  }
+
+  console.log(product);
+  const { _id, name, price, description, shortDesc, category, images, slug } = product;
   return (
     <main className={clsx('container', s.productDetail)}>
       <div className="mb_20">
@@ -21,15 +58,13 @@ const ProductDetailPage = ({ slug }: { slug: string }): React.ReactElement => {
           letterSpacing={EFontLetterSpacing.M}
           className="mb_20"
         >
-          AeroVision Pro {slug}
+          {name}
         </UITypography>
-        <UITypography typography={ETypography.TEXT_20_LIGHT}>
-          The Ultimate Drone for Filmmakers & Professionals
-        </UITypography>
+        <UITypography typography={ETypography.TEXT_20_LIGHT}>{shortDesc}</UITypography>
       </div>
       <div className="grid grid-cols-12">
         <div className="col-span-7">
-          <ProductImages />
+          <ProductImages images={images} />
           <ProductComparison />
           <ProductReviews />
         </div>

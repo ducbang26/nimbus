@@ -1,7 +1,7 @@
 import ProductDetailPage from '@Modules/ProductDetailPage';
 
-const Page = ({ params }: { params: { slug: string } }): React.ReactElement => {
-  return <ProductDetailPage slug={params.slug} />;
+const Page = ({ params }: { params: Promise<{ slug: string }> }): React.ReactElement => {
+  return <ProductDetailPage params={params} />;
 };
 
 export default Page;

@@ -10,6 +10,8 @@ export const PRODUCTS_QUERY = `*[
   category->{name},
   description[0]{children[0]{text}},
   shortDesc,
-  images,
+  "images": images[]{
+    "url": asset->url
+  },
   slug{current}
 }`;
