@@ -7,14 +7,21 @@ import s from './styles.module.scss';
 
 interface IProductImageCardProps {
   image: string;
-  alt: string;
-  isSelected: boolean;
+  isSelected?: boolean;
+  handleSelectImage?: () => void;
 }
 
-const ProductImageCard = ({ image, alt, isSelected }: IProductImageCardProps): ReactElement => {
+const ProductImageCard = ({
+  image,
+  isSelected,
+  handleSelectImage,
+}: IProductImageCardProps): ReactElement => {
   return (
-    <button className={clsx(s.productImageCard, isSelected && s.productImageCard__selected)}>
-      <Image src={image} alt={alt} width={100} height={100} />
+    <button
+      onClick={handleSelectImage}
+      className={clsx(s.productImageCard, isSelected && s.productImageCard__selected)}
+    >
+      <Image src={image} alt={'product-image'} width={100} height={100} />
     </button>
   );
 };

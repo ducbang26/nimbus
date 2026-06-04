@@ -1,3 +1,5 @@
+import { ProductImage } from "@Modules/ProductDetailPage/ProductImages";
+
 export interface ProductItemData {
   _id: string;
   name: string;
@@ -5,6 +7,6 @@ export interface ProductItemData {
   description?: { children: { text: string }};
   shortDesc: string;
   category?: { name: string };
-  images?: [];
+  images?: ProductImage[];
   slug: { current: string };
 }

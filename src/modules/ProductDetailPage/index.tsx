@@ -72,7 +72,7 @@ const ProductDetailPage = async ({
           <ProductInfo />
         </div>
       </div>
-      <ProductDroneModel />
+      {/* <ProductDroneModel /> */}
     </main>
   );
 };
