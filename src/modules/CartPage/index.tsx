@@ -1,4 +1,6 @@
+'use client';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
@@ -14,24 +16,9 @@ import Link from 'next/link';
 
 import s from './styles.module.scss';
 
-const MOCK_CART_ITEMS = [
-  {
-    id: '1',
-    name: 'Nimbus Air Premium Headphones',
-    image: '/images/drone1.png',
-    quantity: 1,
-    price: 299.99,
-  },
-  {
-    id: '2',
-    name: 'Nimbus Air Wireless Earbuds',
-    image: '/images/drone2.png',
-    quantity: 1,
-    price: 199.99,
-  },
-];
-
 const CartPage = (): React.ReactElement => {
+  const cart = useSelector((state: any) => state.cart);
+
   return (
     <main className="container">
       <UITypography
@@ -71,9 +58,10 @@ const CartPage = (): React.ReactElement => {
               </UITypography>
             </div>
           </div>
-          {MOCK_CART_ITEMS.map((item) => (
-            <CartItem key={item.id} name={''} image={''} quantity={0} price={0} />
-          ))}
+          {cart?.cartItems &&
+            cart?.cartItems.map((cartItem: any) => (
+              <CartItem key={cartItem._id} cartItem={cartItem} />
+            ))}
         </div>
 
         <div className="col-span-3">
@@ -102,7 +90,7 @@ const CartPage = (): React.ReactElement => {
                 typography={ETypography.TEXT_20_LIGHT}
                 className={s.orderSummary_value_amount}
               >
-                1,677
+                {cart.itemsPrice}
                 <UITypography
                   tag="span"
                   typography={ETypography.TEXT_12_LIGHT}
@@ -134,7 +122,23 @@ const CartPage = (): React.ReactElement => {
                 typography={ETypography.TEXT_20_LIGHT}
                 className={s.orderSummary_value_amount}
               >
-                10
+                {cart.shippingPrice}
+                <UITypography
+                  tag="span"
+                  typography={ETypography.TEXT_12_LIGHT}
+                  color={ETypographyColor.NEUTRAL_400}
+                >
+                  USD
+                </UITypography>
+              </UITypography>
+            </div>
+            <div className={s.orderSummary_value}>
+              <UITypography typography={ETypography.TEXT_16_LIGHT}>Tax</UITypography>
+              <UITypography
+                typography={ETypography.TEXT_20_LIGHT}
+                className={s.orderSummary_value_amount}
+              >
+                {cart.taxPrice}
                 <UITypography
                   tag="span"
                   typography={ETypography.TEXT_12_LIGHT}
@@ -151,7 +155,7 @@ const CartPage = (): React.ReactElement => {
                 typography={ETypography.TEXT_24_MEDIUM}
                 className={s.orderSummary_value_amount}
               >
-                1,687 USD
+                {cart.totalPrice} USD
               </UITypography>
             </div>
             <div className={s.orderSummary_warranty}>

@@ -1,5 +1,6 @@
 'use client';
 import { ReactElement, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
@@ -7,11 +8,18 @@ import { ETypography, ETypographyColor } from '@Components/Typography/constants'
 import FilledCheck from '@Icons/FilledCheck';
 import Minus from '@Icons/Minus';
 import Plus from '@Icons/Plus';
+import { addToCart } from '@Store/slices/cartSlice';
+import { ProductItemData } from '@Types/product';
 import { clsx } from 'clsx';
 
 import s from './styles.module.scss';
 
-const ProductPrice = (): ReactElement => {
+interface IProductPriceProps {
+  product?: ProductItemData;
+}
+
+const ProductPrice = ({ product }: IProductPriceProps): ReactElement => {
+  const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
   const increase = () => {
@@ -24,10 +32,21 @@ const ProductPrice = (): ReactElement => {
     }
   };
 
+  const handleAddToCart = () => {
+    const item = {
+      ...product,
+      quantity: quantity,
+    };
+
+    if (quantity > 0) {
+      dispatch(addToCart(item));
+    }
+  };
+
   return (
     <div className="mb_20">
       <UITypography typography={ETypography.TEXT_32_REGULAR} className="mb_24">
-        AeroVison Pro
+        {product?.name}
       </UITypography>
       <UITypography typography={ETypography.TEXT_20_REGULAR} className="mb_16">
         Quantity
@@ -43,9 +62,9 @@ const ProductPrice = (): ReactElement => {
       </div>
       <div className={clsx(s.productPrice_price, 'mb_20')}>
         <UITypography typography={ETypography.TEXT_32_LIGHT} color={ETypographyColor.WHITE}>
-          $1,100
+          ${product?.price}
         </UITypography>
-        <UIButton variant="text">
+        <UIButton onClick={handleAddToCart} variant="text">
           <UITypography typography={ETypography.TEXT_20_LIGHT} color={ETypographyColor.WHITE}>
             Add to cart
           </UITypography>

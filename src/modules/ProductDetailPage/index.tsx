@@ -69,7 +69,7 @@ const ProductDetailPage = async ({
           <ProductReviews />
         </div>
         <div className="col-span-5">
-          <ProductInfo />
+          <ProductInfo product={product} />
         </div>
       </div>
       {/* <ProductDroneModel /> */}

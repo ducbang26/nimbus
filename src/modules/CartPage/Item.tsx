@@ -1,29 +1,49 @@
 import { ReactElement } from 'react';
+import { useDispatch } from 'react-redux';
 
 import UIButton from '@Components/Button';
-import MinusPlusInput from '@Components/MinusPlusInput';
 import UITypography from '@Components/Typography';
 import {
   EFontLetterSpacing,
   ETypography,
   ETypographyColor,
 } from '@Components/Typography/constants';
+import Minus from '@Icons/Minus';
+import Plus from '@Icons/Plus';
 import TrashCan from '@Icons/TrashCan';
+import { addToCart, modifyquantityCartItem, removeFromCart } from '@Store/slices/cartSlice';
 import { clsx } from 'clsx';
 import Image from 'next/image';
 
 import s from './styles.module.scss';
 
-interface ICartItemProps {
-  name: string;
-  image: string;
-  quantity: number;
-  price: number;
-}
+const CartItem = ({ cartItem }: any): ReactElement => {
+  const { name, category, images, quantity, price } = cartItem;
 
-const CartItem = (props: ICartItemProps): ReactElement => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { name, image, quantity, price } = props;
+  const dispatch = useDispatch();
+
+  const handleIncreaseCart = () => {
+    dispatch(
+      modifyquantityCartItem({
+        ...cartItem,
+        quantity: quantity + 1,
+      })
+    );
+  };
+
+  const handleDecreaseCart = () => {
+    if (quantity == 1) {
+      dispatch(removeFromCart({ _id: cartItem._id }));
+    } else {
+      dispatch(
+        modifyquantityCartItem({
+          ...cartItem,
+          quantity: quantity - 1,
+        })
+      );
+    }
+  };
+
   return (
     <div className={clsx(s.cartItem, 'col-span-9 grid grid-cols-9')}>
       <div className="col-span-5">
@@ -32,7 +52,7 @@ const CartItem = (props: ICartItemProps): ReactElement => {
             <TrashCan />
           </UIButton>
           <div className={s.cartItem_product_image}>
-            <Image src={'/images/drone1.png'} alt={name} width={80} height={80} />
+            <Image src={images?.[0]?.url || ''} alt={name} width={80} height={80} />
           </div>
           <div className={s.cartItem_product_info}>
             <UITypography
@@ -40,24 +60,32 @@ const CartItem = (props: ICartItemProps): ReactElement => {
               letterSpacing={EFontLetterSpacing.M}
               className="mb_8"
             >
-              AeroVison Pro
+              {name}
             </UITypography>
             <UITypography
               typography={ETypography.TEXT_20_LIGHT}
               color={ETypographyColor.NEUTRAL_400}
               letterSpacing={EFontLetterSpacing.M}
             >
-              Drone
+              {category?.name}
             </UITypography>
           </div>
         </div>
       </div>
       <div className="col-span-2">
-        <MinusPlusInput />
+        <div className={clsx(s.minusPlusInput_container, 'mb_24')}>
+          <UIButton variant="icon" onClick={handleDecreaseCart}>
+            <Minus />
+          </UIButton>
+          <input className={s.minusPlusInput_input} readOnly value={quantity} />
+          <UIButton variant="icon" onClick={handleIncreaseCart}>
+            <Plus />
+          </UIButton>
+        </div>
       </div>
       <div className="col-span-2 text_end">
         <UITypography typography={ETypography.TEXT_24_LIGHT} letterSpacing={EFontLetterSpacing.M}>
-          $299
+          ${quantity * price}
         </UITypography>
       </div>
     </div>

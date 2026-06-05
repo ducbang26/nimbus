@@ -2,11 +2,16 @@ import { ReactElement } from 'react';
 
 import ProductDesc from '@Modules/ProductDetailPage/ProductInfo/ProductDesc';
 import ProductPrice from '@Modules/ProductDetailPage/ProductInfo/ProductPrice';
+import { ProductItemData } from '@Types/product';
 
-const ProductInfo = (): ReactElement => {
+interface IProductInfoProps {
+  product?: ProductItemData;
+}
+
+const ProductInfo = ({ product }: IProductInfoProps): ReactElement => {
   return (
     <>
-      <ProductPrice />
+      <ProductPrice product={product} />
       <ProductDesc />
     </>
   );
