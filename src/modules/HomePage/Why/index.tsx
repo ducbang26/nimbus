@@ -113,7 +113,7 @@ const Why = (): React.ReactElement => {
         </div>
 
         <div className={clsx(s.drone_showcase__features, 'grid grid-cols-12 feature_card_wrap')}>
-          {LIST_FEATURE_CARD.map((card, index) => {
+          {LIST_FEATURE_CARD.map((card) => {
             return (
               <div key={card.id} className={clsx(s.drone_showcase__feature_card, 'feature_card')}>
                 <div
