@@ -82,7 +82,6 @@ const Why = (): React.ReactElement => {
 
       imageTL.to(featuresImageRef.current, {
         clipPath: 'inset(0% 0% 0% 0%)',
-        delay: 0.3,
         duration: 1.2,
         ease: 'power2.inOut',
       });

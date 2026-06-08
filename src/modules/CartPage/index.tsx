@@ -2,57 +2,19 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-
-
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
-import { EFontLetterSpacing, ETypography, ETypographyColor } from '@Components/Typography/constants';
+import {
+  EFontLetterSpacing,
+  ETypography,
+  ETypographyColor,
+} from '@Components/Typography/constants';
 import Shield from '@Icons/Shield';
 import Warning from '@Icons/Warning';
 import CartItem from '@Modules/CartPage/Item';
 import Link from 'next/link';
 
-
-
 import s from './styles.module.scss';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const CartPage = (): React.ReactElement => {
   const cart = useSelector((state: any) => state.cart);

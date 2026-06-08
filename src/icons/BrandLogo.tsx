@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const BrandLogo = (): React.ReactElement => {
+  const svgRef = useRef<SVGSVGElement | null>(null);
+
+  useEffect(() => {
+    if (!svgRef.current) return;
+
+    const paths = svgRef.current.querySelectorAll('path');
+
+    gsap.set(paths, {
+      y: '100%',
+    });
+
+    gsap.to(paths, {
+      y: '0%',
+      duration: 1.2,
+      stagger: 0.1,
+      scrollTrigger: {
+        trigger: svgRef.current,
+        start: 'top bottom',
+        end: 'bottom 95%',
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <svg
+      ref={svgRef}
       width="1320"
       height="180"
       viewBox="0 0 1320 180"
