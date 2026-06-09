@@ -14,6 +14,6 @@ export type ICartItem = {
   countInStock: number;
   createdAt: string;
   updatedAt: string;
-  qty: number;
+  quantity: number;
   uuid?: string;
 };

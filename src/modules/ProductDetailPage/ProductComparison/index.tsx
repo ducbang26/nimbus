@@ -14,54 +14,56 @@ const ProductComparison = (): ReactElement => {
         Compare with Other Models
       </UITypography>
       <table className={s.productComparison_table}>
-        <tr>
-          <th></th>
-          <td>
-            <Image src="/images/drone1.png" alt="AeroVision Pro" width={100} height={100} />
-          </td>
-          <td>
-            <Image src="/images/drone2.png" alt="AeroVision Pro" width={100} height={100} />
-          </td>
-          <td>
-            <Image src="/images/drone3.png" alt="AeroVision Pro" width={100} height={100} />
-          </td>
-        </tr>
-        <tr>
-          <th>Features</th>
-          <td>AeroVision Pro</td>
-          <td>SkyRacer X</td>
-          <td>Explorer Mini</td>
-        </tr>
-        <tr>
-          <th>Camera</th>
-          <td>8K UHD</td>
-          <td>FPV HD</td>
-          <td>4K HD</td>
-        </tr>
-        <tr>
-          <th>Flight Time</th>
-          <td>60 min</td>
-          <td>30 min</td>
-          <td>40 min</td>
-        </tr>
-        <tr>
-          <th>Speed</th>
-          <td>70 km/h</td>
-          <td>120 km/h</td>
-          <td>50 km/h</td>
-        </tr>
-        <tr>
-          <th>AI Tracking</th>
-          <td>Yes</td>
-          <td>No</td>
-          <td>Yes</td>
-        </tr>
-        <tr>
-          <th>Obstacle Avoidance</th>
-          <td>No</td>
-          <td>No</td>
-          <td>Yes</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th></th>
+            <td>
+              <Image src="/images/drone1.png" alt="AeroVision Pro" width={100} height={100} />
+            </td>
+            <td>
+              <Image src="/images/drone2.png" alt="AeroVision Pro" width={100} height={100} />
+            </td>
+            <td>
+              <Image src="/images/drone3.png" alt="AeroVision Pro" width={100} height={100} />
+            </td>
+          </tr>
+          <tr>
+            <th>Features</th>
+            <td>AeroVision Pro</td>
+            <td>SkyRacer X</td>
+            <td>Explorer Mini</td>
+          </tr>
+          <tr>
+            <th>Camera</th>
+            <td>8K UHD</td>
+            <td>FPV HD</td>
+            <td>4K HD</td>
+          </tr>
+          <tr>
+            <th>Flight Time</th>
+            <td>60 min</td>
+            <td>30 min</td>
+            <td>40 min</td>
+          </tr>
+          <tr>
+            <th>Speed</th>
+            <td>70 km/h</td>
+            <td>120 km/h</td>
+            <td>50 km/h</td>
+          </tr>
+          <tr>
+            <th>AI Tracking</th>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+          <tr>
+            <th>Obstacle Avoidance</th>
+            <td>No</td>
+            <td>No</td>
+            <td>Yes</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

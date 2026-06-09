@@ -82,7 +82,6 @@ const Why = (): React.ReactElement => {
 
       imageTL.to(featuresImageRef.current, {
         clipPath: 'inset(0% 0% 0% 0%)',
-        delay: 0.3,
         duration: 1.2,
         ease: 'power2.inOut',
       });
@@ -113,7 +112,7 @@ const Why = (): React.ReactElement => {
         </div>
 
         <div className={clsx(s.drone_showcase__features, 'grid grid-cols-12 feature_card_wrap')}>
-          {LIST_FEATURE_CARD.map((card, index) => {
+          {LIST_FEATURE_CARD.map((card) => {
             return (
               <div key={card.id} className={clsx(s.drone_showcase__feature_card, 'feature_card')}>
                 <div
@@ -135,6 +134,7 @@ const Why = (): React.ReactElement => {
             alt=""
             height="750"
             width="1320"
+            priority
           />
         </div>
       </Container>

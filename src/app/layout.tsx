@@ -2,6 +2,7 @@ import MainLayout from '@Layouts/MainLayout';
 import '@Styles/app.scss';
 import type { Metadata } from 'next';
 import { DM_Sans, Montserrat } from 'next/font/google';
+import { SanityLive } from '../sanity/live';
 
 const dmSans = DM_Sans({
   variable: '--font-dm-sans',
@@ -26,7 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${montserrat.variable}`}>
-        <MainLayout>{children}</MainLayout>
+        <MainLayout>
+          {children}
+          <SanityLive />
+        </MainLayout>
       </body>
     </html>
   );

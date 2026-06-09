@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
@@ -10,28 +12,51 @@ import {
 import Shield from '@Icons/Shield';
 import Warning from '@Icons/Warning';
 import CartItem from '@Modules/CartPage/Item';
+import { loadStripe } from '@stripe/stripe-js';
 import Link from 'next/link';
 
 import s from './styles.module.scss';
 
-const MOCK_CART_ITEMS = [
-  {
-    id: '1',
-    name: 'Nimbus Air Premium Headphones',
-    image: '/images/drone1.png',
-    quantity: 1,
-    price: 299.99,
-  },
-  {
-    id: '2',
-    name: 'Nimbus Air Wireless Earbuds',
-    image: '/images/drone2.png',
-    quantity: 1,
-    price: 199.99,
-  },
-];
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const CartPage = (): React.ReactElement => {
+  const cart = useSelector((state: any) => state.cart);
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    if (!cart?.cartItems || cart.cartItems.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cartItems: cart.cartItems,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || 'Something went wrong with Stripe checkout.');
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Failed to initiate checkout. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main className="container">
       <UITypography
@@ -40,7 +65,7 @@ const CartPage = (): React.ReactElement => {
         lineHeight={100}
         className="mb_20"
       >
-        Cart (2)
+        Cart ({cart.totalItems || 0})
       </UITypography>
       <div className="grid grid-cols-12">
         <div className="col-span-9">
@@ -71,9 +96,10 @@ const CartPage = (): React.ReactElement => {
               </UITypography>
             </div>
           </div>
-          {MOCK_CART_ITEMS.map((item) => (
-            <CartItem key={item.id} name={''} image={''} quantity={0} price={0} />
-          ))}
+          {cart?.cartItems &&
+            cart?.cartItems.map((cartItem: any) => (
+              <CartItem key={cartItem._id} cartItem={cartItem} />
+            ))}
         </div>
 
         <div className="col-span-3">
@@ -102,7 +128,7 @@ const CartPage = (): React.ReactElement => {
                 typography={ETypography.TEXT_20_LIGHT}
                 className={s.orderSummary_value_amount}
               >
-                1,677
+                {cart.itemsPrice}
                 <UITypography
                   tag="span"
                   typography={ETypography.TEXT_12_LIGHT}
@@ -134,7 +160,23 @@ const CartPage = (): React.ReactElement => {
                 typography={ETypography.TEXT_20_LIGHT}
                 className={s.orderSummary_value_amount}
               >
-                10
+                {cart.shippingPrice}
+                <UITypography
+                  tag="span"
+                  typography={ETypography.TEXT_12_LIGHT}
+                  color={ETypographyColor.NEUTRAL_400}
+                >
+                  USD
+                </UITypography>
+              </UITypography>
+            </div>
+            <div className={s.orderSummary_value}>
+              <UITypography typography={ETypography.TEXT_16_LIGHT}>Tax</UITypography>
+              <UITypography
+                typography={ETypography.TEXT_20_LIGHT}
+                className={s.orderSummary_value_amount}
+              >
+                {cart.taxPrice}
                 <UITypography
                   tag="span"
                   typography={ETypography.TEXT_12_LIGHT}
@@ -151,7 +193,7 @@ const CartPage = (): React.ReactElement => {
                 typography={ETypography.TEXT_24_MEDIUM}
                 className={s.orderSummary_value_amount}
               >
-                1,687 USD
+                {cart.totalPrice} USD
               </UITypography>
             </div>
             <div className={s.orderSummary_warranty}>
@@ -174,7 +216,9 @@ const CartPage = (): React.ReactElement => {
                 </Link>
               </UITypography>
             </div>
-            <UIButton stretch>Check Out Now</UIButton>
+            <UIButton stretch onClick={handleCheckout} loading={loading}>
+              {loading ? 'Processing...' : 'Check Out Now'}
+            </UIButton>
           </div>
           <div className={s.orderInfo}>
             <UITypography color={ETypographyColor.NEUTRAL_500} className="mb_8">
@@ -193,7 +237,7 @@ const CartPage = (): React.ReactElement => {
                 Visa, MasterCard, PayPal, COD.
               </UITypography>
             </UITypography>
-            <UITypography lineHeight={20} color={ETypographyColor.NEUTRAL_500}>
+            <UITypography lineHeight={20} color={ETypographyColor.NEUTRAL_500} className="mb_8">
               Need help? Contact our support at
             </UITypography>
             <UITypography
@@ -237,7 +281,7 @@ const CartPage = (): React.ReactElement => {
               color={ETypographyColor.NEUTRAL_500}
               letterSpacing={EFontLetterSpacing.S}
             >
-              ustomers are responsible for shipping costs for out-of-warranty repairs.
+              Customers are responsible for shipping costs for out-of-warranty repairs.
             </UITypography>
           </div>
           <UITypography

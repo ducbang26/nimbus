@@ -17,14 +17,14 @@ const cartSlice = createSlice({
       const item = action.payload;
       item.uuid = uuidv4();
       const existItem = state.cartItems.find((x: ICartItem) => {
-        return x._id === item._id && x.color === item.color && x.size === item.size;
+        return x._id === item._id;
       });
 
       if (existItem) {
         // state.cartItems = state.cartItems.map((x: ICartItem) =>
         //   x._id === existItem._id ? item : x
         // );
-        existItem.qty += item.qty;
+        existItem.quantity += item.quantity;
       } else {
         state.cartItems = [...state.cartItems, item];
       }
@@ -32,7 +32,7 @@ const cartSlice = createSlice({
       return updateCart(state);
     },
 
-    modifyQtyCartItem: (state, action) => {
+    modifyquantityCartItem: (state, action) => {
       const item = action.payload;
       const existItem = state.cartItems.find((x: ICartItem) => {
         return x.uuid === item.uuid;
@@ -52,7 +52,7 @@ const cartSlice = createSlice({
       const existItem = state.cartItems.find((x: ICartItem) => x.uuid === item.uuid);
 
       const duplicatedItem = state.cartItems.find((x: ICartItem) => {
-        return x._id === item._id && x.color === item.color && x.size === item.size;
+        return x._id === item._id;
       });
 
       if (duplicatedItem) {
@@ -68,9 +68,7 @@ const cartSlice = createSlice({
 
     removeFromCart: (state, action) => {
       const item = action.payload;
-      state.cartItems = state.cartItems.filter(
-        (x: ICartItem) => !(x._id === item._id && x.color === item.color && x.size === item.size)
-      );
+      state.cartItems = state.cartItems.filter((x: ICartItem) => !(x._id === item._id));
 
       return updateCart(state);
     },
@@ -97,7 +95,7 @@ export const {
   saveShippingAddress,
   savePaymentMethod,
   clearCartItems,
-  modifyQtyCartItem,
+  modifyquantityCartItem,
   modifyAtributesCartItem,
 } = cartSlice.actions;
 

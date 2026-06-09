@@ -1,10 +1,11 @@
 import React from 'react';
 
+import { NAVIGATION_PAGES } from '@Constants/index';
 import Arrow from '@Icons/Arrow';
 import BrandLogo from '@Icons/BrandLogo';
+import Link from 'next/link';
 
 import s from './styles.module.scss';
-import Link from 'next/link';
 
 const Footer = (): React.ReactElement => {
   return (
@@ -20,31 +21,13 @@ const Footer = (): React.ReactElement => {
         </div>
         <nav className={`${s.footer__nav} ${s.footer__nav__pages}`}>
           <ul className={s.footer__list}>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Shop
-              </Link>
-            </li>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Model
-              </Link>
-            </li>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                About
-              </Link>
-            </li>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Contact
-              </Link>
-            </li>
-            <li className={`${s.footer__item} txt-light`}>
-              <Link href="#" className={s.footer__link}>
-                Blog
-              </Link>
-            </li>
+            {NAVIGATION_PAGES.map((page) => (
+              <li key={page.href} className={`${s.footer__item} txt-light`}>
+                <Link href={page.href} className={s.footer__link}>
+                  {page.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <nav className={`${s.footer__nav} ${s.footer__nav__social}`}>

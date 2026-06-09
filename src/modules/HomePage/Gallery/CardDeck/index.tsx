@@ -2,11 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import { gsap } from 'gsap';
 import { Draggable } from 'gsap/Draggable';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 
 import s from './styles.module.scss';
 
-gsap.registerPlugin(Draggable);
+gsap.registerPlugin(Draggable, ScrollTrigger);
 
 interface ICardDeck {
   cards: string[];
@@ -16,8 +17,10 @@ interface ICardDeck {
 
 const CardDeck = ({ cards, leftPressed, rightPressed }: ICardDeck): React.ReactElement => {
   const [deck, setDeck] = useState(cards);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lastActionRef = useRef<'left' | 'right' | null>(null);
+  const isRevealedRef = useRef<boolean>(false);
 
   const animateToBackOfDeck = (
     target: HTMLDivElement | null,
@@ -75,7 +78,39 @@ const CardDeck = ({ cards, leftPressed, rightPressed }: ICardDeck): React.ReactE
     );
   };
 
-  // Button handlers
+  useEffect(() => {
+    const validCards = cardRefs.current.filter((card) => card !== null);
+
+    if (validCards.length > 0 && !isRevealedRef.current) {
+      isRevealedRef.current = true;
+
+      gsap.fromTo(
+        validCards,
+        {
+          autoAlpha: 0,
+          scale: 0.8,
+          y: 150,
+        },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: 'top 50%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   useEffect(() => {
     if (leftPressed !== null) {
@@ -110,19 +145,23 @@ const CardDeck = ({ cards, leftPressed, rightPressed }: ICardDeck): React.ReactE
     }
   }, [rightPressed]);
 
-  // drag handler
   useEffect(() => {
     cardRefs.current.forEach((card, index) => {
+      if (!card) return;
+
       gsap.set(card, { zIndex: deck.length - index });
       const prevPosition = `${(index + 1) * 5}`;
+
       if (lastActionRef.current === 'right') {
         gsap.to(card, { rotation: `${index * 5}deg`, duration: 0.25 });
-      } else {
+      } else if (lastActionRef.current === 'left') {
         gsap.fromTo(
           card,
           { rotation: prevPosition },
           { rotation: `${index * 5}deg`, duration: 0.25 }
         );
+      } else {
+        gsap.set(card, { rotation: `${index * 5}deg` });
       }
 
       Draggable.create(card, {
@@ -143,17 +182,17 @@ const CardDeck = ({ cards, leftPressed, rightPressed }: ICardDeck): React.ReactE
   }, [deck]);
 
   return (
-    <div className={s.slider}>
+    <div className={s.slider} ref={containerRef}>
       {deck.map((card, index) => (
         <div
           className={s.slider__item}
-          key={index}
+          key={card}
           ref={(el) => {
             cardRefs.current[index] = el;
           }}
-          style={{ position: 'absolute' }}
+          style={{ position: 'absolute', opacity: 0, zIndex: index }}
         >
-          <Image src={card} alt="" height="700" width="488" />
+          <Image src={card} alt="" height="700" width="488" priority />
         </div>
       ))}
     </div>

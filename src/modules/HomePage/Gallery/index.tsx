@@ -23,13 +23,13 @@ const Gallery = (): React.ReactElement => {
 
   return (
     <section className={`${s.gallery} container`}>
-      <div className={`${s.btn}`} onClick={onLeftPressed}>
+      {/* <div className={`${s.btn}`} onClick={onLeftPressed}>
         <ArrowLeft />
-      </div>
+      </div> */}
       <CardDeck leftPressed={leftPressed} rightPressed={rightPressed} cards={cardImage} />
-      <div className={`${s.btn}`} onClick={onRightPressed}>
+      {/* <div className={`${s.btn}`} onClick={onRightPressed}>
         <ArrowRight />
-      </div>
+      </div> */}
     </section>
   );
 };

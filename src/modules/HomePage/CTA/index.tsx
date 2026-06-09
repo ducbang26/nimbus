@@ -1,6 +1,8 @@
 import React from 'react';
 
 import UIButton from '@Components/Button';
+import Fade from '@Components/FadeAnim';
+import TypoAnim from '@Components/TypoAnim';
 import Image from 'next/image';
 
 import s from './styles.module.scss';
@@ -11,8 +13,14 @@ const CTA = (): React.ReactElement => {
       <div className={`${s.cta_main} container`}>
         <div className={`${s.cta_bottom} grid grid-cols-12`}>
           <div className={`${s.cta_content} txt-light`}>
-            <div className={`${s.cta_content_txt} txt-light`}>Ready to Ride the Future?</div>
-            <UIButton color="secondary">Get Your Drone</UIButton>
+            <TypoAnim delayTrigger={0.3} stagger={0.05}>
+              <div className={`${s.cta_content_txt} txt-light`}>Ready to Ride the Future?</div>
+            </TypoAnim>
+            <Fade direction="bottom" from="10px" delayTrigger={0.6} duration={1.2}>
+              <div style={{ opacity: 0 }}>
+                <UIButton color="secondary">Get Your Drone</UIButton>
+              </div>
+            </Fade>
           </div>
         </div>
       </div>

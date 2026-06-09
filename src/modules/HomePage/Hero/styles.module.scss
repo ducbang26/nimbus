@@ -12,8 +12,6 @@
 .image__wrapper {
   top: 50%;
   left: 50%;
-  xPercent: -50;
-  yPercent: -50;
   width: 100dvw;
   height: 100dvh;
 }
@@ -28,7 +26,7 @@
 /* Final image special handling */
 #final-image {
   z-index: 10;
-  height: 100%
+  height: 100%;
 }
 
 .home__hero_bg {
@@ -54,7 +52,15 @@
 }
 
 .hero__heading_wrap {
-  margin-top: rem(40px);
+  padding-top: rem(600px);
+
+  @include minTablet {
+    padding-top: rem(400px);
+  }
+
+  @include pcSmall {
+    padding-top: rem(40px);
+  }
 }
 
 .home__hero_heading {
@@ -170,6 +176,6 @@
   width: 100%;
   height: 100vh;
   position: sticky;
-  top:0;
+  top: 0;
   left: 0;
 }

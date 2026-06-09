@@ -51,10 +51,12 @@ const Slider = (): React.ReactElement => {
         const isActive = isDragging || activeIndex === index;
 
         return (
-          <Fade direction="bottom" from="10px" delayTrigger={0.5 + 0.1 * index} duration={0.8}>
-            <SwiperSlide key={index} className={clsx(s.slider__item, isActive && s.active_slide)}>
+          <SwiperSlide key={index} className={clsx(s.slider__item, isActive && s.active_slide)}>
+            <Fade direction="bottom" from="10px" delayTrigger={0.5 + 0.1 * index} duration={0.8}>
               <div className={s.slider_image} style={{ backgroundImage: `url(${item.image})` }} />
+            </Fade>
 
+            <Fade direction="bottom" from="10px" delayTrigger={0.5 + 0.1 * index} duration={0.8}>
               <div className={s.slider_content}>
                 <div>
                   <p className={s.drone_title}>{item.title}</p>
@@ -65,8 +67,8 @@ const Slider = (): React.ReactElement => {
                   <Arrow />
                 </div>
               </div>
-            </SwiperSlide>
-          </Fade>
+            </Fade>
+          </SwiperSlide>
         );
       })}
     </Swiper>
