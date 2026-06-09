@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import UIButton from '@Components/Button';
@@ -12,12 +12,50 @@ import {
 import Shield from '@Icons/Shield';
 import Warning from '@Icons/Warning';
 import CartItem from '@Modules/CartPage/Item';
+import { loadStripe } from '@stripe/stripe-js';
 import Link from 'next/link';
 
 import s from './styles.module.scss';
 
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+
 const CartPage = (): React.ReactElement => {
   const cart = useSelector((state: any) => state.cart);
+  const [loading, setLoading] = useState(false);
+
+  const handleCheckout = async () => {
+    if (!cart?.cartItems || cart.cartItems.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          cartItems: cart.cartItems,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || 'Something went wrong with Stripe checkout.');
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Failed to initiate checkout. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main className="container">
@@ -178,7 +216,9 @@ const CartPage = (): React.ReactElement => {
                 </Link>
               </UITypography>
             </div>
-            <UIButton stretch>Check Out Now</UIButton>
+            <UIButton stretch onClick={handleCheckout} loading={loading}>
+              {loading ? 'Processing...' : 'Check Out Now'}
+            </UIButton>
           </div>
           <div className={s.orderInfo}>
             <UITypography color={ETypographyColor.NEUTRAL_500} className="mb_8">
@@ -197,7 +237,7 @@ const CartPage = (): React.ReactElement => {
                 Visa, MasterCard, PayPal, COD.
               </UITypography>
             </UITypography>
-            <UITypography lineHeight={20} color={ETypographyColor.NEUTRAL_500}>
+            <UITypography lineHeight={20} color={ETypographyColor.NEUTRAL_500} className="mb_8">
               Need help? Contact our support at
             </UITypography>
             <UITypography
@@ -241,7 +281,7 @@ const CartPage = (): React.ReactElement => {
               color={ETypographyColor.NEUTRAL_500}
               letterSpacing={EFontLetterSpacing.S}
             >
-              ustomers are responsible for shipping costs for out-of-warranty repairs.
+              Customers are responsible for shipping costs for out-of-warranty repairs.
             </UITypography>
           </div>
           <UITypography
