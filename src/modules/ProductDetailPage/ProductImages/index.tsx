@@ -18,7 +18,7 @@ interface ProductImagesProps {
 const ProductImages = ({ images }: ProductImagesProps): ReactElement => {
   const [selectedImage, setSelectedImage] = useState(0);
 
-  const handleSelectImage = (image: number) => {
+  const handleSelectImage = (image: number): void => {
     setSelectedImage(image);
   };
 

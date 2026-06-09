@@ -102,7 +102,7 @@ const Header = (): React.ReactElement => {
             </div>
             <nav className={s.main_nav}>
               <ul className={s.main__nav_list}>
-                {NAVIGATION_PAGES.map((page, index) => (
+                {NAVIGATION_PAGES.map((page) => (
                   <li key={page.href} className={s.main__nav_item}>
                     <Link className={clsx(s.hover_un)} href={page.href}>
                       {page.label}

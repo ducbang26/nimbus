@@ -107,7 +107,7 @@ const CardDeck = ({ cards, leftPressed, rightPressed }: ICardDeck): React.ReactE
       );
     }
 
-    return () => {
+    return (): void => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);

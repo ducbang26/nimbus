@@ -17,13 +17,14 @@ import Link from 'next/link';
 
 import s from './styles.module.scss';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const CartPage = (): React.ReactElement => {
   const cart = useSelector((state: any) => state.cart);
   const [loading, setLoading] = useState(false);
 
-  const handleCheckout = async () => {
+  const handleCheckout = async (): Promise<void> => {
     if (!cart?.cartItems || cart.cartItems.length === 0) {
       alert('Your cart is empty!');
       return;

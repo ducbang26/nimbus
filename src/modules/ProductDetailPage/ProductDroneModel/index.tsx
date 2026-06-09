@@ -9,7 +9,7 @@ import { clsx } from 'clsx';
 
 import s from './styles.module.scss';
 
-const ProductDroneModel = (): ReactElement => {
+const ProductDroneModel = ({ product }: { product: any }): ReactElement => {
   return (
     <div className={clsx('col-span-7 mb_20', s.productDroneModel)}>
       <div className={s.productDroneModel_header}>
@@ -17,8 +17,8 @@ const ProductDroneModel = (): ReactElement => {
         <UIButton>View All Models</UIButton>
       </div>
       <div className={clsx('grid grid-cols-12', s.productDroneModel_list)}>
-        {MOCK_ITEMS.map((item, index) => (
-          <ProductItem key={item.title} {...item} index={index} />
+        {MOCK_ITEMS.map((item) => (
+          <ProductItem key={item.title} {...product} />
         ))}
       </div>
     </div>

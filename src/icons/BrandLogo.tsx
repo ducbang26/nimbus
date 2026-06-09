@@ -30,7 +30,7 @@ const BrandLogo = (): React.ReactElement => {
       },
     });
 
-    return () => {
+    return (): void => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
