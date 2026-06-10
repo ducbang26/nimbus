@@ -3,7 +3,6 @@ import React from 'react';
 import UITypography from '@Components/Typography';
 import { EFontLetterSpacing, ETypography } from '@Components/Typography/constants';
 import ProductComparison from '@Modules/ProductDetailPage/ProductComparison';
-import ProductDroneModel from '@Modules/ProductDetailPage/ProductDroneModel';
 import ProductImages from '@Modules/ProductDetailPage/ProductImages';
 import ProductInfo from '@Modules/ProductDetailPage/ProductInfo';
 import ProductReviews from '@Modules/ProductDetailPage/ProductReviews';
@@ -47,9 +46,8 @@ const ProductDetailPage = async ({
   if (!product) {
     notFound();
   }
+  const { name, shortDesc, images } = product;
 
-  console.log(product);
-  const { _id, name, price, description, shortDesc, category, images, slug } = product;
   return (
     <main className={clsx('container', s.productDetail)}>
       <div className="mb_20">

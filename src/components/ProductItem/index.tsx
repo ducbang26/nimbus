@@ -18,7 +18,7 @@ const ProductItem = ({
   price,
   shortDesc,
   images,
-  slug,
+  slug
 }: ProductItemData): React.ReactElement => {
   const imageUrl = (images as any)?.[0]?.asset?.url ?? '/images/drone1.png';
 

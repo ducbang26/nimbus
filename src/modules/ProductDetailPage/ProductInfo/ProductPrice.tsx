@@ -22,17 +22,17 @@ const ProductPrice = ({ product }: IProductPriceProps): ReactElement => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
-  const increase = () => {
+  const increase = (): void => {
     setQuantity(quantity + 1);
   };
 
-  const decrease = () => {
+  const decrease = (): void => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
     }
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (): void => {
     const item = {
       ...product,
       quantity: quantity,

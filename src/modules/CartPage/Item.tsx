@@ -11,7 +11,7 @@ import {
 import Minus from '@Icons/Minus';
 import Plus from '@Icons/Plus';
 import TrashCan from '@Icons/TrashCan';
-import { addToCart, modifyquantityCartItem, removeFromCart } from '@Store/slices/cartSlice';
+import { modifyquantityCartItem, removeFromCart } from '@Store/slices/cartSlice';
 import { clsx } from 'clsx';
 import Image from 'next/image';
 
@@ -22,7 +22,7 @@ const CartItem = ({ cartItem }: any): ReactElement => {
 
   const dispatch = useDispatch();
 
-  const handleIncreaseCart = () => {
+  const handleIncreaseCart = (): void => {
     dispatch(
       modifyquantityCartItem({
         ...cartItem,
@@ -31,7 +31,7 @@ const CartItem = ({ cartItem }: any): ReactElement => {
     );
   };
 
-  const handleDecreaseCart = () => {
+  const handleDecreaseCart = (): void => {
     if (quantity == 1) {
       dispatch(removeFromCart({ _id: cartItem._id }));
     } else {
