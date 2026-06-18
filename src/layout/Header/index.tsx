@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
+import { useSelector } from 'react-redux';
 
 import Container from '@Components/Container';
 import Fade from '@Components/FadeAnim';
@@ -20,6 +21,7 @@ const Header = (): React.ReactElement => {
   const lineRef = useRef<HTMLDivElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
+  const cart = useSelector((state: any) => state.cart);
 
   const isBlackHeader = useMemo(
     () => BLACK_HEADER_PAGES.includes(('/' + pathname.split('/')[1]) as EPagePaths),
@@ -120,6 +122,7 @@ const Header = (): React.ReactElement => {
               </Link>
               <Link className={s.header__icons_item} href={EPagePaths.CART} aria-label="Cart">
                 <Cart />
+                {cart.totalItems > 0 ? <span className={s.cart_total}>{cart.totalItems}</span> : ''}
               </Link>
             </div>
           </div>

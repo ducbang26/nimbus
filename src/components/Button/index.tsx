@@ -55,8 +55,6 @@ const UIButton = (props: ButtonProps): React.ReactElement => {
         !disabled && 'js-button'
       )}
     >
-      {children}
-
       {loading && (
         <span className={s.loader}>
           <svg viewBox="0 0 1024 1024" width="1em" height="1em" fill="currentColor">
@@ -64,6 +62,7 @@ const UIButton = (props: ButtonProps): React.ReactElement => {
           </svg>
         </span>
       )}
+      {children}
     </button>
   );
 };

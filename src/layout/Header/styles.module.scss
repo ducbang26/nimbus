@@ -7,9 +7,9 @@
 }
 
 .header__line {
-    width: 100%;
-    height: 2.4rem;
-    background: var(--black);
+  width: 100%;
+  height: 2.4rem;
+  background: var(--black);
 
   &__black {
     background: var(--white);
@@ -45,13 +45,13 @@
 
 .hover_un:before {
   pointer-events: none;
-  content: "";
+  content: '';
   transform-origin: 100%;
-  -o-transition: .6s transform cubic-bezier(.66,0,.15,1);
+  -o-transition: 0.6s transform cubic-bezier(0.66, 0, 0.15, 1);
   background-color: currentColor;
   width: 100%;
   height: 1px;
-  transition: transform .6s cubic-bezier(.66, 0, .15, 1);
+  transition: transform 0.6s cubic-bezier(0.66, 0, 0.15, 1);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -71,4 +71,21 @@
 .header__icons_item {
   width: rem(24px);
   height: rem(24px);
+  position: relative;
+}
+
+.cart_total {
+  line-height: rem(12px);
+  font-weight: 700;
+  color: var(--black);
+  background: var(--white);
+  border-radius: rem(60px);
+  font-size: rem(12px);
+  display: inline-block;
+  padding: rem(3px) rem(6px);
+  position: absolute;
+  left: rem(12px);
+  top: rem(-5px);
+  right: inherit;
+  height: auto;
 }

@@ -1,6 +1,7 @@
 'use client';
 import React, { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 
 import Cursor from '@Components/Cursor';
 import { PageEffectProvider } from '@Contexts/pageEffectContext';
@@ -25,6 +26,7 @@ const MainLayout: React.FC<PropsWithChildren> = ({ children }) => {
           {children}
           <Footer />
           {/* <DebugGrid /> */}
+          <ToastContainer />
         </LenisScroller>
       </PageEffectProvider>
     </Provider>

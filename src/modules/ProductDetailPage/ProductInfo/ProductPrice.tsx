@@ -1,6 +1,7 @@
 'use client';
 import { ReactElement, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
@@ -20,7 +21,7 @@ interface IProductPriceProps {
 
 const ProductPrice = ({ product }: IProductPriceProps): ReactElement => {
   const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const increase = (): void => {
     setQuantity(quantity + 1);
@@ -40,6 +41,19 @@ const ProductPrice = ({ product }: IProductPriceProps): ReactElement => {
 
     if (quantity > 0) {
       dispatch(addToCart(item));
+      toast.success('Add to cart successful', {
+        position: 'bottom-right',
+        hideProgressBar: true,
+        pauseOnFocusLoss: false,
+        pauseOnHover: false,
+      });
+    } else {
+      toast.warning('Please enter the quantity', {
+        position: 'bottom-right',
+        hideProgressBar: true,
+        pauseOnFocusLoss: false,
+        pauseOnHover: false,
+      });
     }
   };
 
