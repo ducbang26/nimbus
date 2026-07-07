@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import UIButton from '@Components/Button';
 import UITypography from '@Components/Typography';
@@ -26,7 +27,12 @@ const CartPage = (): React.ReactElement => {
 
   const handleCheckout = async (): Promise<void> => {
     if (!cart?.cartItems || cart.cartItems.length === 0) {
-      alert('Your cart is empty!');
+      toast.warning('Your cart is empty!', {
+        position: 'bottom-right',
+        hideProgressBar: true,
+        pauseOnFocusLoss: false,
+        pauseOnHover: false,
+      });
       return;
     }
 
@@ -48,11 +54,21 @@ const CartPage = (): React.ReactElement => {
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert(data.error || 'Something went wrong with Stripe checkout.');
+        toast.error(data.error || 'Something went wrong with Stripe checkout.', {
+          position: 'bottom-right',
+          hideProgressBar: true,
+          pauseOnFocusLoss: false,
+          pauseOnHover: false,
+        });
       }
     } catch (error) {
       console.error('Checkout error:', error);
-      alert('Failed to initiate checkout. Please try again.');
+      toast.error('Failed to initiate checkout. Please try again.', {
+        position: 'bottom-right',
+        hideProgressBar: true,
+        pauseOnFocusLoss: false,
+        pauseOnHover: false,
+      });
     } finally {
       setLoading(false);
     }
