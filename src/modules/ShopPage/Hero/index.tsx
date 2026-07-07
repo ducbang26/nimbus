@@ -12,7 +12,7 @@ const ShopPageHero = (): React.ReactElement => {
       <div className={s.hero_container}>
         <Image
           className={s.hero_image}
-          src="/images/hero-bg.webp"
+          src="/images/hero-bg.png"
           alt="shop-page-hero"
           width={1920}
           height={1080}
