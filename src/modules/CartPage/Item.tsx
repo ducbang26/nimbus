@@ -33,7 +33,7 @@ const CartItem = ({ cartItem }: any): ReactElement => {
 
   const handleDecreaseCart = (): void => {
     if (quantity == 1) {
-      dispatch(removeFromCart({ _id: cartItem._id }));
+      dispatch(removeFromCart(cartItem));
     } else {
       dispatch(
         modifyquantityCartItem({
