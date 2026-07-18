@@ -15,13 +15,13 @@ const Explore = (): React.ReactElement => {
       <section className={s.home_explore}>
         <Container>
           <div className={s.home_explore__header}>
-            <TypoAnim delayTrigger={0.3} stagger={0.2}>
+            <TypoAnim delayTrigger={0} stagger={0.2}>
               <span className={`${s.home_explore__subtitle} txt-med`}>Explore Our Models</span>
             </TypoAnim>
-            <TypoAnim delayTrigger={0.3} stagger={0.2}>
+            <TypoAnim delayTrigger={0} stagger={0.2}>
               <h5 className={`${s.home_explore__title} txt-light`}>Choose Your Perfect Drone</h5>
             </TypoAnim>
-            <TypoAnim delayTrigger={0.3} stagger={0.2}>
+            <TypoAnim delayTrigger={0} stagger={0.1}>
               <p className={s.home_explore__description}>Find the best drone for your needs.</p>
             </TypoAnim>
           </div>

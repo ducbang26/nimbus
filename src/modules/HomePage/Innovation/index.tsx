@@ -13,13 +13,13 @@ const Innovation = (): React.ReactElement => {
       <Container>
         <div className={`${s.innovation_wrap} grid grid-cols-12`}>
           <div className={s.innovation_content}>
-            <TypoAnim delayTrigger={0.5} stagger={0.2}>
+            <TypoAnim delayTrigger={0.1} stagger={0.2}>
               <div className={s.innovation_content_subtitle}>Innovation & Technology</div>
             </TypoAnim>
-            <TypoAnim delayTrigger={0.6} stagger={0.1}>
+            <TypoAnim delayTrigger={0.2} stagger={0.1}>
               <div className={s.innovation_content_title}>Pushing the Limits of Aerial Tech</div>
             </TypoAnim>
-            <TypoAnim delayTrigger={0.7} stagger={0.1}>
+            <TypoAnim delayTrigger={0.3} stagger={0.1}>
               <div className={s.innovation_content_text}>
                 Our drones are built with the latest advancements in AI, GPS stabilization, and
                 high-definition imaging to ensure the best flight experience.

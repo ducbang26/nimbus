@@ -12,10 +12,10 @@ const HowItWork = (): React.ReactElement => {
     <section className={s.howitwork}>
       <Container>
         <div className={s.howitwork_header}>
-          <TypoAnim delayTrigger={0.3} stagger={0.1}>
+          <TypoAnim delayTrigger={0} stagger={0.1}>
             <span className={`${s.howitwork_subtitle} txt-med`}>How It Works</span>
           </TypoAnim>
-          <TypoAnim delayTrigger={0.3} stagger={0.1}>
+          <TypoAnim delayTrigger={0} stagger={0.1}>
             <h5 className={`${s.howitwork_title} txt-light`}>Fly in 3 Simple Steps</h5>
           </TypoAnim>
         </div>
