@@ -10,6 +10,7 @@ import FilledCheck from '@Icons/FilledCheck';
 import Minus from '@Icons/Minus';
 import Plus from '@Icons/Plus';
 import { addToCart } from '@Store/slices/cartSlice';
+import { ICartItem } from '@Types/global';
 import { ProductItemData } from '@Types/product';
 import { clsx } from 'clsx';
 
@@ -24,37 +25,38 @@ const ProductPrice = ({ product }: IProductPriceProps): ReactElement => {
   const [quantity, setQuantity] = useState(1);
 
   const increase = (): void => {
-    setQuantity(quantity + 1);
+    setQuantity((prev) => prev + 1);
   };
 
   const decrease = (): void => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
+    setQuantity((prev) => Math.max(1, prev - 1));
   };
 
   const handleAddToCart = (): void => {
-    const item = {
-      ...product,
-      quantity: quantity,
+    if (!product?._id) {
+      toast.warning('Product information is unavailable', {
+        position: 'bottom-right',
+        hideProgressBar: true,
+        pauseOnFocusLoss: false,
+        pauseOnHover: false,
+      });
+      return;
+    }
+
+    const normalizedQuantity = Math.max(1, quantity);
+    const item: ICartItem = {
+      ...(product as unknown as ICartItem),
+      quantity: normalizedQuantity,
     };
 
-    if (quantity > 0) {
-      dispatch(addToCart(item));
-      toast.success('Add to cart successful', {
-        position: 'bottom-right',
-        hideProgressBar: true,
-        pauseOnFocusLoss: false,
-        pauseOnHover: false,
-      });
-    } else {
-      toast.warning('Please enter the quantity', {
-        position: 'bottom-right',
-        hideProgressBar: true,
-        pauseOnFocusLoss: false,
-        pauseOnHover: false,
-      });
-    }
+    dispatch(addToCart(item));
+    setQuantity(1);
+    toast.success('Add to cart successful', {
+      position: 'bottom-right',
+      hideProgressBar: true,
+      pauseOnFocusLoss: false,
+      pauseOnHover: false,
+    });
   };
 
   return (
@@ -69,7 +71,7 @@ const ProductPrice = ({ product }: IProductPriceProps): ReactElement => {
         <UIButton variant="icon" onClick={decrease}>
           <Minus />
         </UIButton>
-        <input className={s.productPrice_input} value={quantity} onChange={() => {}} />
+        <input className={s.productPrice_input} value={quantity} />
         <UIButton variant="icon" onClick={increase}>
           <Plus />
         </UIButton>
@@ -78,7 +80,7 @@ const ProductPrice = ({ product }: IProductPriceProps): ReactElement => {
         <UITypography typography={ETypography.TEXT_32_LIGHT} color={ETypographyColor.WHITE}>
           ${product?.price}
         </UITypography>
-        <UIButton onClick={handleAddToCart} variant="text">
+        <UIButton onClick={handleAddToCart} variant="text" disabled={!product?._id}>
           <UITypography typography={ETypography.TEXT_20_LIGHT} color={ETypographyColor.WHITE}>
             Add to cart
           </UITypography>

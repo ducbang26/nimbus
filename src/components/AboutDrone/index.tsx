@@ -7,9 +7,10 @@ import { useDroneModal } from './useDroneModal';
 
 export function AboutDrone({ ...props }): React.ReactElement {
   const modalRef = useRef<THREE.Group>(null);
-  const { nodes, materials } = useGLTF('/models/dji-fpv/drone.gltf');
+  const gltf = useGLTF('/models/dji-fpv/drone.gltf');
+  const { nodes, materials } = gltf;
 
-  useDroneModal({ modalRef});
+  useDroneModal({ modalRef });
 
   return (
     <group ref={modalRef} {...props} dispose={null}>
