@@ -93,15 +93,15 @@ const Why = (): React.ReactElement => {
     <section ref={containerRef} className={s.drone_showcase}>
       <Container>
         <div className={s.drone_showcase__header}>
-          <TypoAnim delayTrigger={0.5} stagger={0.2}>
+          <TypoAnim delayTrigger={0} stagger={0.2}>
             <span className={`${s.drone_showcase__subtitle} txt-med`}>WHY CHOOSE OUR DRONES?</span>
           </TypoAnim>
-          <TypoAnim delayTrigger={0.5} stagger={0.2}>
+          <TypoAnim delayTrigger={0} stagger={0.2}>
             <h5 className={`${s.drone_showcase__title} txt-light`}>
               Elevate Your Flight Experience
             </h5>
           </TypoAnim>
-          <TypoAnim delayTrigger={0.5} stagger={0.1}>
+          <TypoAnim delayTrigger={0} stagger={0.1}>
             <p className={s.drone_showcase__description}>
               Our drones provide the best combination of power, intelligence, and reliability.
             </p>

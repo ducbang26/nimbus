@@ -13,7 +13,7 @@ const CTA = (): React.ReactElement => {
       <div className={`${s.cta_main} container`}>
         <div className={`${s.cta_bottom} grid grid-cols-12`}>
           <div className={`${s.cta_content} txt-light`}>
-            <TypoAnim delayTrigger={0.3} stagger={0.05}>
+            <TypoAnim delayTrigger={0} stagger={0.05}>
               <div className={`${s.cta_content_txt} txt-light`}>Ready to Ride the Future?</div>
             </TypoAnim>
             <Fade direction="bottom" from="10px" delayTrigger={0.6} duration={1.2}>

@@ -52,14 +52,10 @@
 }
 
 .hero__heading_wrap {
-  padding-top: rem(600px);
+  padding-top: rem(40px);
 
-  @include minTablet {
-    padding-top: rem(400px);
-  }
-
-  @include pcSmall {
-    padding-top: rem(40px);
+  @media (max-width: 426px) {
+    padding-top: rem(600px);
   }
 }
 
