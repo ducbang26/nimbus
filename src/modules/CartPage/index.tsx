@@ -13,21 +13,35 @@ import {
 import Shield from '@Icons/Shield';
 import Warning from '@Icons/Warning';
 import CartItem from '@Modules/CartPage/Item';
+import { RootState } from '@Store/store';
 import { loadStripe } from '@stripe/stripe-js';
 import Link from 'next/link';
 
 import s from './styles.module.scss';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+const stripePublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+
+if (stripePublishableKey) {
+  loadStripe(stripePublishableKey);
+}
 
 const CartPage = (): React.ReactElement => {
-  const cart = useSelector((state: any) => state.cart);
+  const cart = useSelector((state: RootState) => state.cart);
   const [loading, setLoading] = useState(false);
 
   const handleCheckout = async (): Promise<void> => {
     if (!cart?.cartItems || cart.cartItems.length === 0) {
       toast.warning('Your cart is empty!', {
+        position: 'bottom-right',
+        hideProgressBar: true,
+        pauseOnFocusLoss: false,
+        pauseOnHover: false,
+      });
+      return;
+    }
+
+    if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
+      toast.error('Stripe checkout is not configured yet.', {
         position: 'bottom-right',
         hideProgressBar: true,
         pauseOnFocusLoss: false,
@@ -46,6 +60,8 @@ const CartPage = (): React.ReactElement => {
         },
         body: JSON.stringify({
           cartItems: cart.cartItems,
+          shippingPrice: cart.shippingPrice,
+          taxPrice: cart.taxPrice,
         }),
       });
 
@@ -61,8 +77,7 @@ const CartPage = (): React.ReactElement => {
           pauseOnHover: false,
         });
       }
-    } catch (error) {
-      console.error('Checkout error:', error);
+    } catch {
       toast.error('Failed to initiate checkout. Please try again.', {
         position: 'bottom-right',
         hideProgressBar: true,
@@ -114,9 +129,7 @@ const CartPage = (): React.ReactElement => {
             </div>
           </div>
           {cart?.cartItems &&
-            cart?.cartItems.map((cartItem: any) => (
-              <CartItem key={cartItem._id} cartItem={cartItem} />
-            ))}
+            cart?.cartItems.map((cartItem) => <CartItem key={cartItem._id} cartItem={cartItem} />)}
         </div>
 
         <div className="col-span-3">

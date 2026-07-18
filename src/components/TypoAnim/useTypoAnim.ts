@@ -48,7 +48,11 @@ export default function useTypoAnim({
     if (!splitter?.words?.length) return;
 
     gsap.set(splitter.words, {
-      y: '100%',
+      y: '40%',
+      opacity: 0,
+      filter: 'blur(20px)',
+      color: '#ff7349',
+      transition: 'transform 1s cubic-bezier(0.165, 0.84, 0.44, 1), filter 1s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), color 0.85s cubic-bezier(0.59, 0.01, 0.99, 0.53)',
       overwrite: 'auto',
     });
   }, [splitter]);
@@ -71,14 +75,17 @@ export default function useTypoAnim({
 
         gsap.to(words, {
           y: '0%',
+          opacity: 1,
+          filter: 'blur(0px)',
+          color: 'inherit',
           delay: (delayOverride ?? baseDelay) + index * 0.1,
           duration,
           ease: 'power3.out',
           stagger: staggerOverride ?? 0.015,
           overwrite: 'auto',
-          onComplete: () => {
-            splitter.revert();
-          },
+          // onComplete: () => {
+          //   splitter.revert();
+          // },
         });
       });
     },

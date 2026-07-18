@@ -7,6 +7,8 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useLenis } from 'lenis/react';
 import * as THREE from 'three';
 
+import usePageEffectContext from '../../contexts/pageEffectContext';
+
 type Props = {
   modalRef: RefObject<THREE.Group | null>;
 };
@@ -16,6 +18,7 @@ gsap.registerPlugin(ScrollTrigger);
 export const useDroneModal = ({ modalRef }: Props): void => {
   const lenis = useLenis();
   const { size } = useThree();
+  const { isReadyInteractive } = usePageEffectContext();
   // useDroneGUI({ modalRef });
 
   /* ---------------- Device breakpoint (PIXEL) ---------------- */
@@ -49,10 +52,11 @@ export const useDroneModal = ({ modalRef }: Props): void => {
   }, [isMobile, isTablet]);
 
   /* ---------------- Intro animation ---------------- */
-  useGSAP(() => {
+  useEffect(() => {
     const group = modalRef.current;
-    if (!group) return;
-
+    if (!group || !isReadyInteractive) {
+      return;
+    }
     lenis?.stop();
 
     gsap.set(group.scale, {
@@ -83,11 +87,7 @@ export const useDroneModal = ({ modalRef }: Props): void => {
     );
 
     tl.add(() => lenis?.start(), '+=0.1');
-
-    return (): void => {
-      tl.kill();
-    };
-  }, [config]);
+  }, [config, isReadyInteractive, lenis, modalRef]);
 
   /* ---------------- Scroll animation ---------------- */
   useGSAP(() => {
