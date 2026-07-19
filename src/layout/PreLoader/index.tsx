@@ -51,7 +51,6 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
 
       dataProxy.current.isAssetLoaded = true;
       refQuickProcessing.current?.(100);
-      pageAfter();
 
       hideLoaderTimeoutRef.current = setTimeout(() => {
         if (isCancelled || !wrapperRef.current) {
@@ -83,6 +82,7 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
             }
           },
         });
+        pageAfter();
       }, 300);
     };
 

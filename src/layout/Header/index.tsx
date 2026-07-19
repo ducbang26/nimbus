@@ -7,7 +7,6 @@ import { BLACK_HEADER_PAGES, EPagePaths, NAVIGATION_PAGES } from '@Constants/ind
 import Cart from '@Icons/Cart';
 import Search from '@Icons/Search';
 import User from '@Icons/User';
-import { rem } from '@Utils/rem';
 import { clsx } from 'clsx';
 import { gsap } from 'gsap';
 import Link from 'next/link';
@@ -19,7 +18,6 @@ const Header = (): React.ReactElement => {
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
-  const mainRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
   const cart = useSelector((state: any) => state.cart);
 
@@ -29,64 +27,41 @@ const Header = (): React.ReactElement => {
   );
 
   useEffect(() => {
-    let ticking = false;
     const line = lineRef.current;
-    const main = mainRef.current;
+    if (!line) return;
+
+    lastScrollY.current = window.scrollY;
+    gsap.set(line, { height: window.scrollY < 20 ? '2.4rem' : '0px' });
+
+    let rafId: number;
 
     const handleScroll = (): void => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const isAtTop = window.scrollY < 20;
 
-          if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-            // scrolling up
-            gsap.to(headerRef.current, {
-              mixBlendMode: 'normal',
-              color: isBlackHeader ? 'var(--neutral-950)' : 'var(--white)',
-              duration: 0.3,
-              ease: 'power2.out',
-            });
-            gsap.to(line, {
-              height: rem(4.8),
-              duration: 0.3,
-              ease: 'power2.out',
-            });
-            gsap.to(main, {
-              y: rem(-5.8),
-              duration: 0.3,
-              ease: 'power2.out',
-            });
-          } else if (currentScrollY < lastScrollY.current) {
-            // scrolling down
-            gsap.to(headerRef.current, {
-              mixBlendMode: 'difference',
-              color: 'var(--white)',
-              duration: 0.3,
-              ease: 'power2.out',
-            });
-            gsap.to(line, {
-              height: rem(2.4),
-              duration: 0.3,
-              ease: 'power2.out',
-            });
-            gsap.to(main, {
-              y: 0,
-              duration: 0.3,
-              ease: 'power2.out',
-            });
-          }
+        if (isAtTop) {
+          gsap.to(line, {
+            height: '2.4rem',
+            duration: 0.3,
+            ease: 'power2.out',
+            overwrite: true,
+          });
+        } else {
+          gsap.killTweensOf(line);
+          gsap.set(line, { height: '0px' });
+        }
 
-          lastScrollY.current = currentScrollY;
-          ticking = false;
-        });
-        ticking = true;
-      }
+        lastScrollY.current = window.scrollY;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return (): void => {
       window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafId);
+      gsap.killTweensOf(line);
     };
   }, [pathname, isBlackHeader]);
 

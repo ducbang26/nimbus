@@ -1,12 +1,11 @@
 'use client';
-import React, {
-  PropsWithChildren,
-  useLayoutEffect,
-  useRef,
-} from 'react';
+import React, { PropsWithChildren, useLayoutEffect, useRef } from 'react';
 
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { LenisRef, ReactLenis } from 'lenis/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function LenisScroller({ children }: PropsWithChildren): React.ReactElement {
   const lenisRef = useRef<LenisRef>(null);
@@ -17,6 +16,8 @@ export default function LenisScroller({ children }: PropsWithChildren): React.Re
     }
 
     gsap.ticker.add(update);
+    // Prevent GSAP from auto-updating ScrollTrigger — Lenis will drive it
+    gsap.ticker.lagSmoothing(0);
 
     return (): void => {
       gsap.ticker.remove(update);
@@ -24,7 +25,15 @@ export default function LenisScroller({ children }: PropsWithChildren): React.Re
   }, []);
 
   return (
-    <ReactLenis root ref={lenisRef} options={{ autoRaf: false }}>
+    <ReactLenis
+      root
+      ref={lenisRef}
+      options={{
+        autoRaf: false,
+        syncTouch: true,
+      }}
+      onScroll={() => ScrollTrigger.update()}
+    >
       {children}
     </ReactLenis>
   );
