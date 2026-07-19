@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 
+import usePageEffectContext from '@Contexts/pageEffectContext';
+import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,33 +9,37 @@ gsap.registerPlugin(ScrollTrigger);
 
 const BrandLogo = (): React.ReactElement => {
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const { isReadyInteractive } = usePageEffectContext();
 
-  useEffect(() => {
-    if (!svgRef.current) return;
+  useGSAP(
+    () => {
+      if (!isReadyInteractive || !svgRef.current) return;
 
-    const paths = svgRef.current.querySelectorAll('path');
+      const svg = svgRef.current;
+      const paths = svg.querySelectorAll('path');
+      const svgHeight = svg.getBoundingClientRect().height;
 
-    gsap.set(paths, {
-      y: '100%',
-    });
+      gsap.set(paths, { clearProps: 'transform' });
+      gsap.set(paths, { y: svgHeight });
 
-    gsap.to(paths, {
-      y: '0%',
-      duration: 1.2,
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: svgRef.current,
+      const tween = gsap.to(paths, {
+        y: 0,
+        duration: 1.2,
+        stagger: 0.1,
+        paused: true,
+      });
+
+      ScrollTrigger.create({
+        trigger: svg,
         start: 'top bottom',
         end: 'bottom 95%',
         scrub: 1,
         invalidateOnRefresh: true,
-      },
-    });
-
-    return (): void => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+        animation: tween,
+      });
+    },
+    { dependencies: [isReadyInteractive], scope: svgRef, revertOnUpdate: true }
+  );
 
   return (
     <svg

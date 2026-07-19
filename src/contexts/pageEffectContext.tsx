@@ -124,6 +124,7 @@ export const PageEffectProvider: FC<PropsWithChildren> = ({ children }) => {
       setPageUrl(null);
       setPageStatus('INIT');
       setAnimationStatus('INIT');
+      setIReadyInteractive(false);
       pageTransitionOut();
     }, 0);
 

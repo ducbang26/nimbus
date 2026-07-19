@@ -54,9 +54,14 @@ export const useDroneModal = ({ modalRef }: Props): void => {
   /* ---------------- Intro animation ---------------- */
   useEffect(() => {
     const group = modalRef.current;
-    if (!group || !isReadyInteractive) {
-      return;
-    }
+    if (!group) return;
+
+    // Hide drone until preloader finishes
+    group.visible = false;
+
+    if (!isReadyInteractive) return;
+
+    group.visible = true;
     lenis?.stop();
 
     gsap.set(group.scale, {

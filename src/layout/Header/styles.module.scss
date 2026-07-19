@@ -1,15 +1,17 @@
 .header {
   z-index: 7;
   width: 100%;
+  position: fixed;
+  top: 0;
   color: var(--white);
   mix-blend-mode: difference;
-  transition: filter 0.3s ease;
 }
 
 .header__line {
   width: 100%;
   height: 2.4rem;
-  background: var(--black);
+  overflow: hidden;
+  background: var(--white);
 
   &__black {
     background: var(--white);
