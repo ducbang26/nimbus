@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Container from '@Components/Container';
 import Fade from '@Components/FadeAnim';
@@ -11,6 +11,8 @@ import { clsx } from 'clsx';
 import { gsap } from 'gsap';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { RootState } from '@Store/store';
+import { closeNav, toggleNav } from '@Store/slices/navSlice';
 
 import s from './styles.module.scss';
 
@@ -19,7 +21,9 @@ const Header = (): React.ReactElement => {
   const headerRef = useRef<HTMLElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
   const lastScrollY = useRef(0);
-  const cart = useSelector((state: any) => state.cart);
+  const dispatch = useDispatch();
+  const cart = useSelector((state: RootState) => state.cart);
+  const isNavOpen = useSelector((state: RootState) => state.nav.isNavOpen);
 
   const isBlackHeader = useMemo(
     () => BLACK_HEADER_PAGES.includes(('/' + pathname.split('/')[1]) as EPagePaths),
@@ -74,14 +78,29 @@ const Header = (): React.ReactElement => {
       <Container>
         <Fade direction="top" from="0px" delayTrigger={1.5}>
           <div style={{ opacity: 0 }} className={s.header__main}>
+            <button
+              className={clsx(s.nav__burger, isNavOpen && s.nav__burger__open)}
+              onClick={() => dispatch(toggleNav())}
+            >
+              <div className={s.nav__burger__line}>
+                <div className={s.nav__burger__line__fill}></div>
+              </div>
+              <div className={s.nav__burger__line}>
+                <div className={s.nav__burger__line__fill}></div>
+              </div>
+            </button>
             <div className={`${s.header__logo} ${s.txt_med}`}>
               <Link href="/">NIMBUS AIR</Link>
             </div>
-            <nav className={s.main_nav}>
+            <nav className={clsx(s.main_nav)}>
               <ul className={s.main__nav_list}>
                 {NAVIGATION_PAGES.map((page) => (
                   <li key={page.href} className={s.main__nav_item}>
-                    <Link className={clsx(s.hover_un)} href={page.href}>
+                    <Link
+                      className={clsx(s.hover_un)}
+                      href={page.href}
+                      onClick={() => dispatch(closeNav())}
+                    >
                       {page.label}
                     </Link>
                   </li>

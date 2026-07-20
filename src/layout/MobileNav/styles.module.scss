@@ -1,0 +1,40 @@
+.mobileNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6;
+  width: 100%;
+  height: 100svh;
+  background-color: var(--black);
+  pointer-events: none;
+
+
+  &_list {
+    height: 100%;
+    padding: 0 rem(24px);
+    padding-top: rem(75px);
+
+    &_item {
+      display: block;
+      padding: rem(16px) 0;
+      font-size: 5vw;
+      line-height: 1.2;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(rem(-10px));
+    }
+
+    &_btn {
+      margin-top: rem(24px);
+      width: 100% !important;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+
+  &.eventTrue {
+    pointer-events: all;
+  }
+}

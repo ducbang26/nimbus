@@ -8,6 +8,7 @@ import { PageEffectProvider } from '@Contexts/pageEffectContext';
 import Footer from '@Layouts/Footer';
 import Header from '@Layouts/Header';
 import LenisScroller from '@Layouts/Lenis';
+import MobileNav from '@Layouts/MobileNav';
 import PreLoader from '@Layouts/PreLoader';
 import { hydrateCart } from '@Store/slices/cartSlice';
 import { store } from '@Store/store';
@@ -41,6 +42,7 @@ const MainLayoutContent: React.FC<PropsWithChildren> = ({ children }) => {
         <Cursor isEnter={true} />
 
         <Header />
+        <MobileNav />
         {children}
         <Footer />
         {/* <DebugGrid /> */}
