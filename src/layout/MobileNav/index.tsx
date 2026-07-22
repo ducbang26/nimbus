@@ -1,20 +1,24 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { NAVIGATION_PAGES } from '@Constants/index';
+import { closeNav, setDisableBtn } from '@Store/slices/navSlice';
 import { RootState } from '@Store/store';
 import { useGSAP } from '@gsap/react';
+import clsx from 'clsx';
 import gsap from 'gsap';
+import Link from 'next/link';
 
-import NavItem from './NavItem';
 import s from './styles.module.scss';
 
 const MobileNav = (): React.ReactElement => {
   const [eventTrue, setEventTrue] = React.useState(false);
+  const dispatch = useDispatch();
   const isNavOpen = useSelector((state: RootState) => state.nav.isNavOpen);
 
   const navRef = React.useRef<HTMLDivElement>(null);
-  const btnRef = React.useRef<HTMLButtonElement>(null);
+  const linkRef = React.useRef<(HTMLAnchorElement | null)[]>([]);
+
   useGSAP(() => {
     const tl = gsap.timeline({
       ease: 'power4.out',
@@ -23,40 +27,51 @@ const MobileNav = (): React.ReactElement => {
       tl.to(navRef.current, {
         duration: 0.5,
         ease: 'power4.out',
-        backdropFilter: 'blur(80px)',
-      }).to(btnRef.current, {
-        duration: 0.2,
-        y: 0,
-        delay: 0.3,
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+      }).to(linkRef.current, {
+        y: '0%',
         opacity: 1,
-        onComplete: () => {
-          setTimeout(() => {
-            setEventTrue(true);
-          }, 200);
-        },
-      });
+        filter: 'blur(0px)',
+        ease: 'power3.out',
+        stagger: 0.05,
+      }, '-=0.6');
     } else {
-      tl.to(btnRef.current, {
-        duration: 0.1,
-        y: -10,
+      tl.to(linkRef.current, {
+        y: '40%',
         opacity: 0,
-      }).to(navRef.current, {
+        filter: 'blur(20px)',
+        ease: 'power3.out',
+        stagger: 0.05,
+      })
+      .to(navRef.current, {
         duration: 0.3,
-        backdropFilter: 'blur(0px)',
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
         onComplete: () => {
           setEventTrue(false);
+          isNavOpen && dispatch(setDisableBtn());
         },
-      });
+      }, '-=0.6');
     }
-  }, [isNavOpen, navRef, btnRef]);
+  }, [isNavOpen, navRef]);
 
   return (
     <div className={`${s.mobileNav} ${eventTrue ? s.eventTrue : ''}`} ref={navRef}>
-      <div className={`${s.mobileNav_list}`}>
+      <ul className={`${s.mobileNav_list}`}>
         {NAVIGATION_PAGES.map((item, index) => (
-          <NavItem key={item.href} delay={index / 10} link={item.href} label={item.label} />
+          <li key={item.href}>
+            <Link
+              className={clsx(s.hover_un, s.mobileNav_list_item)}
+              href={item.href}
+              onClick={() => dispatch(closeNav())}
+              ref={(el) => {
+                linkRef.current[index] = el;
+              }}
+            >
+              {item.label}
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

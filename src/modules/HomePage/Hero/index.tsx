@@ -1,5 +1,6 @@
 import React, { Suspense, useMemo, useRef } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { AboutDrone } from '@Components/AboutDrone';
 import UIButton from '@Components/Button';
 import Fade from '@Components/FadeAnim';

@@ -99,9 +99,20 @@
 
 .nav__burger {
   display: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 991px) {
+
+  .header__logo {
+    font-size: rem(60px);
+  }
+
+  .header__icons_item {
+    width: 20px;
+    height: 20px;
+  }
+
   .main_nav {
     display: none;
     position: absolute;
@@ -184,9 +195,11 @@
   0% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(3.75px) rotate(0deg);
   }
+
   100% {
     transform: translateY(3.75px) rotate(45deg);
   }
@@ -196,6 +209,7 @@
   0% {
     transform: translateY(3.75px) rotate(45deg);
   }
+
   50% {
     transform: translateY(3.75px) rotate(0deg);
   }
@@ -209,9 +223,11 @@
   0% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-3.75px) rotate(0deg);
   }
+
   100% {
     transform: translateY(-3.75px) rotate(-45deg);
   }
@@ -221,6 +237,7 @@
   0% {
     transform: translateY(-3.75px) rotate(-45deg);
   }
+
   50% {
     transform: translateY(-3.75px) rotate(0deg);
   }

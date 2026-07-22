@@ -1,4 +1,12 @@
 .shop {
   position: relative;
   margin-top: rem(-80px);
+
+  @media screen and (max-width: 991px) {
+    margin-top: rem(-120px);
+  }
+
+  @media screen and (max-width: 479px) {
+    margin-top: rem(-150px);
+  }
 }

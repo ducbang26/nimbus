@@ -1,4 +1,5 @@
 .mobileNav {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -7,22 +8,22 @@
   width: 100%;
   height: 100svh;
   background-color: var(--black);
-  pointer-events: none;
-
+  clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
 
   &_list {
     height: 100%;
-    padding: 0 rem(24px);
-    padding-top: rem(75px);
+    padding: 15vw 8rem;
 
     &_item {
       display: block;
       padding: rem(16px) 0;
       font-size: 5vw;
       line-height: 1.2;
-      color: var(--white);
       opacity: 0;
-      transform: translateY(rem(-10px));
+      transform: translateY(40%);
+      filter: blur(20px);
+      color: var(--white);
+      cursor: pointer;
     }
 
     &_btn {
@@ -36,5 +37,17 @@
 
   &.eventTrue {
     pointer-events: all;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .mobileNav {
+    display: block
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .mobileNav_list {
+    padding: 15vw 10rem;
   }
 }

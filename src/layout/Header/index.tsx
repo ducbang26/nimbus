@@ -12,7 +12,7 @@ import { gsap } from 'gsap';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { RootState } from '@Store/store';
-import { closeNav, toggleNav } from '@Store/slices/navSlice';
+import { closeNav, setDisableBtn, toggleNav } from '@Store/slices/navSlice';
 
 import s from './styles.module.scss';
 
@@ -80,7 +80,10 @@ const Header = (): React.ReactElement => {
           <div style={{ opacity: 0 }} className={s.header__main}>
             <button
               className={clsx(s.nav__burger, isNavOpen && s.nav__burger__open)}
-              onClick={() => dispatch(toggleNav())}
+              onClick={() => {
+                dispatch(toggleNav())
+                isNavOpen && dispatch(setDisableBtn())
+              }}
             >
               <div className={s.nav__burger__line}>
                 <div className={s.nav__burger__line__fill}></div>
