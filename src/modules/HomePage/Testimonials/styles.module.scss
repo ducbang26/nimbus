@@ -2,6 +2,10 @@
   height: 400vh;
   position: relative;
 
+  @media screen and (max-width: 767px) {
+    height: 400svh;
+  }
+
   .testimonials_wrap {
     padding: rem(40px) 0;
     position: sticky;
@@ -12,6 +16,10 @@
 
     @media screen and (max-width: 991px) {
       padding-top: rem(90px);
+    }
+
+    @media screen and (max-width: 767px) {
+      height: 100svh;
     }
   }
 
