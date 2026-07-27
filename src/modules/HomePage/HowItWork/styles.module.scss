@@ -16,6 +16,7 @@
     color: var(--neutral-400);
     text-transform: uppercase;
     overflow: hidden;
+    line-height: 1.2;
   }
 
   &_title {
@@ -29,7 +30,7 @@
 .steps {
   display: flex;
   flex-direction: row;
-  column-gap: rem(20px);
+  gap: rem(20px);
 
   .step_item {
     aspect-ratio: 1/1.2;
@@ -84,10 +85,45 @@
   font-weight: 400;
   letter-spacing: -0.05em;
   margin-bottom: rem(20px);
+  line-height: 1.2;
 }
 
 .step_item_text {
   font-size: rem(24px);
   font-weight: 300;
   letter-spacing: -0.05em;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 991px) {
+  .steps {
+    flex-direction: column;
+
+    .step_item {
+      padding: rem(40px);
+    }
+  }
+
+  .step_item_number {
+    font-size: rem(52px);
+    width: rem(82px);
+    height: rem(80px);
+  }
+
+  .step_item_title {
+    font-size: rem(52px);
+  }
+
+  .step_item_text {
+    font-size: rem(44px);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .howitwork {
+
+    &_subtitle {
+      font-size: rem(30px);
+    }
+  }
 }

@@ -31,6 +31,9 @@
 
 .cta_bottom {
   margin-bottom: rem(36px);
+  @media screen and (max-width: 991px) {
+    margin-bottom: rem(16px);
+  }
 }
 
 .cta_content {
@@ -41,6 +44,11 @@
   row-gap: rem(24px);
   margin-left: rem(-25px);
   margin-right: rem(-25px);
+
+  @media screen and (max-width: 991px) {
+    grid-area: 1/1/1/13;
+    row-gap: rem(16px);
+  }
 
   .cta_content_txt {
     font-size: rem(66px);

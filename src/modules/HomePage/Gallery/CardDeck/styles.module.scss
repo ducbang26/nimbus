@@ -26,3 +26,10 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .slider {
+    width: rem(688px);
+    height: rem(900px);
+  }
+}

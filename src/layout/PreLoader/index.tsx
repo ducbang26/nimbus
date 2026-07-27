@@ -25,6 +25,7 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
   const percentRef = useRef<HTMLSpanElement>(null);
   const processBarRef = useRef<HTMLDivElement>(null);
   const hideLoaderTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const pathname = usePathname();
 
   const { pageAfter } = usePageEffectContext();
@@ -73,9 +74,9 @@ const PreLoader: React.FC<PreLoaderProps> = ({ onComplete, modelPath = MODEL_PAT
                     wrapperRef.current?.classList.add(s.isHide);
                     progressWrapperRef.current?.classList.add(s.isHide);
                     onComplete?.();
-                    if (pathname != '/') {
+                    // if (pathname != '/') {
                       lenis?.start();
-                    }
+                    // }
                   }
                 },
               });
