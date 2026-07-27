@@ -45,6 +45,10 @@
   align-items: center;
   justify-content: center;
   display: flex;
+
+  @media screen and (max-width: 767px) {
+    height: 100svh;
+  }
 }
 
 .home__hero_main {
@@ -57,6 +61,10 @@
   flex-direction: column;
   padding-top: rem(54px);
   padding-bottom: rem(36px);
+
+  @media screen and (max-width: 767px) {
+    height: 100svh;
+  }
 }
 
 .hero__heading_wrap {
@@ -65,7 +73,7 @@
   @media screen and (max-width: 991px) {
     padding-top: rem(200px);
   }
-  
+
   @media screen and (max-width: 767px) {
     padding-top: rem(600px);
   }
@@ -154,7 +162,7 @@
     @media screen and (max-width: 991px) {
       grid-area: 1/1/1/4;
     }
-    
+
   }
 
   &_content {
@@ -172,7 +180,7 @@
   margin-top: -0.3em;
   margin-bottom: -0.3em;
   letter-spacing: -0.05em;
-  
+
   @media screen and (max-width: 991px) {
     font-size: rem(70px);
   }
@@ -204,4 +212,8 @@
   position: sticky;
   top: 0;
   left: 0;
+
+  @media screen and (max-width: 767px) {
+    height: 100svh;
+  }
 }

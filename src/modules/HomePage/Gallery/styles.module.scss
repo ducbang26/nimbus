@@ -35,3 +35,10 @@
 .btn {
   cursor: pointer;
 }
+
+@media screen and (max-width: 767px) {
+  .gallery {
+    padding-top: 12vh;
+    padding-bottom: 12vh;
+  }
+}
