@@ -23,6 +23,10 @@
     color: var(--neutral-950);
     line-height: 1.2;
     letter-spacing: -0.05em;
+
+    @media screen and (max-width: 991px) {
+      line-height: 1;
+    }
   }
 
   &__description {
@@ -43,9 +47,8 @@
     font-size: rem(14px);
   }
 
-  // Features Section
   &__features {
-    row-gap: rem(20px);
+    gap: rem(20px);
     margin-bottom: rem(20px);
   }
 

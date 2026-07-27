@@ -83,9 +83,9 @@ export default function useTypoAnim({
           ease: 'power3.out',
           stagger: staggerOverride ?? 0.015,
           overwrite: 'auto',
-          // onComplete: () => {
-          //   splitter.revert();
-          // },
+          onComplete: () => {
+            splitter.revert();
+          },
         });
       });
     },

@@ -36,6 +36,9 @@
     color: var(--neutral-950);
     line-height: 1.2;
     letter-spacing: -0.05em;
+    @media screen and (max-width: 991px) {
+      line-height: 1;
+    }
   }
 
   &__description {

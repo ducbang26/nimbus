@@ -113,7 +113,7 @@ const Testimonials = (): React.ReactElement => {
         </div>
 
         {/* Progress bar */}
-        <div className="grid">
+        <div className="grid grid-cols-12">
           <div className={s.bar}>
             <div className={s.bar_thumb} />
             <div className={s.bar_track} ref={scrollBarTrackRef} />
@@ -121,7 +121,7 @@ const Testimonials = (): React.ReactElement => {
         </div>
 
         {/* Content */}
-        <div className={clsx(s.testimonials_slider, 'grid')}>
+        <div className={clsx(s.testimonials_slider, 'grid grid-cols-12')}>
           {/* Thumbnails */}
           <div className={s.testimonials_thumbnail}>
             <div className={clsx(s.testimonials_thumbnail_list, 'grid-1-1')}>

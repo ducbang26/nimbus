@@ -9,6 +9,10 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 991px) {
+      padding-top: rem(90px);
+    }
   }
 
   &_header {
@@ -19,31 +23,44 @@
     row-gap: rem(24px);
     align-items: center;
 
+    @media screen and (max-width: 991px) {
+      margin-bottom: rem(30px);
+      row-gap: rem(16px);
+    }
+
     .testimonials_title {
       font-size: rem(100px);
       color: var(--neutral-950);
       line-height: 1.2;
       letter-spacing: -0.05em;
+
+      @media screen and (max-width: 991px) {
+        font-size: rem(70px);
+      }
+
+      @media screen and (max-width: 767px) {
+        font-size: rem(120px);
+      }
     }
 
     .testimonials_desc {
       font-size: rem(20px);
       color: var(--neutral-950);
       line-height: 1.2;
+
+      @media screen and (max-width: 767px) {
+        font-size: rem(40px);
+      }
     }
   }
 
   .bar {
-    grid-area: 1/1/1/5;
+    grid-area: 1/4/1/10;
     position: relative;
     height: rem(8px);
 
-    @include minTablet {
-      grid-area: 1/2/1/8;
-    }
-
-    @include pcSmall {
-      grid-area: 1/4/1/10;
+    @media screen and (max-width: 991px) {
+      grid-area: 1/1/1/13;
     }
 
     &_thumb {
@@ -72,37 +89,33 @@
   margin-top: rem(40px);
   height: 100%;
 
+  @media screen and (max-width: 991px) {
+    margin-top: rem(30px);
+  }
+
   &_content {
-    grid-area: 1/1/1/5;
+    grid-area: 1/8/1/13;
     z-index: 5;
     padding: rem(20px);
     display: flex;
     flex-direction: column;
-    background-color: rgba($color: var(--black), $alpha: 0.6);
-    justify-content: flex-end;
+    background-color: var(--neutral-50);
+    justify-content: space-between;
 
-    @include minTablet {
-      grid-area: 1/6/1/9;
-      background-color: var(--neutral-50);
-      justify-content: space-between;
-    }
-
-    @include pcSmall {
-      grid-area: 1/8/1/13;
+    @media screen and (max-width: 991px) {
+      grid-area: 1/1/1/13;
+      background-color: rgba($color: var(--black), $alpha: 0.6);
+      justify-content: flex-end;
     }
   }
 }
 
 .testimonials_thumbnail {
   z-index: 4;
-  grid-area: 1/1/1/5;
+  grid-area: 1/1/1/8;
 
-  @include minTablet {
-    grid-area: 1/1/1/6;
-  }
-
-  @include pcSmall {
-    grid-area: 1/1/1/8;
+  @media screen and (max-width: 991px) {
+    grid-area: 1/1/1/13;
   }
 
   height: 100%;
@@ -135,6 +148,10 @@
   @include minTablet {
     color: var(--neutral-950);
   }
+
+  @media screen and (max-width: 767px) {
+    font-size: rem(56px);
+  }
 }
 
 .info_inner {
@@ -166,4 +183,19 @@
   height: rem(52px);
   border-radius: 999px;
   background-color: var(--neutral-200);
+}
+
+@media screen and (max-width: 767px) {
+  .info_name {
+    font-size: rem(50px);
+  }
+
+  .info_avt {
+    width: rem(82px);
+    height: rem(82px);
+  }
+
+  .info_inner {
+    column-gap: rem(22px);
+  }
 }
