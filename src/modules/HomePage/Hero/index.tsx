@@ -108,7 +108,7 @@ const Hero = (): React.ReactElement => {
                 shadow-bias={-0.0001}
               />
               <Environment preset="warehouse" environmentIntensity={0.8} />
-              {/* <AboutDrone /> */}
+              <AboutDrone />
             </Suspense>
           </Canvas>
         </div>

@@ -97,17 +97,16 @@ const Footer = (): React.ReactElement => {
 
       <div className={s.footer__bottom}>
         <div className={s.footer__legal}>
-          <Link href="#" className={`${s.footer__link} ${s.footer__link__legal}`}>
+          <Link href="#" className={`${s.footer__link__legal}`}>
             Privacy Policy
           </Link>
           <span className={s.footer__separator}>|</span>
-          <Link href="#" className={`${s.footer__link} ${s.footer__link__legal}`}>
+          <Link href="#" className={`${s.footer__link__legal}`}>
             Terms of Service
           </Link>
         </div>
         <div className={s.footer__credits}>
           <span className={s.footer__design}>Design by Wyn and Mason</span>
-          <span className={s.footer__copyright}>NimbusAir2025</span>
         </div>
       </div>
     </footer>
