@@ -11,7 +11,7 @@ const CTA = (): React.ReactElement => {
   return (
     <section className={s.cta}>
       <div className={`${s.cta_main} container`}>
-        <div className={`${s.cta_bottom} grid grid-cols-12`}>
+        <div className={`${s.cta_bottom} grid grid-cols-12 gap-[2rem]`}>
           <div className={`${s.cta_content} txt-light`}>
             <TypoAnim delayTrigger={0} stagger={0.05}>
               <div className={`${s.cta_content_txt} txt-light`}>Ready to Ride the Future?</div>

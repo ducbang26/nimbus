@@ -51,7 +51,7 @@ const ContactPageForm = (): React.ReactElement => {
   ];
 
   return (
-    <div className={clsx(s.form, 'grid grid-cols-12 gap-5')}>
+    <div className={clsx(s.form, 'grid grid-cols-12 gap-[2rem]')}>
       <div className="col-span-3">
         {infoItems.map((item) => (
           <div className={s.form_info_item} key={item.label}>

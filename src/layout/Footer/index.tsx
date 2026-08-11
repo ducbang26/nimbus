@@ -10,7 +10,7 @@ import s from './styles.module.scss';
 const Footer = (): React.ReactElement => {
   return (
     <footer className={s.footer}>
-      <div className={`${s.footer__main} grid grid-cols-12`}>
+      <div className={`${s.footer__main} grid grid-cols-12 gap-[2rem]`}>
         <div className={s.footer__contact_info}>
           <h3 className={`${s.footer__heading} txt-light`}>NIMBUS AIR</h3>
           <p className={`${s.footer__address} txt-light`}>

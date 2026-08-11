@@ -71,7 +71,7 @@ const ProductPrice = ({ product }: IProductPriceProps): ReactElement => {
         <UIButton variant="icon" onClick={decrease}>
           <Minus />
         </UIButton>
-        <input className={s.productPrice_input} value={quantity} />
+        <input className={s.productPrice_input} value={quantity} onChange={() => {}} />
         <UIButton variant="icon" onClick={increase}>
           <Plus />
         </UIButton>

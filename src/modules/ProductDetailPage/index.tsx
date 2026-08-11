@@ -60,7 +60,7 @@ const ProductDetailPage = async ({
         </UITypography>
         <UITypography typography={ETypography.TEXT_20_LIGHT}>{shortDesc}</UITypography>
       </div>
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-12 gap-[2rem]">
         <div className="col-span-7">
           <ProductImages images={images} />
           <ProductComparison />
