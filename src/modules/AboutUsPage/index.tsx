@@ -30,7 +30,7 @@ const AboutUsPage = (): React.ReactElement => {
             Elevating the Future of Flight
           </UITypography>
         </div>
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 gap-[2rem]">
           <div className="col-span-2">
             <UITypography typography={ETypography.TEXT_24_LIGHT}>Information</UITypography>
           </div>

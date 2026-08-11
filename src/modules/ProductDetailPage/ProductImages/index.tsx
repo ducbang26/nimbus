@@ -23,7 +23,7 @@ const ProductImages = ({ images }: ProductImagesProps): ReactElement => {
   };
 
   return (
-    <div className={clsx('col-span-7 grid grid-cols-7 mb_32', s.productImages)}>
+    <div className={clsx('col-span-7 grid grid-cols-7 mb_32 gap-[2rem]', s.productImages)}>
       <div data-lenis-prevent className={clsx('col-span-1', s.productImages_list)}>
         {images &&
           images.map((image, index) => (

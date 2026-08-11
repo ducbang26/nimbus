@@ -1,17 +1,25 @@
-export const PRODUCTS_QUERY = `*[
-  _type=="product"
- && inStock == true 
-] 
-| order(_createdAt desc)
+export const PRODUCTS_PAGINATION_QUERY = `
 {
-  _id,
-  name,
-  price,
-  category->{name},
-  description[0]{children[0]{text}},
-  shortDesc,
-  "images": images[]{
-    "url": asset->url
-  },
-  slug{current}
-}`;
+  "total": count(*[
+    _type == "product" &&
+    inStock == true
+  ]),
+  "products": *[
+    _type == "product" &&
+    inStock == true
+  ]
+  | order(_createdAt desc)
+  [$start...$end]
+  {
+    _id,
+    name,
+    price,
+    category->{name},
+    shortDesc,
+    "images": images[]{
+      "url": asset->url
+    },
+    slug{current}
+  }
+}
+`;

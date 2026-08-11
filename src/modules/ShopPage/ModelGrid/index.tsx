@@ -5,39 +5,78 @@ import React, { useState } from 'react';
 import UIButton from '@Components/Button';
 import ProductItem from '@Components/ProductItem';
 import UITypography from '@Components/Typography';
-import { ETypography, ETypographyColor } from '@Components/Typography/constants';
-import { EModelFilter, MODEL_FILTERS } from '@Modules/ShopPage/constants';
+import {
+  ETypography,
+  ETypographyColor,
+} from '@Components/Typography/constants';
+import {
+  EModelFilter,
+  MODEL_FILTERS,
+} from '@Modules/ShopPage/constants';
 import type { ProductItemData } from '@Types/product';
 import { clsx } from 'clsx';
+import {
+  usePathname,
+  useRouter,
+  useSearchParams,
+} from 'next/navigation';
 
 import s from './styles.module.scss';
 
 interface ShopPageModelGridProps {
   products: ProductItemData[];
+  currentPage: number;
+  totalPages: number;
 }
 
-const ShopPageModelGrid = ({ products }: ShopPageModelGridProps): React.ReactElement => {
-  const [activeFilter, setActiveFilter] = useState(EModelFilter.ALL);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, _setTotalPages] = useState(4);
+const ShopPageModelGrid = ({
+  products,
+  currentPage,
+  totalPages,
+}: ShopPageModelGridProps): React.ReactElement => {
+  const [activeFilter, setActiveFilter] =
+    useState<EModelFilter>(EModelFilter.ALL);
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const handleFilterClick = (filter: EModelFilter): void => {
     setActiveFilter(filter);
+
+    const params = new URLSearchParams(
+      searchParams.toString()
+    );
+
+    params.set('page', '1');
+
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   const handlePageClick = (page: number): void => {
-    setCurrentPage(page);
+    const params = new URLSearchParams(
+      searchParams.toString()
+    );
+
+    params.set('page', page.toString());
+
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   return (
     <div className={clsx('container', s.modelGrid)}>
       <div className={s.modelGrid_filters}>
         {MODEL_FILTERS.map((filter) => (
-          <div className={s.modelGrid_filter} key={filter.value}>
+          <div
+            key={filter.value}
+            className={s.modelGrid_filter}
+          >
             <UIButton
-              variant={'text'}
-              color={'primary'}
-              onClick={() => handleFilterClick(filter.value)}
+              variant="text"
+              color="primary"
+              onClick={() =>
+                handleFilterClick(filter.value)
+              }
             >
               <UITypography
                 typography={ETypography.TEXT_24_REGULAR}
@@ -53,6 +92,7 @@ const ShopPageModelGrid = ({ products }: ShopPageModelGridProps): React.ReactEle
           </div>
         ))}
       </div>
+
       <div className={s.modelGrid_models}>
         <div>
           <UITypography
@@ -61,43 +101,84 @@ const ShopPageModelGrid = ({ products }: ShopPageModelGridProps): React.ReactEle
           >
             MODELS
           </UITypography>
+
           <UITypography
             typography={ETypography.TEXT_20_LIGHT}
             className={s.modelGrid_models_description}
           >
-            Our most popular drones, loved by customers worldwide.
+            Our most popular drones, loved by customers
+            worldwide.
           </UITypography>
         </div>
-        <div className={clsx('grid', s.modelGrid_models_list)}>
-          <div className={clsx('col-span-6', s.modelGrid_models_list_wrapper)}>
-            <UITypography typography={ETypography.TEXT_36_LIGHT}>
-              Best-selling and most advanced drones available now!
+
+        <div
+          className={clsx(
+            'grid grid-cols-12 gap-5',
+            s.modelGrid_models_list
+          )}
+        >
+          <div
+            className={clsx(
+              'col-span-6',
+              s.modelGrid_models_list_wrapper
+            )}
+          >
+            <UITypography
+              typography={ETypography.TEXT_36_LIGHT}
+            >
+              Best-selling and most advanced drones
+              available now!
             </UITypography>
           </div>
+
           {products.map((item) => (
-            <ProductItem key={item.slug.current} {...item} />
+            <ProductItem
+              key={item.slug.current}
+              {...item}
+            />
           ))}
         </div>
       </div>
 
-      <div className={s.modelGrid_pagination}>
-        {Array.from({ length: totalPages }, (_, index) => (
-          <div className={s.modelGrid_pagination_item} key={index}>
-            <UIButton variant={'text'} onClick={() => handlePageClick(index + 1)}>
-              <UITypography
-                typography={ETypography.TEXT_24_REGULAR}
-                color={
-                  currentPage === index + 1
-                    ? ETypographyColor.NEUTRAL_950
-                    : ETypographyColor.NEUTRAL_300
-                }
-              >
-                {index + 1}
-              </UITypography>
-            </UIButton>
-          </div>
-        ))}
-      </div>
+      {totalPages > 1 && (
+        <div className={s.modelGrid_pagination}>
+          {Array.from(
+            { length: totalPages },
+            (_, index) => {
+              const page = index + 1;
+
+              return (
+                <div
+                  key={page}
+                  className={
+                    s.modelGrid_pagination_item
+                  }
+                >
+                  <UIButton
+                    variant="text"
+                    onClick={() =>
+                      handlePageClick(page)
+                    }
+                  >
+                    <UITypography
+                      typography={
+                        ETypography.TEXT_24_REGULAR
+                      }
+                      color={
+                        currentPage === page
+                          ? ETypographyColor.NEUTRAL_950
+                          : ETypographyColor.NEUTRAL_300
+                      }
+                    >
+                      {page}
+                    </UITypography>
+                  </UIButton>
+                </div>
+              );
+            }
+          )}
+        </div>
+      )}
     </div>
   );
 };

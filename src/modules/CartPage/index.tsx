@@ -99,7 +99,7 @@ const CartPage = (): React.ReactElement => {
       >
         Cart ({cart.totalItems || 0})
       </UITypography>
-      <div className="grid grid-cols-12">
+      <div className="grid grid-cols-12 gap-[2rem]">
         <div className="col-span-9">
           <div className="col-span-9 grid grid-cols-9 mb_16">
             <div className="col-span-5">
@@ -280,7 +280,7 @@ const CartPage = (): React.ReactElement => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 mb_40">
+      <div className="grid grid-cols-12 gap-[2rem] mb_40">
         <div className="col-span-9 mt_16">
           <div className={s.importantNotes_header}>
             <div className={s.importantNotes_header_icon}>
